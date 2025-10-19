@@ -1,0 +1,240 @@
+// Text Field Component - SCSS Refactored
+// Material Design 3 text fields with filled and outlined variants
+
+@use 'sass:math';
+@use 'variables' as *;
+
+// Mixins
+@mixin textfield-base {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-right: $spacing-12px;
+  padding-left: $spacing-12px;
+  gap: $spacing-12px;
+  height: $spacing-56px;
+}
+
+@mixin input-reset {
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin input-base {
+  margin-right: $spacing-4px;
+  margin-left: $spacing-4px;
+  background-color: transparent;
+  height: $spacing-24px;
+  width: 100%;
+}
+
+@mixin icon-sizing {
+  height: $spacing-24px;
+  width: $spacing-24px;
+  min-height: $spacing-24px;
+  min-width: $spacing-24px;
+}
+
+@mixin placeholder-base {
+  color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+  position: absolute;
+  top: $spacing-4px;
+  left: 0;
+  font-size: 1rem;
+}
+
+@mixin placeholder-small {
+  font-size: 0.75rem;
+  color: light-dark(
+    var(--color-light-on-surface-variant),
+    var(--color-dark-on-surface-variant)
+  );
+  display: block;
+  line-height: calc(4 / 3);
+  max-height: calc(4 / 3);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin supporting-text-base {
+  position: absolute;
+  top: $spacing-56px;
+  left: $spacing-12px;
+  font-size: 0.75rem;
+  display: block;
+  line-height: calc(4 / 3);
+  max-height: calc(4 / 3);
+  max-width: calc(100% - 2rem);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin error-color {
+  color: light-dark(var(--color-light-error), var(--color-dark-error));
+}
+
+@mixin error-border {
+  border-color: light-dark(var(--color-light-error), var(--color-dark-error));
+}
+
+@mixin error-outline {
+  outline-color: light-dark(var(--color-light-error), var(--color-dark-error));
+}
+
+// Text Field Component
+.textfield {
+  @include textfield-base;
+
+  input {
+    @include input-base;
+
+    &,
+    &:focus,
+    &:focus-visible,
+    &:hover,
+    &:active {
+      @include input-reset;
+    }
+  }
+
+  svg,
+  img {
+    @include icon-sizing;
+  }
+
+  // Filled variant
+  &.filled {
+    border-top-left-radius: $spacing-4px;
+    border-top-right-radius: $spacing-4px;
+    background-color: light-dark(
+      var(--color-light-surface-container-highest),
+      var(--color-dark-surface-container-highest)
+    );
+    border-bottom: $spacing-1px solid
+      light-dark(
+        var(--color-light-on-surface-variant),
+        var(--color-dark-on-surface-variant)
+      );
+
+    &:has(input:focus) {
+      border-bottom: $spacing-3px solid
+        light-dark(var(--color-light-primary), var(--color-dark-primary));
+    }
+
+    // Filled label states
+    &:has(input:focus) label,
+    &:has(input:not([value=''])) label {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: $spacing-40px;
+      gap: $spacing-4px;
+
+      .placeholder {
+        @include placeholder-small;
+        position: relative;
+        max-width: calc(100% - 2rem);
+      }
+    }
+
+    // Error state
+    &.error {
+      @include error-border;
+
+      &:has(input:focus),
+      &:has(input:not([value=''])) {
+        @include error-border;
+      }
+    }
+  }
+
+  // Outlined variant
+  &.outlined {
+    border-radius: $spacing-4px;
+    outline: $spacing-1px solid
+      light-dark(var(--color-light-outline), var(--color-dark-outline));
+    outline-offset: -$spacing-1px;
+
+    &:has(input:focus) {
+      outline: $spacing-3px solid
+        light-dark(var(--color-light-primary), var(--color-dark-primary));
+      outline-offset: -$spacing-3px;
+    }
+
+    // Outlined label states
+    &:has(input:focus) label,
+    &:has(input:not([value=''])) label {
+      position: static;
+
+      .placeholder {
+        @include placeholder-small;
+        position: absolute;
+        top: -$spacing-8px;
+        left: $spacing-12px;
+        background-color: light-dark(
+          var(--color-light-surface-container-lowest),
+          var(--color-dark-surface-container-lowest)
+        );
+        padding: 0 $spacing-4px;
+        max-width: calc(100% - 1rem);
+      }
+    }
+
+    // Error state
+    &.error {
+      @include error-outline;
+
+      &:has(input:focus),
+      &:has(input:not([value=''])) {
+        @include error-outline;
+      }
+    }
+  }
+
+  // Label base
+  label {
+    position: relative;
+
+    .placeholder {
+      @include placeholder-base;
+    }
+  }
+
+  // Supporting text
+  .supporting-text {
+    @include supporting-text-base;
+  }
+
+  // Error states
+  &.error {
+    label .placeholder,
+    .supporting-text {
+      @include error-color;
+    }
+
+    &:has(input:focus) {
+      label .placeholder,
+      .supporting-text {
+        @include error-color;
+      }
+    }
+
+    &:has(input:not([value=''])) {
+      label .placeholder,
+      .supporting-text {
+        @include error-color;
+      }
+    }
+
+    // Error icon styling
+    label + svg,
+    label + img {
+      @include error-color;
+    }
+  }
+}

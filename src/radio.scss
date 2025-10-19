@@ -1,0 +1,140 @@
+// Radio Button Component - SCSS
+// Material Design 3 radio buttons
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Component-specific variables
+$radio-size: $spacing-20px;
+$radio-touch-target-size: $spacing-40px;
+$radio-touch-offset: calc(($radio-touch-target-size - $radio-size) / 2);
+
+// Mixins
+@mixin radio-outline($color) {
+  outline: $spacing-2px solid
+    light-dark(var(--color-light-#{$color}), var(--color-dark-#{$color}));
+  outline-offset: -$spacing-2px;
+}
+
+@mixin radio-background($color) {
+  background-color: light-dark(
+    var(--color-light-#{$color}),
+    var(--color-dark-#{$color})
+  );
+}
+
+@mixin state-overlay($color, $opacity) {
+  background-color: color(
+    from light-dark(var(--color-light-#{$color}), var(--color-dark-#{$color}))
+      srgb r g b / #{$opacity}
+  );
+}
+
+@mixin touch-target {
+  content: '';
+  position: absolute;
+  top: -$radio-touch-offset;
+  left: -$radio-touch-offset;
+  right: -$radio-touch-offset;
+  bottom: -$radio-touch-offset;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+@mixin focus-ring {
+  outline-offset: -$spacing-8px;
+  outline: $spacing-3px solid
+    light-dark(var(--color-light-secondary), var(--color-dark-secondary));
+}
+
+// Radio Button Component
+input.radio {
+  @include reset-input-appearance;
+
+  margin: $radio-touch-offset;
+  height: $radio-size;
+  width: $radio-size;
+  position: relative;
+  border-radius: 50%;
+  pointer-events: default;
+
+  @include radio-outline(on-surface-variant);
+
+  // Touch target area
+  &::before {
+    @include touch-target;
+  }
+
+  // Inner dot (shown when checked)
+  &::after {
+    content: '';
+    top: $spacing-4px;
+    left: $spacing-4px;
+    right: $spacing-4px;
+    bottom: $spacing-4px;
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    display: none; // Hidden by default
+  }
+
+  // Checked state
+  &:checked {
+    @include radio-outline(primary);
+
+    &::after {
+      display: block;
+      @include radio-background(primary);
+    }
+  }
+
+  // Disabled state
+  &:disabled {
+    outline-color: color(
+      from
+        light-dark(var(--color-light-on-surface), var(--color-dark-on-surface))
+        srgb r g b / #{$opacity-disabled-content}
+    );
+
+    &:checked::after {
+      background-color: color(
+        from
+          light-dark(
+            var(--color-light-on-surface),
+            var(--color-dark-on-surface)
+          )
+          srgb r g b / #{$opacity-disabled-content}
+      );
+    }
+  }
+
+  // Interactive states (enabled only)
+  &:not([disabled]) {
+    &::before {
+      cursor: pointer;
+    }
+
+    // Focus state
+    &:focus::before {
+      @include focus-ring;
+    }
+
+    // Hover states
+    &:hover::before {
+      @include state-overlay(on-surface, $opacity-hovered);
+    }
+
+    &:checked:hover::before {
+      @include state-overlay(primary, $opacity-hovered);
+    }
+
+    // Active states
+    &:active::before {
+      @include state-overlay(on-surface, $opacity-pressed);
+    }
+
+    &:active:hover::before {
+      @include state-overlay(primary, $opacity-pressed);
+    }
+  }
+}

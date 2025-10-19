@@ -1,0 +1,470 @@
+// Button Component - SCSS
+// Material Design 3 buttons with size and style variants
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Component-specific variables
+$button-font-size-md: $spacing-20px;
+
+// Button padding for different sizes
+$button-padding-xs: 0 $spacing-12px;
+$button-padding-sm: 0 $spacing-16px;
+$button-padding-md: 0 $spacing-20px;
+
+// Button border radius calculations
+$button-radius-xs: calc($button-height-xs / 2);
+$button-radius-sm: calc($button-height-sm / 2);
+$button-radius-md: calc($button-height-md / 2);
+
+// Square button radii
+$button-radius-square: $spacing-12px;
+$button-radius-square-md: $spacing-16px;
+
+// Active state radii
+$button-radius-active: $spacing-8px;
+$button-radius-active-md: $spacing-12px;
+
+// Icon button width
+$button-icon-width-xs-narrow: $spacing-28px;
+$button-icon-width-xs-wide: $spacing-40px;
+$button-icon-width-sm-narrow: $spacing-32px;
+$button-icon-width-sm-wide: $spacing-52px;
+$button-icon-width-md-narrow: $spacing-48px;
+$button-icon-width-md-wide: $spacing-72px;
+
+// Clickable area
+$button-clickable-area-size: $spacing-48px;
+$button-clickable-area-height-xs: calc(
+  (#{$button-height-xs} - #{$button-clickable-area-size}) / 2
+);
+$button-clickable-area-height-sm: calc(
+  (#{$button-height-sm} - #{$button-clickable-area-size}) / 2
+);
+$button-clickable-area-width-xs: 0;
+$button-clickable-area-width-sm: 0;
+$button-icon-clickable-area-xs-narrow: calc(
+  (#{$button-icon-width-xs-narrow} - #{$button-clickable-area-size}) / 2
+);
+$button-icon-clickable-area-xs-wide: calc(
+  (#{$button-icon-width-xs-wide} - #{$button-clickable-area-size}) / 2
+);
+$button-icon-clickable-area-sm-narrow: calc(
+  (#{$button-icon-width-sm-narrow} - #{$button-clickable-area-size}) / 2
+);
+$button-icon-clickable-area-sm-wide: 0;
+
+// Mixins
+
+// Button color theming
+@mixin button-colors($bg-color, $text-color) {
+  background-color: light-dark(
+    var(--color-light-#{$bg-color}),
+    var(--color-dark-#{$bg-color})
+  );
+  color: light-dark(
+    var(--color-light-#{$text-color}),
+    var(--color-dark-#{$text-color})
+  );
+}
+
+// Clickable area for touch targets
+@mixin clickable-area(
+  $y: $button-clickable-area-height-sm,
+  $x: $button-clickable-area-width-sm
+) {
+  &::before {
+    content: '';
+    position: absolute;
+    top: $y;
+    bottom: $y;
+    left: $x;
+    right: $x;
+    pointer-events: auto;
+    cursor: pointer;
+  }
+}
+
+// Button Component
+.button {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  background: inherit;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+  gap: $spacing-4px;
+  user-select: none;
+  text-decoration: none;
+
+  height: $button-height-sm;
+  padding: $button-padding-sm;
+  border-radius: $button-radius-sm;
+
+  // Default clickable area
+  @include clickable-area;
+
+  // Size variants
+  &.xs {
+    border-radius: $button-radius-xs;
+    height: $button-height-xs;
+    padding: $button-padding-xs;
+
+    @include clickable-area(
+      $button-clickable-area-height-xs,
+      $button-clickable-area-width-xs
+    );
+  }
+
+  &.md {
+    border-radius: $button-radius-md;
+    height: $button-height-md;
+    padding: $button-padding-md;
+    font-size: $button-font-size-md;
+  }
+
+  // Shape variants
+  &.square {
+    border-radius: $button-radius-square;
+
+    &.md {
+      border-radius: $button-radius-square-md;
+    }
+  }
+
+  // Hidden checkbox input
+  input {
+    appearance: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+
+    // Remove browser-specific styling
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &::-moz-focus-inner {
+      border: 0;
+      padding: 0;
+    }
+  }
+
+  // Checkbox buttons
+  &:has(input) {
+    cursor: pointer;
+  }
+
+  // Icon buttons
+  &.icon {
+    padding: 0;
+    justify-content: center;
+    width: $button-height-sm;
+
+    &.xs {
+      width: $button-height-xs;
+      @include clickable-area(
+        $button-clickable-area-height-xs,
+        $button-clickable-area-height-xs
+      );
+    }
+
+    &.md {
+      width: $button-height-md;
+    }
+
+    // Icon width variants
+    &.narrow {
+      width: $button-icon-width-sm-narrow;
+
+      @include clickable-area(
+        $button-clickable-area-height-sm,
+        $button-icon-clickable-area-sm-narrow
+      );
+
+      &.xs {
+        width: $button-icon-width-xs-narrow;
+        @include clickable-area(
+          $button-clickable-area-height-xs,
+          $button-icon-clickable-area-xs-narrow
+        );
+      }
+
+      &.md {
+        width: $button-icon-width-md-narrow;
+      }
+    }
+
+    &.wide {
+      width: $button-icon-width-xs-wide;
+
+      @include clickable-area(
+        $button-clickable-area-height-sm,
+        $button-icon-clickable-area-sm-wide
+      );
+
+      &.xs {
+        width: $button-icon-width-xs-wide;
+        @include clickable-area(
+          $button-clickable-area-height-xs,
+          $button-icon-clickable-area-xs-wide
+        );
+      }
+
+      &.md {
+        width: $button-icon-width-md-wide;
+      }
+    }
+
+    @include clickable-area(
+      $button-clickable-area-height-sm,
+      $button-clickable-area-height-sm
+    );
+  }
+
+  // Active states - smaller border radius
+  &:active:enabled,
+  &:has(input:checked) {
+    border-radius: $button-radius-active;
+
+    &.md {
+      border-radius: $button-radius-active-md;
+    }
+  }
+
+  // Icon and image sizing
+  svg,
+  img {
+    height: 1.25rem;
+
+    .sm.icon & {
+      height: 1.5rem;
+    }
+  }
+
+  // Filled button variant (primary style)
+  &.filled {
+    @include button-colors(primary, on-primary);
+
+    // Checkbox unchecked state styling
+    &:has(input:not([disabled]):not(:checked)) {
+      @include button-colors(surface-container, on-surface-variant);
+
+      &:hover {
+        @include button-state-overlay(on-surface-variant, $opacity-hovered);
+      }
+
+      &:focus,
+      &:active {
+        @include button-state-overlay(on-surface-variant, $opacity-focused);
+      }
+    }
+
+    // Normal and checked states
+    &:not([disabled]):not(:has(input)):hover,
+    &:has(input:not([disabled]):checked):hover {
+      @include button-state-overlay(on-primary, $opacity-hovered);
+    }
+
+    &:not([disabled]):not(:has(input)):focus,
+    &:not([disabled]):not(:has(input)):active,
+    &:has(input:not([disabled]):checked):focus,
+    &:has(input:not([disabled]):checked):active {
+      @include button-state-overlay(on-primary, $opacity-focused);
+    }
+  }
+
+  // Tonal button variant (secondary container style)
+  &.tonal {
+    @include button-colors(secondary-container, on-secondary-container);
+
+    // Checked state transitions to secondary color
+    &:has(input:not([disabled]):checked) {
+      @include button-colors(secondary, on-secondary);
+
+      &:hover {
+        @include button-state-overlay(on-secondary, $opacity-hovered);
+      }
+
+      &:focus,
+      &:active {
+        @include button-state-overlay(on-secondary, $opacity-focused);
+      }
+    }
+
+    // Default and unchecked state interactions
+    &:not([disabled]):not(:has(input)):hover,
+    &:has(input:not([disabled]):not(:checked)):hover {
+      @include button-state-overlay(on-surface-variant, $opacity-hovered);
+    }
+
+    &:not([disabled]):not(:has(input)):focus,
+    &:not([disabled]):not(:has(input)):active,
+    &:has(input:not([disabled]):not(:checked)):focus,
+    &:has(input:not([disabled]):not(:checked)):active {
+      @include button-state-overlay(on-surface-variant, $opacity-focused);
+    }
+  }
+
+  // Error/Danger button variants (destructive actions)
+  &.danger,
+  &.error {
+    @include button-colors(error, on-error);
+
+    // Checkbox unchecked state uses error container
+    &:has(input:not([disabled]):not(:checked)) {
+      @include button-colors(error-container, on-error-variant);
+
+      &:hover {
+        @include button-state-overlay(on-surface-variant, $opacity-hovered);
+      }
+
+      &:focus,
+      &:active {
+        @include button-state-overlay(on-surface-variant, $opacity-focused);
+      }
+    }
+
+    // Normal and checked state interactions
+    &:not([disabled]):not(:has(input)):hover,
+    &:has(input:not([disabled]):checked):hover {
+      @include button-state-overlay(on-error, $opacity-hovered);
+    }
+
+    &:not([disabled]):not(:has(input)):focus,
+    &:not([disabled]):not(:has(input)):active,
+    &:has(input:not([disabled]):checked):focus,
+    &:has(input:not([disabled]):checked):active {
+      @include button-state-overlay(on-error, $opacity-focused);
+    }
+  }
+
+  // Outlined button variant
+  &.outlined {
+    @include button-colors(form, on-surface-variant);
+    border: 1px solid
+      light-dark(
+        var(--color-light-outline-variant),
+        var(--color-dark-outline-variant)
+      );
+
+    &:has(input:checked) {
+      @include button-colors(inverse-surface, inverse-on-surface);
+
+      &:hover {
+        @include button-state-overlay(on-secondary, $opacity-hovered);
+      }
+
+      &:focus,
+      &:active {
+        @include button-state-overlay(on-secondary, $opacity-focused);
+      }
+    }
+
+    // Default and unchecked states
+    &:not([disabled]):not(:has(input)):hover,
+    &:has(input:not([disabled]):not(:checked)):hover {
+      @include button-state-overlay(on-surface-variant, $opacity-hovered);
+    }
+
+    &:not([disabled]):not(:has(input)):focus,
+    &:not([disabled]):not(:has(input)):active,
+    &:has(input:not([disabled]):not(:checked)):focus,
+    &:has(input:not([disabled]):not(:checked)):active {
+      @include button-state-overlay(on-surface-variant, $opacity-focused);
+    }
+  }
+
+  // Elevated button variant
+  &.elevated {
+    @include button-colors(container-low, primary);
+    box-shadow: $spacing-1px $spacing-1px $spacing-1px $spacing-1px
+      color(
+        from light-dark(var(--color-light-shadow), var(--color-dark-shadow))
+          srgb r g b / #{$opacity-shadow}
+      );
+
+    &:has(input:checked) {
+      @include button-colors(primary, on-primary);
+
+      &:hover {
+        @include button-state-overlay(on-primary, $opacity-hovered);
+      }
+
+      &:focus,
+      &:active {
+        @include button-state-overlay(on-primary, $opacity-focused);
+      }
+    }
+
+    // Default and unchecked states
+    &:not([disabled]):not(:has(input)):hover,
+    &:has(input:not([disabled]):not(:checked)):hover {
+      @include button-state-overlay(primary, $opacity-hovered);
+    }
+
+    &:not([disabled]):not(:has(input)):focus,
+    &:not([disabled]):not(:has(input)):active,
+    &:has(input:not([disabled]):not(:checked)):focus,
+    &:has(input:not([disabled]):not(:checked)):active {
+      @include button-state-overlay(primary, $opacity-focused);
+    }
+  }
+
+  // Text button variant
+  &.text {
+    background-color: inherit;
+    @include button-colors(transparent, primary);
+
+    &:not([disabled]):hover {
+      @include button-state-overlay(primary, $opacity-hovered);
+    }
+
+    &:not([disabled]):focus,
+    &:not([disabled]):active {
+      @include button-state-overlay(primary, $opacity-focused);
+    }
+  }
+
+  // Focus states
+  &:focus,
+  &:has(input:enabled:focus) {
+    @include focus-outline;
+  }
+
+  // Disabled states
+  &:disabled,
+  &:has(input:disabled),
+  &:has(input:checked:disabled) {
+    background-color: color(
+      from
+        light-dark(var(--color-light-on-surface), var(--color-dark-on-surface))
+        srgb r g b / #{$opacity-disabled-bg}
+    );
+    color: color(
+      from
+        light-dark(var(--color-light-on-surface), var(--color-dark-on-surface))
+        srgb r g b / #{$opacity-disabled-content}
+    );
+    box-shadow: none;
+    cursor: default;
+
+    &::before {
+      cursor: default;
+    }
+  }
+}

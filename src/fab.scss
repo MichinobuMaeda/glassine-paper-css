@@ -1,0 +1,197 @@
+// FAB (Floating Action Button) Component - SCSS
+// Material Design 3 floating action buttons with multiple sizes and variants
+
+@use 'sass:math';
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Component-specific variables
+$fab-size-sm: $spacing-56px;
+$fab-size-md: $spacing-80px;
+$fab-size-lg: $spacing-96px;
+
+$fab-icon-size-sm: $spacing-24px;
+$fab-icon-size-md: $spacing-28px;
+$fab-icon-size-lg: $spacing-44px;
+
+$fab-border-radius-sm: $spacing-16px;
+$fab-border-radius-md: $spacing-20px;
+$fab-border-radius-lg: $spacing-28px;
+
+$fab-margin-closed-sm: $spacing-16px;
+$fab-margin-closed-md: calc(
+  $fab-margin-closed-sm + $fab-size-md - $fab-size-sm
+);
+$fab-margin-closed-lg: calc(
+  $fab-margin-closed-sm + $fab-size-lg - $fab-size-sm
+);
+
+// Mixins
+@mixin fab-base {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  background: inherit;
+  border: none;
+  outline: none;
+  margin: $fab-margin-closed-sm;
+  padding: 0;
+  gap: $spacing-4px;
+  user-select: none;
+}
+
+@mixin fab-shadow($size) {
+  box-shadow: $size $size $size $size
+    color(
+      from light-dark(var(--color-light-shadow), var(--color-dark-shadow)) srgb
+        r g b / #{$opacity-shadow}
+    );
+}
+
+@mixin fab-size($size, $border-radius, $icon-size) {
+  height: $size;
+  width: $size;
+  border-radius: $border-radius;
+  svg,
+  img {
+    height: $icon-size;
+  }
+}
+
+@mixin fab-colors($bg-color, $text-color) {
+  background-color: light-dark(
+    var(--color-light-#{$bg-color}),
+    var(--color-dark-#{$bg-color})
+  );
+  color: light-dark(
+    var(--color-light-#{$text-color}),
+    var(--color-dark-#{$text-color})
+  );
+}
+
+// FAB Component
+.fab {
+  @include fab-base;
+  @include fab-shadow($spacing-2px);
+  @include fab-size($fab-size-sm, $fab-border-radius-sm, $fab-icon-size-sm);
+
+  // Size variants
+  &.md {
+    @include fab-size($fab-size-md, $fab-border-radius-md, $fab-icon-size-md);
+  }
+
+  &.lg {
+    @include fab-size($fab-size-lg, $fab-border-radius-lg, $fab-icon-size-lg);
+  }
+
+  // Closed button variant
+  &.closed {
+    @include fab-size($fab-size-sm, 50%, $fab-icon-size-sm);
+
+    &.md {
+      margin-bottom: $fab-margin-closed-md;
+    }
+
+    &.lg {
+      margin-bottom: $fab-margin-closed-lg;
+    }
+  }
+
+  // Color variants - Container styles
+  &.primary-container {
+    @include fab-colors(primary-container, on-primary-container);
+  }
+
+  &.secondary-container {
+    @include fab-colors(secondary-container, on-secondary-container);
+  }
+
+  &.tertiary-container {
+    @include fab-colors(tertiary-container, on-tertiary-container);
+  }
+
+  // Color variants - Solid styles
+  &.primary {
+    @include fab-colors(primary, on-primary);
+  }
+
+  &.secondary {
+    @include fab-colors(secondary, on-secondary);
+  }
+
+  &.tertiary {
+    @include fab-colors(tertiary, on-tertiary);
+  }
+
+  // Closed button color overrides
+  &.primary.closed {
+    @include fab-colors(primary-container, on-primary-container);
+  }
+
+  &.secondary.closed {
+    @include fab-colors(secondary-container, on-secondary-container);
+  }
+
+  &.tertiary.closed {
+    @include fab-colors(tertiary-container, on-tertiary-container);
+  }
+
+  &.primary-container.closed {
+    @include fab-colors(primary, on-primary);
+  }
+
+  &.secondary-container.closed {
+    @include fab-colors(secondary, on-secondary);
+  }
+
+  &.tertiary-container.closed {
+    @include fab-colors(tertiary, on-tertiary);
+  }
+
+  // Interactive states
+  &:hover {
+    @include fab-shadow($spacing-3px);
+  }
+
+  &.primary-container:hover,
+  &.secondary-container:hover,
+  &.tertiary-container:hover {
+    @include button-state-overlay(on-surface-variant, $opacity-hovered);
+  }
+
+  &.primary:hover {
+    @include button-state-overlay(on-primary, $opacity-hovered);
+  }
+
+  &.secondary:hover {
+    @include button-state-overlay(on-secondary, $opacity-hovered);
+  }
+
+  &.tertiary:hover {
+    @include button-state-overlay(on-tertiary, $opacity-hovered);
+  }
+
+  &:focus {
+    outline: solid $focus-outline-width
+      light-dark(var(--color-light-secondary), var(--color-dark-secondary));
+    outline-offset: $focus-outline-offset;
+  }
+
+  &:disabled {
+    background-color: color(
+      from
+        light-dark(var(--color-light-on-surface), var(--color-dark-on-surface))
+        srgb r g b / #{$opacity-disabled-bg}
+    );
+    color: color(
+      from
+        light-dark(var(--color-light-on-surface), var(--color-dark-on-surface))
+        srgb r g b / #{$opacity-disabled-content}
+    );
+    box-shadow: none;
+    cursor: default;
+  }
+}

@@ -1,0 +1,246 @@
+// Switch Component - SCSS Refactored
+// Material Design 3 switch toggle with proper nesting and organization
+
+@use 'sass:math';
+@use 'variables' as *;
+
+// Component-specific variables
+$switch-width: $spacing-52px;
+$switch-height: $spacing-32px;
+$switch-thumb-default: $spacing-16px;
+$switch-thumb-checked: $spacing-24px;
+$switch-thumb-active: $spacing-28px;
+
+$switch-thumb-inset: $spacing-8px;
+$switch-thumb-inset-active: $spacing-2px;
+$switch-thumb-left-checked-active: 1.375rem;
+
+// Hover area
+$switch-hover-size: 2.5rem;
+$switch-focus-width: 3.75rem;
+$switch-focus-height: 2.5rem;
+$switch-focus-radius: $spacing-20px; // 1.25rem
+$switch-focus-border: $spacing-3px; // 0.1875rem
+
+// Mixins
+@mixin switch-base {
+  appearance: none;
+  border: none;
+  box-shadow: none;
+  margin: $spacing-4px;
+  padding: 0;
+  height: $switch-height;
+  width: $switch-width;
+  position: relative;
+  pointer-events: default;
+  border-radius: calc($switch-height / 2);
+  outline: $spacing-2px solid
+    light-dark(var(--color-light-outline), var(--color-dark-outline));
+  outline-offset: -$spacing-2px;
+}
+
+@mixin switch-background($color-light, $color-dark) {
+  background-color: light-dark(
+    var(--color-light-#{$color-light}),
+    var(--color-dark-#{$color-dark})
+  );
+}
+
+@mixin switch-thumb($size, $top, $left) {
+  content: '';
+  position: absolute;
+  top: $top;
+  left: $left;
+  height: $size;
+  width: $size;
+  border-radius: 50%;
+}
+
+@mixin switch-thumb-checked($size, $top, $left) {
+  @include switch-thumb($size, $top, $left);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  content: '✓';
+}
+
+@mixin hover-overlay($size, $top, $left, $color-light, $color-dark) {
+  content: '';
+  position: absolute;
+  top: $top;
+  left: $left;
+  height: $size;
+  width: $size;
+  border-radius: 50%;
+  background-color: light-dark(
+    var(--color-light-#{$color-light}),
+    var(--color-dark-#{$color-dark})
+  );
+  opacity: $opacity-hovered;
+}
+
+@mixin focus-ring {
+  content: '';
+  position: absolute;
+  top: -$spacing-4px;
+  left: -$spacing-4px;
+  height: $switch-focus-height;
+  width: $switch-focus-width;
+  border-radius: $switch-focus-radius;
+  border: $switch-focus-border solid
+    light-dark(var(--color-light-secondary), var(--color-dark-secondary));
+}
+
+// Switch Component
+input[type='checkbox'].switch {
+  @include switch-base;
+  @include switch-background(
+    surface-container-highest,
+    surface-container-highest
+  );
+
+  // Thumb (unchecked state)
+  &::after {
+    @include switch-thumb(
+      $switch-thumb-default,
+      $switch-thumb-inset,
+      $switch-thumb-inset
+    );
+    background-color: light-dark(
+      var(--color-light-outline),
+      var(--color-dark-outline)
+    );
+  }
+
+  // Checked state
+  &:checked {
+    @include switch-background(primary, primary);
+
+    &::after {
+      @include switch-thumb-checked(
+        $switch-thumb-checked,
+        $spacing-4px,
+        $switch-thumb-checked
+      );
+      background-color: light-dark(
+        var(--color-light-on-primary),
+        var(--color-dark-on-primary)
+      );
+      color: light-dark(
+        var(--color-light-on-primary-container),
+        var(--color-dark-on-primary-container)
+      );
+    }
+  }
+
+  // Disabled states
+  &:disabled {
+    background-color: color(
+      from
+        light-dark(
+          var(--color-light-surface-container-highest),
+          var(--color-dark-surface-container-highest)
+        )
+        srgb r g b / #{$opacity-disabled-container}
+    );
+    outline-color: color(
+      from
+        light-dark(var(--color-light-on-surface), var(--color-dark-on-surface))
+        srgb r g b / #{$opacity-disabled-container}
+    );
+
+    &::after {
+      background-color: color(
+        from
+          light-dark(
+            var(--color-light-on-surface),
+            var(--color-dark-on-surface)
+          )
+          srgb r g b / #{$opacity-disabled-content}
+      );
+    }
+
+    &:checked {
+      background-color: color(
+        from
+          light-dark(
+            var(--color-light-on-surface),
+            var(--color-dark-on-surface)
+          )
+          srgb r g b / #{$opacity-disabled-container}
+      );
+      outline: none;
+
+      &::after {
+        background-color: light-dark(
+          var(--color-light-surface),
+          var(--color-dark-surface)
+        );
+        color: color(
+          from
+            light-dark(
+              var(--color-light-on-surface),
+              var(--color-dark-on-surface)
+            )
+            srgb r g b / #{$opacity-disabled-content}
+        );
+      }
+    }
+  }
+
+  // Interactive states
+  &:hover {
+    &::before {
+      @include hover-overlay(
+        $switch-hover-size,
+        -$spacing-4px,
+        -$spacing-4px,
+        on-surface,
+        on-surface
+      );
+    }
+
+    &:checked::before {
+      @include hover-overlay(
+        $switch-hover-size,
+        -$spacing-4px,
+        $spacing-18px,
+        primary,
+        primary
+      );
+    }
+  }
+  &:focus::before {
+    @include focus-ring;
+  }
+
+  &:active {
+    &::after {
+      @include switch-thumb(
+        $switch-thumb-active,
+        $switch-thumb-inset-active,
+        $switch-thumb-inset-active
+      );
+      background-color: light-dark(
+        var(--color-light-outline),
+        var(--color-dark-outline)
+      );
+    }
+
+    &:checked::after {
+      @include switch-thumb-checked(
+        $switch-thumb-active,
+        $switch-thumb-inset-active,
+        $switch-thumb-left-checked-active
+      );
+      background-color: light-dark(
+        var(--color-light-on-primary),
+        var(--color-dark-on-primary)
+      );
+      color: light-dark(
+        var(--color-light-on-primary-container),
+        var(--color-dark-on-primary-container)
+      );
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "cSpell.words": [
+    "checkmark",
+    "fontawesome",
+    "Maeda",
+    "Michinobu",
+    "textareas"
+  ],
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "javascript.validate.enable": false,
+  "typescript.validate.enable": false,
+  "eslint.enable": true,
+  "eslint.validate": ["javascript", "javascriptreact", "jsx"],
+  "eslint.useFlatConfig": true,
+  "eslint.lintTask.enable": true,
+  "eslint.run": "onType",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.debug": true
+}

@@ -1,0 +1,51 @@
+// Common Variables - SCSS
+// Shared variables across all Material Design 3 components
+
+@use 'sass:math';
+
+// Base spacing units (px at 16px base)
+$spacing-1px: 0.0625rem;
+$spacing-2px: 0.125rem;
+$spacing-3px: 0.1875rem;
+$spacing-4px: 0.25rem;
+$spacing-8px: 0.5rem;
+$spacing-10px: 0.625rem;
+$spacing-12px: 0.75rem;
+$spacing-16px: 1rem;
+$spacing-18px: 1.125rem;
+$spacing-20px: 1.25rem;
+$spacing-24px: 1.5rem;
+$spacing-28px: 1.75rem;
+$spacing-32px: 2rem;
+$spacing-40px: 2.5rem;
+$spacing-44px: 2.75rem;
+$spacing-48px: 3rem;
+$spacing-52px: 3.25rem;
+$spacing-56px: 3.5rem;
+$spacing-64px: 4rem;
+$spacing-72px: 4.5rem;
+$spacing-80px: 5rem;
+$spacing-96px: 6rem;
+
+// Interactive states
+$opacity-hovered: 0.08;
+$opacity-focused: 0.1;
+$opacity-pressed: 0.1;
+
+// Disabled states
+$opacity-disabled-bg: 0.1;
+$opacity-disabled-content: 0.38;
+$opacity-disabled-container: 0.12;
+
+// Elevation/Shadow
+$opacity-shadow: 0.15;
+
+// Focus indicators
+$focus-outline-width: $spacing-2px;
+$focus-outline-offset: $spacing-1px;
+
+// Button sizing
+$button-height-xs: $spacing-32px;
+$button-height-sm: $spacing-40px;
+$button-height-md: $spacing-56px;
+$button-touch-target-min: $spacing-44px;

@@ -1,0 +1,381 @@
+// Slider Component - SCSS
+// Material Design 3 slider (incomplete)
+
+@use 'sass:math';
+@use 'variables' as *;
+
+// Variables
+$slider-height-sm: $spacing-44px;
+$slider-height-xs: $spacing-44px;
+$slider-height-md: $spacing-44px;
+
+$slider-track-height-xs: $spacing-16px;
+$slider-track-height-sm: $spacing-24px;
+$slider-track-height-md: $spacing-40px;
+
+$slider-track-border-radius-xs: $spacing-8px;
+$slider-track-border-radius-sm: $spacing-8px;
+$slider-track-border-radius-md: $spacing-8px;
+
+$slider-thumb-width: $spacing-4px;
+$slider-thumb-outline: $spacing-4px;
+$slider-thumb-radius: $spacing-2px;
+
+$slider-dot-size: $spacing-4px;
+$slider-margin: $spacing-4px;
+
+@mixin slider-thumb {
+  appearance: none;
+  background-color: light-dark(
+    var(--color-light-primary),
+    var(--color-dark-primary)
+  );
+  border-radius: $slider-thumb-radius;
+  border: none;
+  outline: $slider-thumb-outline solid
+    light-dark(
+      var(--color-light-surface-container-lowest),
+      var(--color-dark-surface-container-lowest)
+    );
+  cursor: pointer;
+}
+
+@mixin slider-thumb-horizontal {
+  width: $slider-thumb-width;
+  height: $slider-height-sm;
+}
+
+@mixin slider-thumb-vertical {
+  height: $slider-thumb-width;
+  width: $slider-height-sm;
+}
+
+// Slider Component
+.slider {
+  position: relative;
+  padding: 0;
+  --slider-progress: 0%; // Local CSS custom property
+  border-radius: $slider-track-border-radius-sm;
+
+  &.xs {
+    border-radius: $slider-track-border-radius-xs;
+  }
+
+  &.md {
+    border-radius: $slider-track-border-radius-md;
+  }
+
+  &:not(.top-bottom):not(.bottom-top) {
+    height: $slider-track-height-sm;
+    margin: calc(($slider-height-sm - $slider-track-height-sm) / 2) 0;
+    background: linear-gradient(
+      to right,
+      light-dark(var(--color-light-primary), var(--color-dark-primary))
+        var(--slider-progress),
+      light-dark(
+          var(--color-light-surface-container-highest),
+          var(--color-dark-surface-container-highest)
+        )
+        var(--slider-progress)
+    );
+  }
+
+  &:not(.top-bottom):not(.bottom-top).xs {
+    height: $slider-track-height-xs;
+    margin: calc(($slider-height-xs - $slider-track-height-xs) / 2) 0;
+  }
+
+  &:not(.top-bottom):not(.bottom-top).md {
+    height: $slider-track-height-md;
+    margin: calc(($slider-height-md - $slider-track-height-md) / 2) 0;
+  }
+
+  &.top-bottom {
+    width: $slider-track-height-sm;
+    margin: 0 calc(($slider-height-sm - $slider-track-height-sm) / 2);
+    background: linear-gradient(
+      to bottom,
+      light-dark(var(--color-light-primary), var(--color-dark-primary))
+        var(--slider-progress),
+      light-dark(
+          var(--color-light-surface-container-highest),
+          var(--color-dark-surface-container-highest)
+        )
+        var(--slider-progress)
+    );
+  }
+
+  &.top-bottom.xs {
+    width: $slider-track-height-xs;
+    margin: 0 calc(($slider-height-xs - $slider-track-height-xs) / 2);
+  }
+
+  &.top-bottom.md {
+    width: $slider-track-height-md;
+    margin: 0 calc(($slider-height-md - $slider-track-height-md) / 2);
+  }
+
+  &.bottom-top {
+    width: $slider-track-height-sm;
+    margin: 0 calc(($slider-height-sm - $slider-track-height-sm) / 2);
+    background: linear-gradient(
+      to top,
+      light-dark(var(--color-light-primary), var(--color-dark-primary))
+        var(--slider-progress),
+      light-dark(
+          var(--color-light-surface-container-highest),
+          var(--color-dark-surface-container-highest)
+        )
+        var(--slider-progress)
+    );
+  }
+
+  &.bottom-top.xs {
+    width: $slider-track-height-xs;
+    margin: 0 calc(($slider-height-xs - $slider-track-height-xs) / 2);
+  }
+
+  &.bottom-top.md {
+    width: $slider-track-height-md;
+    margin: 0 calc(($slider-height-md - $slider-track-height-md) / 2);
+  }
+
+  // Range input
+  input {
+    position: relative;
+    appearance: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: none;
+    padding: 0;
+    pointer-events: default;
+
+    // WebKit thumb (Chrome, Safari, Edge)
+    &::-webkit-slider-thumb {
+      @include slider-thumb;
+      -webkit-appearance: none;
+    }
+
+    // Firefox thumb
+    &::-moz-range-thumb {
+      @include slider-thumb;
+      -moz-appearance: none;
+      box-shadow: none;
+    }
+
+    // IE/Edge Legacy thumb
+    &::-ms-thumb {
+      @include slider-thumb;
+      -ms-appearance: none;
+    }
+  }
+
+  &:not(.top-bottom):not(.bottom-top) {
+    input {
+      margin: 0 $slider-margin;
+      top: calc($slider-track-height-sm / 2 - $slider-height-sm / 2);
+      height: $slider-height-sm;
+      width: calc(100% - #{$slider-margin * 2});
+
+      // WebKit thumb (Chrome, Safari, Edge)
+      &::-webkit-slider-thumb {
+        @include slider-thumb-horizontal();
+      }
+
+      // Firefox thumb
+      &::-moz-range-thumb {
+        @include slider-thumb-horizontal();
+      }
+
+      // IE/Edge Legacy thumb
+      &::-ms-thumb {
+        @include slider-thumb-horizontal();
+      }
+    }
+  }
+
+  &:not(.top-bottom):not(.bottom-top).xs {
+    input {
+      top: calc($slider-track-height-xs / 2 - $slider-height-xs / 2);
+      height: $slider-height-xs;
+    }
+  }
+
+  &:not(.top-bottom):not(.bottom-top).md {
+    input {
+      top: calc($slider-track-height-md / 2 - $slider-height-md / 2);
+      height: $slider-height-md;
+    }
+  }
+
+  &.top-bottom {
+    input {
+      margin: $slider-margin 0;
+      left: calc($slider-track-height-sm / 2 - $slider-height-sm / 2);
+      width: $slider-height-sm;
+      height: calc(100% - #{$slider-margin * 2});
+      writing-mode: sideways-rl;
+
+      // WebKit thumb (Chrome, Safari, Edge)
+      &::-webkit-slider-thumb {
+        @include slider-thumb-vertical;
+      }
+
+      // Firefox thumb
+      &::-moz-range-thumb {
+        @include slider-thumb-vertical;
+      }
+
+      // IE/Edge Legacy thumb
+      &::-ms-thumb {
+        @include slider-thumb-vertical;
+      }
+    }
+  }
+
+  &.top-bottom.xs {
+    input {
+      left: calc($slider-track-height-xs / 2 - $slider-height-xs / 2);
+      width: $slider-height-xs;
+    }
+  }
+
+  &.top-bottom.md {
+    input {
+      left: calc($slider-track-height-md / 2 - $slider-height-md / 2);
+      width: $slider-height-md;
+    }
+  }
+
+  &.bottom-top {
+    input {
+      margin: $slider-margin 0;
+      left: calc($slider-track-height-sm / 2 - $slider-height-sm / 2);
+      width: $slider-height-sm;
+      height: calc(100% - #{$slider-margin * 2});
+      writing-mode: sideways-lr;
+
+      // WebKit thumb (Chrome, Safari, Edge)
+      &::-webkit-slider-thumb {
+        @include slider-thumb-vertical;
+      }
+
+      // Firefox thumb
+      &::-moz-range-thumb {
+        @include slider-thumb-vertical;
+      }
+
+      // IE/Edge Legacy thumb
+      &::-ms-thumb {
+        @include slider-thumb-vertical;
+      }
+    }
+  }
+
+  &.bottom-top.xs {
+    input {
+      left: calc($slider-track-height-xs / 2 - $slider-height-xs / 2);
+      width: $slider-height-xs;
+    }
+  }
+
+  &.bottom-top.md {
+    input {
+      left: calc($slider-track-height-md / 2 - $slider-height-md / 2);
+      width: $slider-height-md;
+    }
+  }
+
+  // Datalist tick marks
+  datalist,
+  .datalist {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    padding: 0;
+    pointer-events: none;
+
+    option,
+    .option {
+      position: relative;
+      display: block;
+      width: $slider-dot-size;
+      height: $slider-dot-size;
+      background: none;
+      padding: 0;
+      margin: 0;
+      display: block;
+      pointer-events: none;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: $slider-dot-size;
+        width: $slider-dot-size;
+        background-color: light-dark(
+          var(--color-light-on-secondary-container),
+          var(--color-dark-on-secondary-container)
+        );
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      &.lower::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: $slider-dot-size;
+        width: $slider-dot-size;
+        background-color: light-dark(
+          var(--color-light-on-primary),
+          var(--color-dark-on-primary)
+        );
+        border-radius: 50%;
+        pointer-events: none;
+      }
+    }
+  }
+
+  &:not(.top-bottom):not(.bottom-top) datalist,
+  &:not(.top-bottom):not(.bottom-top) .datalist {
+    flex-direction: row;
+    height: $slider-dot-size;
+    top: calc(50% - #{$slider-dot-size} / 2);
+    left: $slider-margin;
+    right: $slider-margin;
+  }
+
+  &.top-bottom datalist,
+  &.top-bottom .datalist {
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - #{$slider-margin * 2});
+    width: $slider-dot-size;
+    top: $slider-margin;
+    bottom: $slider-margin;
+    left: calc(50% - #{$slider-dot-size} / 2);
+
+    option,
+    .option {
+      writing-mode: sideways-rl;
+    }
+  }
+
+  &.bottom-top datalist,
+  &.bottom-top .datalist {
+    flex-direction: column-reverse;
+    height: calc(100% - #{$slider-margin * 2});
+    width: $slider-dot-size;
+    top: $slider-margin;
+    bottom: $slider-margin;
+    left: calc(50% - #{$slider-dot-size} / 2);
+
+    option,
+    .option {
+      writing-mode: sideways-lr;
+    }
+  }
+}

@@ -1,0 +1,1761 @@
+@charset "UTF-8";
+/*
+ * https://piccalil.li/blog/a-more-modern-css-reset/
+ */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10rem;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+:root {
+  font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.button {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  background: inherit;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+  gap: 0.25rem;
+  user-select: none;
+  text-decoration: none;
+  height: 2.5rem;
+  padding: 0 1rem;
+  border-radius: 1.25rem;
+}
+.button::before {
+  content: "";
+  position: absolute;
+  top: calc((2.5rem - 3rem) / 2);
+  bottom: calc((2.5rem - 3rem) / 2);
+  left: 0;
+  right: 0;
+  pointer-events: auto;
+  cursor: pointer;
+}
+.button.xs {
+  border-radius: 1rem;
+  height: 2rem;
+  padding: 0 0.75rem;
+}
+.button.xs::before {
+  content: "";
+  position: absolute;
+  top: calc((2rem - 3rem) / 2);
+  bottom: calc((2rem - 3rem) / 2);
+  left: 0;
+  right: 0;
+  pointer-events: auto;
+  cursor: pointer;
+}
+.button.md {
+  border-radius: 1.75rem;
+  height: 3.5rem;
+  padding: 0 1.25rem;
+  font-size: 1.25rem;
+}
+.button.square {
+  border-radius: 0.75rem;
+}
+.button.square.md {
+  border-radius: 1rem;
+}
+.button input {
+  appearance: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: none;
+  margin: 0;
+  padding: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.button input::-webkit-inner-spin-button, .button input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.button input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+.button:has(input) {
+  cursor: pointer;
+}
+.button.icon {
+  padding: 0;
+  justify-content: center;
+  width: 2.5rem;
+}
+.button.icon.xs {
+  width: 2rem;
+}
+.button.icon.xs::before {
+  content: "";
+  position: absolute;
+  top: calc((2rem - 3rem) / 2);
+  bottom: calc((2rem - 3rem) / 2);
+  left: calc((2rem - 3rem) / 2);
+  right: calc((2rem - 3rem) / 2);
+  pointer-events: auto;
+  cursor: pointer;
+}
+.button.icon.md {
+  width: 3.5rem;
+}
+.button.icon.narrow {
+  width: 2rem;
+}
+.button.icon.narrow::before {
+  content: "";
+  position: absolute;
+  top: calc((2.5rem - 3rem) / 2);
+  bottom: calc((2.5rem - 3rem) / 2);
+  left: calc((2rem - 3rem) / 2);
+  right: calc((2rem - 3rem) / 2);
+  pointer-events: auto;
+  cursor: pointer;
+}
+.button.icon.narrow.xs {
+  width: 1.75rem;
+}
+.button.icon.narrow.xs::before {
+  content: "";
+  position: absolute;
+  top: calc((2rem - 3rem) / 2);
+  bottom: calc((2rem - 3rem) / 2);
+  left: calc((1.75rem - 3rem) / 2);
+  right: calc((1.75rem - 3rem) / 2);
+  pointer-events: auto;
+  cursor: pointer;
+}
+.button.icon.narrow.md {
+  width: 3rem;
+}
+.button.icon.wide {
+  width: 2.5rem;
+}
+.button.icon.wide::before {
+  content: "";
+  position: absolute;
+  top: calc((2.5rem - 3rem) / 2);
+  bottom: calc((2.5rem - 3rem) / 2);
+  left: 0;
+  right: 0;
+  pointer-events: auto;
+  cursor: pointer;
+}
+.button.icon.wide.xs {
+  width: 2.5rem;
+}
+.button.icon.wide.xs::before {
+  content: "";
+  position: absolute;
+  top: calc((2rem - 3rem) / 2);
+  bottom: calc((2rem - 3rem) / 2);
+  left: calc((2.5rem - 3rem) / 2);
+  right: calc((2.5rem - 3rem) / 2);
+  pointer-events: auto;
+  cursor: pointer;
+}
+.button.icon.wide.md {
+  width: 4.5rem;
+}
+.button.icon::before {
+  content: "";
+  position: absolute;
+  top: calc((2.5rem - 3rem) / 2);
+  bottom: calc((2.5rem - 3rem) / 2);
+  left: calc((2.5rem - 3rem) / 2);
+  right: calc((2.5rem - 3rem) / 2);
+  pointer-events: auto;
+  cursor: pointer;
+}
+.button:active:enabled, .button:has(input:checked) {
+  border-radius: 0.5rem;
+}
+.button:active:enabled.md, .button:has(input:checked).md {
+  border-radius: 0.75rem;
+}
+.button svg,
+.button img {
+  height: 1.25rem;
+}
+.sm.icon .button svg,
+.sm.icon .button img {
+  height: 1.5rem;
+}
+.button.filled {
+  background-color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+  color: light-dark(var(--color-light-on-primary), var(--color-dark-on-primary));
+}
+.button.filled:has(input:not([disabled]):not(:checked)) {
+  background-color: light-dark(var(--color-light-surface-container), var(--color-dark-surface-container));
+  color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+}
+.button.filled:has(input:not([disabled]):not(:checked)):hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  opacity: 0.08;
+}
+.button.filled:has(input:not([disabled]):not(:checked)):focus::after, .button.filled:has(input:not([disabled]):not(:checked)):active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  opacity: 0.1;
+}
+.button.filled:not([disabled]):not(:has(input)):hover::after, .button.filled:has(input:not([disabled]):checked):hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-primary), var(--color-dark-on-primary));
+  opacity: 0.08;
+}
+.button.filled:not([disabled]):not(:has(input)):focus::after, .button.filled:not([disabled]):not(:has(input)):active::after, .button.filled:has(input:not([disabled]):checked):focus::after, .button.filled:has(input:not([disabled]):checked):active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-primary), var(--color-dark-on-primary));
+  opacity: 0.1;
+}
+.button.tonal {
+  background-color: light-dark(var(--color-light-secondary-container), var(--color-dark-secondary-container));
+  color: light-dark(var(--color-light-on-secondary-container), var(--color-dark-on-secondary-container));
+}
+.button.tonal:has(input:not([disabled]):checked) {
+  background-color: light-dark(var(--color-light-secondary), var(--color-dark-secondary));
+  color: light-dark(var(--color-light-on-secondary), var(--color-dark-on-secondary));
+}
+.button.tonal:has(input:not([disabled]):checked):hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-secondary), var(--color-dark-on-secondary));
+  opacity: 0.08;
+}
+.button.tonal:has(input:not([disabled]):checked):focus::after, .button.tonal:has(input:not([disabled]):checked):active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-secondary), var(--color-dark-on-secondary));
+  opacity: 0.1;
+}
+.button.tonal:not([disabled]):not(:has(input)):hover::after, .button.tonal:has(input:not([disabled]):not(:checked)):hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  opacity: 0.08;
+}
+.button.tonal:not([disabled]):not(:has(input)):focus::after, .button.tonal:not([disabled]):not(:has(input)):active::after, .button.tonal:has(input:not([disabled]):not(:checked)):focus::after, .button.tonal:has(input:not([disabled]):not(:checked)):active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  opacity: 0.1;
+}
+.button.danger, .button.error {
+  background-color: light-dark(var(--color-light-error), var(--color-dark-error));
+  color: light-dark(var(--color-light-on-error), var(--color-dark-on-error));
+}
+.button.danger:has(input:not([disabled]):not(:checked)), .button.error:has(input:not([disabled]):not(:checked)) {
+  background-color: light-dark(var(--color-light-error-container), var(--color-dark-error-container));
+  color: light-dark(var(--color-light-on-error-variant), var(--color-dark-on-error-variant));
+}
+.button.danger:has(input:not([disabled]):not(:checked)):hover::after, .button.error:has(input:not([disabled]):not(:checked)):hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  opacity: 0.08;
+}
+.button.danger:has(input:not([disabled]):not(:checked)):focus::after, .button.danger:has(input:not([disabled]):not(:checked)):active::after, .button.error:has(input:not([disabled]):not(:checked)):focus::after, .button.error:has(input:not([disabled]):not(:checked)):active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  opacity: 0.1;
+}
+.button.danger:not([disabled]):not(:has(input)):hover::after, .button.danger:has(input:not([disabled]):checked):hover::after, .button.error:not([disabled]):not(:has(input)):hover::after, .button.error:has(input:not([disabled]):checked):hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-error), var(--color-dark-on-error));
+  opacity: 0.08;
+}
+.button.danger:not([disabled]):not(:has(input)):focus::after, .button.danger:not([disabled]):not(:has(input)):active::after, .button.danger:has(input:not([disabled]):checked):focus::after, .button.danger:has(input:not([disabled]):checked):active::after, .button.error:not([disabled]):not(:has(input)):focus::after, .button.error:not([disabled]):not(:has(input)):active::after, .button.error:has(input:not([disabled]):checked):focus::after, .button.error:has(input:not([disabled]):checked):active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-error), var(--color-dark-on-error));
+  opacity: 0.1;
+}
+.button.outlined {
+  background-color: light-dark(var(--color-light-form), var(--color-dark-form));
+  color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  border: 1px solid light-dark(var(--color-light-outline-variant), var(--color-dark-outline-variant));
+}
+.button.outlined:has(input:checked) {
+  background-color: light-dark(var(--color-light-inverse-surface), var(--color-dark-inverse-surface));
+  color: light-dark(var(--color-light-inverse-on-surface), var(--color-dark-inverse-on-surface));
+}
+.button.outlined:has(input:checked):hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-secondary), var(--color-dark-on-secondary));
+  opacity: 0.08;
+}
+.button.outlined:has(input:checked):focus::after, .button.outlined:has(input:checked):active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-secondary), var(--color-dark-on-secondary));
+  opacity: 0.1;
+}
+.button.outlined:not([disabled]):not(:has(input)):hover::after, .button.outlined:has(input:not([disabled]):not(:checked)):hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  opacity: 0.08;
+}
+.button.outlined:not([disabled]):not(:has(input)):focus::after, .button.outlined:not([disabled]):not(:has(input)):active::after, .button.outlined:has(input:not([disabled]):not(:checked)):focus::after, .button.outlined:has(input:not([disabled]):not(:checked)):active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  opacity: 0.1;
+}
+.button.elevated {
+  background-color: light-dark(var(--color-light-container-low), var(--color-dark-container-low));
+  color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+  box-shadow: 0.0625rem 0.0625rem 0.0625rem 0.0625rem color(from light-dark(var(--color-light-shadow), var(--color-dark-shadow)) srgb r g b/0.15);
+}
+.button.elevated:has(input:checked) {
+  background-color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+  color: light-dark(var(--color-light-on-primary), var(--color-dark-on-primary));
+}
+.button.elevated:has(input:checked):hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-primary), var(--color-dark-on-primary));
+  opacity: 0.08;
+}
+.button.elevated:has(input:checked):focus::after, .button.elevated:has(input:checked):active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-primary), var(--color-dark-on-primary));
+  opacity: 0.1;
+}
+.button.elevated:not([disabled]):not(:has(input)):hover::after, .button.elevated:has(input:not([disabled]):not(:checked)):hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+  opacity: 0.08;
+}
+.button.elevated:not([disabled]):not(:has(input)):focus::after, .button.elevated:not([disabled]):not(:has(input)):active::after, .button.elevated:has(input:not([disabled]):not(:checked)):focus::after, .button.elevated:has(input:not([disabled]):not(:checked)):active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+  opacity: 0.1;
+}
+.button.text {
+  background-color: inherit;
+  background-color: light-dark(var(--color-light-transparent), var(--color-dark-transparent));
+  color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+}
+.button.text:not([disabled]):hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+  opacity: 0.08;
+}
+.button.text:not([disabled]):focus::after, .button.text:not([disabled]):active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+  opacity: 0.1;
+}
+.button:focus, .button:has(input:enabled:focus) {
+  outline: solid 0.125rem light-dark(var(--color-light-secondary), var(--color-dark-secondary));
+  outline-offset: 0.0625rem;
+}
+.button:disabled, .button:has(input:disabled), .button:has(input:checked:disabled) {
+  background-color: color(from light-dark(var(--color-light-on-surface), var(--color-dark-on-surface)) srgb r g b/0.1);
+  color: color(from light-dark(var(--color-light-on-surface), var(--color-dark-on-surface)) srgb r g b/0.38);
+  box-shadow: none;
+  cursor: default;
+}
+.button:disabled::before, .button:has(input:disabled)::before, .button:has(input:checked:disabled)::before {
+  cursor: default;
+}
+
+.button-group {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  background: inherit;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+  gap: 0.75rem;
+}
+.button-group:has(.xs) {
+  gap: 1.125rem;
+}
+.button-group:has(.md) {
+  gap: 0.5rem;
+}
+.button-group .button::before {
+  left: -0.25rem;
+  right: -0.25rem;
+}
+.button-group .button.xs::before {
+  left: -0.5rem;
+  right: -0.5rem;
+}
+.button-group .button.md::before {
+  left: 0;
+  right: 0;
+}
+
+.connected-button-group {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  background: inherit;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+  gap: 0.125rem;
+}
+.connected-button-group .button {
+  height: 2.5rem;
+  border-radius: 0.25rem;
+  min-width: 3rem;
+}
+.connected-button-group.xs .button {
+  height: 2rem;
+  border-radius: 0.25rem;
+}
+.connected-button-group.md .button {
+  height: 3.5rem;
+  border-radius: 1rem;
+}
+.connected-button-group .button:has(:checked) {
+  border-radius: 1.25rem;
+}
+.connected-button-group.xs .button:has(:checked) {
+  border-radius: 1rem;
+  z-index: 1;
+}
+.connected-button-group.md .button:has(:checked) {
+  border-radius: 1.75rem;
+  z-index: 1;
+}
+.connected-button-group .button:has(:not([disabled])) {
+  background-color: light-dark(var(--color-light-secondary-container), var(--color-dark-secondary-container));
+  color: light-dark(var(--color-light-on-secondary-container), var(--color-dark-on-secondary-container));
+}
+.connected-button-group .button:has(:not([disabled])):has(:checked) {
+  background-color: light-dark(var(--color-light-secondary), var(--color-dark-secondary));
+  color: light-dark(var(--color-light-on-secondary), var(--color-dark-on-secondary));
+}
+.connected-button-group .button:has(:not([disabled])):hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  opacity: 0.08;
+}
+.connected-button-group .button:has(:not([disabled])):focus::after, .connected-button-group .button:has(:not([disabled])):active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  opacity: 0.1;
+}
+.connected-button-group .button:has(:not([disabled])):has(:focus), .connected-button-group .button:has(:not([disabled])):has(:active) {
+  z-index: 1;
+}
+.connected-button-group .button:has(:not([disabled])):has(:checked):hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-secondary), var(--color-dark-on-secondary));
+  opacity: 0.08;
+}
+.connected-button-group .button:has(:not([disabled])):has(:checked:focus)::after, .connected-button-group .button:has(:not([disabled])):has(:checked:active)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-secondary), var(--color-dark-on-secondary));
+  opacity: 0.1;
+}
+.connected-button-group:not(.square) .button:first-child {
+  border-top-left-radius: 1.25rem;
+  border-bottom-left-radius: 1.25rem;
+}
+.connected-button-group:not(.square) .button:last-child {
+  border-top-right-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+}
+.connected-button-group:not(.square).xs .button:first-child {
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+.connected-button-group:not(.square).xs .button:last-child {
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+.connected-button-group:not(.square).md .button:first-child {
+  border-top-left-radius: 1.75rem;
+  border-bottom-left-radius: 1.75rem;
+}
+.connected-button-group:not(.square).md .button:last-child {
+  border-top-right-radius: 1.75rem;
+  border-bottom-right-radius: 1.75rem;
+}
+
+.fab {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  background: inherit;
+  border: none;
+  outline: none;
+  margin: 1rem;
+  padding: 0;
+  gap: 0.25rem;
+  user-select: none;
+  box-shadow: 0.125rem 0.125rem 0.125rem 0.125rem color(from light-dark(var(--color-light-shadow), var(--color-dark-shadow)) srgb r g b/0.15);
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 1rem;
+}
+.fab svg,
+.fab img {
+  height: 1.5rem;
+}
+.fab.md {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 1.25rem;
+}
+.fab.md svg,
+.fab.md img {
+  height: 1.75rem;
+}
+.fab.lg {
+  height: 6rem;
+  width: 6rem;
+  border-radius: 1.75rem;
+}
+.fab.lg svg,
+.fab.lg img {
+  height: 2.75rem;
+}
+.fab.closed {
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 50%;
+}
+.fab.closed svg,
+.fab.closed img {
+  height: 1.5rem;
+}
+.fab.closed.md {
+  margin-bottom: 2.5rem;
+}
+.fab.closed.lg {
+  margin-bottom: 3.5rem;
+}
+.fab.primary-container {
+  background-color: light-dark(var(--color-light-primary-container), var(--color-dark-primary-container));
+  color: light-dark(var(--color-light-on-primary-container), var(--color-dark-on-primary-container));
+}
+.fab.secondary-container {
+  background-color: light-dark(var(--color-light-secondary-container), var(--color-dark-secondary-container));
+  color: light-dark(var(--color-light-on-secondary-container), var(--color-dark-on-secondary-container));
+}
+.fab.tertiary-container {
+  background-color: light-dark(var(--color-light-tertiary-container), var(--color-dark-tertiary-container));
+  color: light-dark(var(--color-light-on-tertiary-container), var(--color-dark-on-tertiary-container));
+}
+.fab.primary {
+  background-color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+  color: light-dark(var(--color-light-on-primary), var(--color-dark-on-primary));
+}
+.fab.secondary {
+  background-color: light-dark(var(--color-light-secondary), var(--color-dark-secondary));
+  color: light-dark(var(--color-light-on-secondary), var(--color-dark-on-secondary));
+}
+.fab.tertiary {
+  background-color: light-dark(var(--color-light-tertiary), var(--color-dark-tertiary));
+  color: light-dark(var(--color-light-on-tertiary), var(--color-dark-on-tertiary));
+}
+.fab.primary.closed {
+  background-color: light-dark(var(--color-light-primary-container), var(--color-dark-primary-container));
+  color: light-dark(var(--color-light-on-primary-container), var(--color-dark-on-primary-container));
+}
+.fab.secondary.closed {
+  background-color: light-dark(var(--color-light-secondary-container), var(--color-dark-secondary-container));
+  color: light-dark(var(--color-light-on-secondary-container), var(--color-dark-on-secondary-container));
+}
+.fab.tertiary.closed {
+  background-color: light-dark(var(--color-light-tertiary-container), var(--color-dark-tertiary-container));
+  color: light-dark(var(--color-light-on-tertiary-container), var(--color-dark-on-tertiary-container));
+}
+.fab.primary-container.closed {
+  background-color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+  color: light-dark(var(--color-light-on-primary), var(--color-dark-on-primary));
+}
+.fab.secondary-container.closed {
+  background-color: light-dark(var(--color-light-secondary), var(--color-dark-secondary));
+  color: light-dark(var(--color-light-on-secondary), var(--color-dark-on-secondary));
+}
+.fab.tertiary-container.closed {
+  background-color: light-dark(var(--color-light-tertiary), var(--color-dark-tertiary));
+  color: light-dark(var(--color-light-on-tertiary), var(--color-dark-on-tertiary));
+}
+.fab:hover {
+  box-shadow: 0.1875rem 0.1875rem 0.1875rem 0.1875rem color(from light-dark(var(--color-light-shadow), var(--color-dark-shadow)) srgb r g b/0.15);
+}
+.fab.primary-container:hover::after, .fab.secondary-container:hover::after, .fab.tertiary-container:hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  opacity: 0.08;
+}
+.fab.primary:hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-primary), var(--color-dark-on-primary));
+  opacity: 0.08;
+}
+.fab.secondary:hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-secondary), var(--color-dark-on-secondary));
+  opacity: 0.08;
+}
+.fab.tertiary:hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-tertiary), var(--color-dark-on-tertiary));
+  opacity: 0.08;
+}
+.fab:focus {
+  outline: solid 0.125rem light-dark(var(--color-light-secondary), var(--color-dark-secondary));
+  outline-offset: 0.0625rem;
+}
+.fab:disabled {
+  background-color: color(from light-dark(var(--color-light-on-surface), var(--color-dark-on-surface)) srgb r g b/0.1);
+  color: color(from light-dark(var(--color-light-on-surface), var(--color-dark-on-surface)) srgb r g b/0.38);
+  box-shadow: none;
+  cursor: default;
+}
+
+input.checkbox {
+  appearance: none;
+  border: none;
+  box-shadow: none;
+  background: none;
+  padding: 0;
+  margin: 0.6875rem;
+  height: 1.125rem;
+  width: 1.125rem;
+  position: relative;
+  border-radius: 0.125rem;
+  pointer-events: default;
+  outline: 0.125rem solid light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  outline-offset: -0.125rem;
+}
+input.checkbox::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.125rem;
+  top: 0;
+  left: 0;
+}
+input.checkbox::before {
+  content: "";
+  position: absolute;
+  top: -0.6875rem;
+  left: -0.6875rem;
+  right: -0.6875rem;
+  bottom: -0.6875rem;
+  border-radius: 50%;
+  background-color: transparent;
+}
+input.checkbox:checked {
+  background-color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+}
+input.checkbox:checked::after {
+  content: "✓";
+  color: light-dark(var(--color-light-on-primary), var(--color-dark-on-primary));
+}
+input.checkbox.danger, input.checkbox.error {
+  outline: 0.125rem solid light-dark(var(--color-light-error), var(--color-dark-error));
+  outline-offset: -0.125rem;
+}
+input.checkbox.danger:checked, input.checkbox.error:checked {
+  background-color: light-dark(var(--color-light-error), var(--color-dark-error));
+}
+input.checkbox:disabled {
+  outline-color: color(from light-dark(var(--color-light-on-surface), var(--color-dark-on-surface)) srgb r g b/0.38);
+  background-color: color(from light-dark(var(--color-light-on-surface), var(--color-dark-on-surface)) srgb r g b/0.38);
+}
+input.checkbox:not([disabled])::before {
+  cursor: pointer;
+}
+input.checkbox:not([disabled]):focus::before {
+  outline: 0.125rem solid light-dark(var(--color-light-secondary), var(--color-dark-secondary));
+}
+input.checkbox:not([disabled]):hover::before {
+  background-color: color(from light-dark(var(--color-light-on-surface), var(--color-dark-on-surface)) srgb r g b/0.08);
+}
+input.checkbox:not([disabled]):checked:hover::before {
+  background-color: color(from light-dark(var(--color-light-primary), var(--color-dark-primary)) srgb r g b/0.08);
+}
+input.checkbox:not([disabled]):active::before {
+  background-color: color(from light-dark(var(--color-light-on-surface), var(--color-dark-on-surface)) srgb r g b/0.1);
+}
+input.checkbox:not([disabled]):active:hover::before {
+  background-color: color(from light-dark(var(--color-light-primary), var(--color-dark-primary)) srgb r g b/0.1);
+}
+input.checkbox:not([disabled]).danger:hover::before, input.checkbox:not([disabled]).error:hover::before {
+  background-color: color(from light-dark(var(--color-light-error), var(--color-dark-error)) srgb r g b/0.08);
+}
+input.checkbox:not([disabled]).danger:active::before, input.checkbox:not([disabled]).error:active::before {
+  background-color: color(from light-dark(var(--color-light-error), var(--color-dark-error)) srgb r g b/0.1);
+}
+
+input[type=checkbox].switch {
+  appearance: none;
+  border: none;
+  box-shadow: none;
+  margin: 0.25rem;
+  padding: 0;
+  height: 2rem;
+  width: 3.25rem;
+  position: relative;
+  pointer-events: default;
+  border-radius: 1rem;
+  outline: 0.125rem solid light-dark(var(--color-light-outline), var(--color-dark-outline));
+  outline-offset: -0.125rem;
+  background-color: light-dark(var(--color-light-surface-container-highest), var(--color-dark-surface-container-highest));
+}
+input[type=checkbox].switch::after {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  background-color: light-dark(var(--color-light-outline), var(--color-dark-outline));
+}
+input[type=checkbox].switch:checked {
+  background-color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+}
+input[type=checkbox].switch:checked::after {
+  content: "";
+  position: absolute;
+  top: 0.25rem;
+  left: 1.5rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  content: "✓";
+  background-color: light-dark(var(--color-light-on-primary), var(--color-dark-on-primary));
+  color: light-dark(var(--color-light-on-primary-container), var(--color-dark-on-primary-container));
+}
+input[type=checkbox].switch:disabled {
+  background-color: color(from light-dark(var(--color-light-surface-container-highest), var(--color-dark-surface-container-highest)) srgb r g b/0.12);
+  outline-color: color(from light-dark(var(--color-light-on-surface), var(--color-dark-on-surface)) srgb r g b/0.12);
+}
+input[type=checkbox].switch:disabled::after {
+  background-color: color(from light-dark(var(--color-light-on-surface), var(--color-dark-on-surface)) srgb r g b/0.38);
+}
+input[type=checkbox].switch:disabled:checked {
+  background-color: color(from light-dark(var(--color-light-on-surface), var(--color-dark-on-surface)) srgb r g b/0.12);
+  outline: none;
+}
+input[type=checkbox].switch:disabled:checked::after {
+  background-color: light-dark(var(--color-light-surface), var(--color-dark-surface));
+  color: color(from light-dark(var(--color-light-on-surface), var(--color-dark-on-surface)) srgb r g b/0.38);
+}
+input[type=checkbox].switch:hover::before {
+  content: "";
+  position: absolute;
+  top: -0.25rem;
+  left: -0.25rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  background-color: light-dark(var(--color-light-on-surface), var(--color-dark-on-surface));
+  opacity: 0.08;
+}
+input[type=checkbox].switch:hover:checked::before {
+  content: "";
+  position: absolute;
+  top: -0.25rem;
+  left: 1.125rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  background-color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+  opacity: 0.08;
+}
+input[type=checkbox].switch:focus::before {
+  content: "";
+  position: absolute;
+  top: -0.25rem;
+  left: -0.25rem;
+  height: 2.5rem;
+  width: 3.75rem;
+  border-radius: 1.25rem;
+  border: 0.1875rem solid light-dark(var(--color-light-secondary), var(--color-dark-secondary));
+}
+input[type=checkbox].switch:active::after {
+  content: "";
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+  height: 1.75rem;
+  width: 1.75rem;
+  border-radius: 50%;
+  background-color: light-dark(var(--color-light-outline), var(--color-dark-outline));
+}
+input[type=checkbox].switch:active:checked::after {
+  content: "";
+  position: absolute;
+  top: 0.125rem;
+  left: 1.375rem;
+  height: 1.75rem;
+  width: 1.75rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  content: "✓";
+  background-color: light-dark(var(--color-light-on-primary), var(--color-dark-on-primary));
+  color: light-dark(var(--color-light-on-primary-container), var(--color-dark-on-primary-container));
+}
+
+input.radio {
+  appearance: none;
+  border: none;
+  box-shadow: none;
+  background: none;
+  padding: 0;
+  margin: 0.625rem;
+  height: 1.25rem;
+  width: 1.25rem;
+  position: relative;
+  border-radius: 50%;
+  pointer-events: default;
+  outline: 0.125rem solid light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  outline-offset: -0.125rem;
+}
+input.radio::before {
+  content: "";
+  position: absolute;
+  top: -0.625rem;
+  left: -0.625rem;
+  right: -0.625rem;
+  bottom: -0.625rem;
+  border-radius: 50%;
+  background-color: transparent;
+}
+input.radio::after {
+  content: "";
+  top: 0.25rem;
+  left: 0.25rem;
+  right: 0.25rem;
+  bottom: 0.25rem;
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  display: none;
+}
+input.radio:checked {
+  outline: 0.125rem solid light-dark(var(--color-light-primary), var(--color-dark-primary));
+  outline-offset: -0.125rem;
+}
+input.radio:checked::after {
+  display: block;
+  background-color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+}
+input.radio:disabled {
+  outline-color: color(from light-dark(var(--color-light-on-surface), var(--color-dark-on-surface)) srgb r g b/0.38);
+}
+input.radio:disabled:checked::after {
+  background-color: color(from light-dark(var(--color-light-on-surface), var(--color-dark-on-surface)) srgb r g b/0.38);
+}
+input.radio:not([disabled])::before {
+  cursor: pointer;
+}
+input.radio:not([disabled]):focus::before {
+  outline-offset: -0.5rem;
+  outline: 0.1875rem solid light-dark(var(--color-light-secondary), var(--color-dark-secondary));
+}
+input.radio:not([disabled]):hover::before {
+  background-color: color(from light-dark(var(--color-light-on-surface), var(--color-dark-on-surface)) srgb r g b/0.08);
+}
+input.radio:not([disabled]):checked:hover::before {
+  background-color: color(from light-dark(var(--color-light-primary), var(--color-dark-primary)) srgb r g b/0.08);
+}
+input.radio:not([disabled]):active::before {
+  background-color: color(from light-dark(var(--color-light-on-surface), var(--color-dark-on-surface)) srgb r g b/0.1);
+}
+input.radio:not([disabled]):active:hover::before {
+  background-color: color(from light-dark(var(--color-light-primary), var(--color-dark-primary)) srgb r g b/0.1);
+}
+
+.textfield {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+  gap: 0.75rem;
+  height: 3.5rem;
+}
+.textfield input {
+  margin-right: 0.25rem;
+  margin-left: 0.25rem;
+  background-color: transparent;
+  height: 1.5rem;
+  width: 100%;
+}
+.textfield input, .textfield input:focus, .textfield input:focus-visible, .textfield input:hover, .textfield input:active {
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+.textfield svg,
+.textfield img {
+  height: 1.5rem;
+  width: 1.5rem;
+  min-height: 1.5rem;
+  min-width: 1.5rem;
+}
+.textfield.filled {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  background-color: light-dark(var(--color-light-surface-container-highest), var(--color-dark-surface-container-highest));
+  border-bottom: 0.0625rem solid light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+}
+.textfield.filled:has(input:focus) {
+  border-bottom: 0.1875rem solid light-dark(var(--color-light-primary), var(--color-dark-primary));
+}
+.textfield.filled:has(input:focus) label, .textfield.filled:has(input:not([value=""])) label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 2.5rem;
+  gap: 0.25rem;
+}
+.textfield.filled:has(input:focus) label .placeholder, .textfield.filled:has(input:not([value=""])) label .placeholder {
+  font-size: 0.75rem;
+  color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  display: block;
+  line-height: 1.3333333333;
+  max-height: 1.3333333333;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  max-width: calc(100% - 2rem);
+}
+.textfield.filled.error {
+  border-color: light-dark(var(--color-light-error), var(--color-dark-error));
+}
+.textfield.filled.error:has(input:focus), .textfield.filled.error:has(input:not([value=""])) {
+  border-color: light-dark(var(--color-light-error), var(--color-dark-error));
+}
+.textfield.outlined {
+  border-radius: 0.25rem;
+  outline: 0.0625rem solid light-dark(var(--color-light-outline), var(--color-dark-outline));
+  outline-offset: -0.0625rem;
+}
+.textfield.outlined:has(input:focus) {
+  outline: 0.1875rem solid light-dark(var(--color-light-primary), var(--color-dark-primary));
+  outline-offset: -0.1875rem;
+}
+.textfield.outlined:has(input:focus) label, .textfield.outlined:has(input:not([value=""])) label {
+  position: static;
+}
+.textfield.outlined:has(input:focus) label .placeholder, .textfield.outlined:has(input:not([value=""])) label .placeholder {
+  font-size: 0.75rem;
+  color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  display: block;
+  line-height: 1.3333333333;
+  max-height: 1.3333333333;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  position: absolute;
+  top: -0.5rem;
+  left: 0.75rem;
+  background-color: light-dark(var(--color-light-surface-container-lowest), var(--color-dark-surface-container-lowest));
+  padding: 0 0.25rem;
+  max-width: calc(100% - 1rem);
+}
+.textfield.outlined.error {
+  outline-color: light-dark(var(--color-light-error), var(--color-dark-error));
+}
+.textfield.outlined.error:has(input:focus), .textfield.outlined.error:has(input:not([value=""])) {
+  outline-color: light-dark(var(--color-light-error), var(--color-dark-error));
+}
+.textfield label {
+  position: relative;
+}
+.textfield label .placeholder {
+  color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+  position: absolute;
+  top: 0.25rem;
+  left: 0;
+  font-size: 1rem;
+}
+.textfield .supporting-text {
+  position: absolute;
+  top: 3.5rem;
+  left: 0.75rem;
+  font-size: 0.75rem;
+  display: block;
+  line-height: 1.3333333333;
+  max-height: 1.3333333333;
+  max-width: calc(100% - 2rem);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.textfield.error label .placeholder,
+.textfield.error .supporting-text {
+  color: light-dark(var(--color-light-error), var(--color-dark-error));
+}
+.textfield.error:has(input:focus) label .placeholder,
+.textfield.error:has(input:focus) .supporting-text {
+  color: light-dark(var(--color-light-error), var(--color-dark-error));
+}
+.textfield.error:has(input:not([value=""])) label .placeholder,
+.textfield.error:has(input:not([value=""])) .supporting-text {
+  color: light-dark(var(--color-light-error), var(--color-dark-error));
+}
+.textfield.error label + svg,
+.textfield.error label + img {
+  color: light-dark(var(--color-light-error), var(--color-dark-error));
+}
+
+.app-bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: calc(4rem + max(0px, env(safe-area-inset-top) - 0.5rem));
+  padding: 0.5rem 0.25rem max(0.5rem, env(safe-area-inset-bottom)) 0.25rem;
+  gap: 0.25rem;
+  background-color: light-dark(var(--color-light-surface), var(--color-dark-surface));
+}
+.app-bar.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.app-bar button,
+.app-bar a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: 3rem;
+  background: inherit;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+  gap: 0.25rem;
+  user-select: none;
+  text-decoration: none;
+  cursor: pointer;
+  color: light-dark(var(--color-light-on-surface), var(--color-dark-on-surface));
+}
+.app-bar button:hover::after,
+.app-bar a:hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: light-dark(var(--color-light-on-surface), var(--color-dark-on-surface));
+  opacity: 0.08;
+}
+.app-bar button svg,
+.app-bar button img,
+.app-bar a svg,
+.app-bar a img {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.app-bar img,
+.app-bar svg {
+  display: inline-block;
+  height: 3rem;
+  margin-right: 0.125rem;
+}
+.app-bar .title-area {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: start;
+  gap: 0.125rem;
+}
+.app-bar .title-area .title {
+  display: flex;
+  align-items: center;
+  height: 1.75rem;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  font-weight: normal;
+  color: light-dark(var(--color-light-on-surface), var(--color-dark-on-surface));
+  margin: 0;
+}
+.app-bar .title-area .title img,
+.app-bar .title-area .title svg {
+  display: inline-block;
+  height: 1.5rem;
+  margin-right: 0.125rem;
+}
+.app-bar .title-area .subtitle {
+  display: inline-block;
+  height: 1.125rem;
+  line-height: 1.125rem;
+  font-size: 0.84375rem;
+  font-weight: normal;
+  color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+}
+
+.nav-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 10;
+}
+.nav-drawer:not(.modal) {
+  width: min(360px, 100%);
+  background-color: light-dark(var(--color-light-surface-container-low), var(--color-dark-surface-container-low));
+  padding: 0.75rem;
+}
+.nav-drawer.modal {
+  width: 100%;
+}
+.nav-drawer.modal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: light-dark(var(--color-light-shadow), var(--color-dark-shadow));
+  opacity: 0.38;
+}
+.nav-drawer.modal::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: min(360px, 100%);
+  bottom: 0;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  background-color: light-dark(var(--color-light-surface-container-low), var(--color-dark-surface-container-low));
+  opacity: 1;
+}
+.nav-drawer .button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  width: calc(min(360px, 100%) - 0.75rem * 2);
+  height: 3.5rem;
+  border-radius: 1.75rem;
+  padding: 1rem 1.5rem 1rem 1rem;
+  color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+}
+.nav-drawer .button .img,
+.nav-drawer .button .svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.nav-drawer .button.active {
+  background-color: light-dark(var(--color-light-secondary-container), var(--color-dark-secondary-container));
+  color: light-dark(var(--color-light-on-secondary-container), var(--color-dark-on-secondary-container));
+}
+.nav-drawer .button:hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  opacity: 0.08;
+}
+.nav-drawer .button:focus::after, .nav-drawer .button:active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  opacity: 0.1;
+}
+.nav-drawer .button:focus {
+  outline: solid 0.125rem light-dark(var(--color-light-secondary), var(--color-dark-secondary));
+  outline-offset: 0.0625rem;
+}
+
+.slider {
+  position: relative;
+  padding: 0;
+  --slider-progress: 0%;
+  border-radius: 0.5rem;
+}
+.slider.xs {
+  border-radius: 0.5rem;
+}
+.slider.md {
+  border-radius: 0.5rem;
+}
+.slider:not(.top-bottom):not(.bottom-top) {
+  height: 1.5rem;
+  margin: 0.625rem 0;
+  background: linear-gradient(to right, light-dark(var(--color-light-primary), var(--color-dark-primary)) var(--slider-progress), light-dark(var(--color-light-surface-container-highest), var(--color-dark-surface-container-highest)) var(--slider-progress));
+}
+.slider:not(.top-bottom):not(.bottom-top).xs {
+  height: 1rem;
+  margin: 0.875rem 0;
+}
+.slider:not(.top-bottom):not(.bottom-top).md {
+  height: 2.5rem;
+  margin: 0.125rem 0;
+}
+.slider.top-bottom {
+  width: 1.5rem;
+  margin: 0 0.625rem;
+  background: linear-gradient(to bottom, light-dark(var(--color-light-primary), var(--color-dark-primary)) var(--slider-progress), light-dark(var(--color-light-surface-container-highest), var(--color-dark-surface-container-highest)) var(--slider-progress));
+}
+.slider.top-bottom.xs {
+  width: 1rem;
+  margin: 0 0.875rem;
+}
+.slider.top-bottom.md {
+  width: 2.5rem;
+  margin: 0 0.125rem;
+}
+.slider.bottom-top {
+  width: 1.5rem;
+  margin: 0 0.625rem;
+  background: linear-gradient(to top, light-dark(var(--color-light-primary), var(--color-dark-primary)) var(--slider-progress), light-dark(var(--color-light-surface-container-highest), var(--color-dark-surface-container-highest)) var(--slider-progress));
+}
+.slider.bottom-top.xs {
+  width: 1rem;
+  margin: 0 0.875rem;
+}
+.slider.bottom-top.md {
+  width: 2.5rem;
+  margin: 0 0.125rem;
+}
+.slider input {
+  position: relative;
+  appearance: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: none;
+  padding: 0;
+  pointer-events: default;
+}
+.slider input::-webkit-slider-thumb {
+  appearance: none;
+  background-color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+  border-radius: 0.125rem;
+  border: none;
+  outline: 0.25rem solid light-dark(var(--color-light-surface-container-lowest), var(--color-dark-surface-container-lowest));
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+.slider input::-moz-range-thumb {
+  appearance: none;
+  background-color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+  border-radius: 0.125rem;
+  border: none;
+  outline: 0.25rem solid light-dark(var(--color-light-surface-container-lowest), var(--color-dark-surface-container-lowest));
+  cursor: pointer;
+  -moz-appearance: none;
+  box-shadow: none;
+}
+.slider input::-ms-thumb {
+  appearance: none;
+  background-color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+  border-radius: 0.125rem;
+  border: none;
+  outline: 0.25rem solid light-dark(var(--color-light-surface-container-lowest), var(--color-dark-surface-container-lowest));
+  cursor: pointer;
+  -ms-appearance: none;
+}
+.slider:not(.top-bottom):not(.bottom-top) input {
+  margin: 0 0.25rem;
+  top: -0.625rem;
+  height: 2.75rem;
+  width: calc(100% - 0.5rem);
+}
+.slider:not(.top-bottom):not(.bottom-top) input::-webkit-slider-thumb {
+  width: 0.25rem;
+  height: 2.75rem;
+}
+.slider:not(.top-bottom):not(.bottom-top) input::-moz-range-thumb {
+  width: 0.25rem;
+  height: 2.75rem;
+}
+.slider:not(.top-bottom):not(.bottom-top) input::-ms-thumb {
+  width: 0.25rem;
+  height: 2.75rem;
+}
+.slider:not(.top-bottom):not(.bottom-top).xs input {
+  top: -0.875rem;
+  height: 2.75rem;
+}
+.slider:not(.top-bottom):not(.bottom-top).md input {
+  top: -0.125rem;
+  height: 2.75rem;
+}
+.slider.top-bottom input {
+  margin: 0.25rem 0;
+  left: -0.625rem;
+  width: 2.75rem;
+  height: calc(100% - 0.5rem);
+  writing-mode: sideways-rl;
+}
+.slider.top-bottom input::-webkit-slider-thumb {
+  height: 0.25rem;
+  width: 2.75rem;
+}
+.slider.top-bottom input::-moz-range-thumb {
+  height: 0.25rem;
+  width: 2.75rem;
+}
+.slider.top-bottom input::-ms-thumb {
+  height: 0.25rem;
+  width: 2.75rem;
+}
+.slider.top-bottom.xs input {
+  left: -0.875rem;
+  width: 2.75rem;
+}
+.slider.top-bottom.md input {
+  left: -0.125rem;
+  width: 2.75rem;
+}
+.slider.bottom-top input {
+  margin: 0.25rem 0;
+  left: -0.625rem;
+  width: 2.75rem;
+  height: calc(100% - 0.5rem);
+  writing-mode: sideways-lr;
+}
+.slider.bottom-top input::-webkit-slider-thumb {
+  height: 0.25rem;
+  width: 2.75rem;
+}
+.slider.bottom-top input::-moz-range-thumb {
+  height: 0.25rem;
+  width: 2.75rem;
+}
+.slider.bottom-top input::-ms-thumb {
+  height: 0.25rem;
+  width: 2.75rem;
+}
+.slider.bottom-top.xs input {
+  left: -0.875rem;
+  width: 2.75rem;
+}
+.slider.bottom-top.md input {
+  left: -0.125rem;
+  width: 2.75rem;
+}
+.slider datalist,
+.slider .datalist {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  padding: 0;
+  pointer-events: none;
+}
+.slider datalist option,
+.slider datalist .option,
+.slider .datalist option,
+.slider .datalist .option {
+  position: relative;
+  display: block;
+  width: 0.25rem;
+  height: 0.25rem;
+  background: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+  pointer-events: none;
+}
+.slider datalist option::after,
+.slider datalist .option::after,
+.slider .datalist option::after,
+.slider .datalist .option::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0.25rem;
+  width: 0.25rem;
+  background-color: light-dark(var(--color-light-on-secondary-container), var(--color-dark-on-secondary-container));
+  border-radius: 50%;
+  pointer-events: none;
+}
+.slider datalist option.lower::after,
+.slider datalist .option.lower::after,
+.slider .datalist option.lower::after,
+.slider .datalist .option.lower::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0.25rem;
+  width: 0.25rem;
+  background-color: light-dark(var(--color-light-on-primary), var(--color-dark-on-primary));
+  border-radius: 50%;
+  pointer-events: none;
+}
+.slider:not(.top-bottom):not(.bottom-top) datalist, .slider:not(.top-bottom):not(.bottom-top) .datalist {
+  flex-direction: row;
+  height: 0.25rem;
+  top: calc(50% - 0.25rem / 2);
+  left: 0.25rem;
+  right: 0.25rem;
+}
+.slider.top-bottom datalist, .slider.top-bottom .datalist {
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100% - 0.5rem);
+  width: 0.25rem;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  left: calc(50% - 0.25rem / 2);
+}
+.slider.top-bottom datalist option,
+.slider.top-bottom datalist .option, .slider.top-bottom .datalist option,
+.slider.top-bottom .datalist .option {
+  writing-mode: sideways-rl;
+}
+.slider.bottom-top datalist, .slider.bottom-top .datalist {
+  flex-direction: column-reverse;
+  height: calc(100% - 0.5rem);
+  width: 0.25rem;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  left: calc(50% - 0.25rem / 2);
+}
+.slider.bottom-top datalist option,
+.slider.bottom-top datalist .option, .slider.bottom-top .datalist option,
+.slider.bottom-top .datalist .option {
+  writing-mode: sideways-lr;
+}
+
+/*# sourceMappingURL=glassine-paper.css.map */

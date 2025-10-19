@@ -1,0 +1,22 @@
+{
+  "name": "glassine-paper-css",
+  "version": "1.0.0",
+  "description": "CSS for Material Design 3",
+  "main": "glassine-paper.min.css",
+  "scripts": {
+    "build": "npm run build:sample && npm run build:compressed",
+    "watch": "sass --watch src/index.scss:docs/glassine-paper.css",
+    "build:sample": "sass src/index.scss docs/glassine-paper.css",
+    "build:compressed": "sass src/index.scss glassine-paper.min.css --style compressed",
+    "start": "http-server docs -p 8000 -c1 -o index.html",
+    "format": "prettier --write \"src/**/*.scss\"",
+    "lint": "prettier --check \"src/**/*.scss\""
+  },
+  "author": "Michinobu Maeda",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.69.0",
+    "http-server": "^14.1.1",
+    "prettier": "^3.0.0"
+  }
+}

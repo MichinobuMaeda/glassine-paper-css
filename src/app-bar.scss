@@ -1,0 +1,124 @@
+// App bar Component - SCSS
+// Material Design 3 app bar
+
+@use 'variables' as *;
+
+$app-bar-height: $spacing-64px;
+$app-bar-padding-vertical: calc(($app-bar-height - $spacing-48px) / 2);
+
+.app-bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: calc(
+    $app-bar-height +
+      max(0px, env(safe-area-inset-top) - $app-bar-padding-vertical)
+  );
+  padding: $app-bar-padding-vertical $spacing-4px
+    max($app-bar-padding-vertical, env(safe-area-inset-bottom)) $spacing-4px;
+  gap: $spacing-4px;
+  background-color: light-dark(
+    var(--color-light-surface),
+    var(--color-dark-surface)
+  );
+
+  &.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+  button,
+  a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $spacing-48px;
+    width: $spacing-48px;
+
+    background: inherit;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 0;
+    gap: $spacing-4px;
+    user-select: none;
+    text-decoration: none;
+
+    cursor: pointer;
+    color: light-dark(
+      var(--color-light-on-surface),
+      var(--color-dark-on-surface)
+    );
+
+    &:hover::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: light-dark(
+        var(--color-light-on-surface),
+        var(--color-dark-on-surface)
+      );
+      opacity: 0.08;
+    }
+
+    svg,
+    img {
+      height: $spacing-24px;
+      width: $spacing-24px;
+    }
+  }
+
+  img,
+  svg {
+    display: inline-block;
+    height: $spacing-48px;
+    margin-right: $spacing-2px;
+  }
+
+  .title-area {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: start;
+    gap: $spacing-2px;
+
+    .title {
+      display: flex;
+      align-items: center;
+      height: $spacing-28px;
+      font-size: $spacing-24px;
+      line-height: $spacing-28px;
+      font-weight: normal;
+      color: light-dark(
+        var(--color-light-on-surface),
+        var(--color-dark-on-surface)
+      );
+      margin: 0;
+
+      img,
+      svg {
+        display: inline-block;
+        height: $spacing-24px;
+        margin-right: $spacing-2px;
+      }
+    }
+
+    .subtitle {
+      display: inline-block;
+      height: calc($spacing-48px - $spacing-28px - $spacing-2px);
+      line-height: calc($spacing-48px - $spacing-28px - $spacing-2px);
+      font-size: calc(($spacing-48px - $spacing-28px - $spacing-2px) * 0.75);
+      font-weight: normal;
+      color: light-dark(
+        var(--color-light-on-surface-variant),
+        var(--color-dark-on-surface-variant)
+      );
+    }
+  }
+}

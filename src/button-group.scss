@@ -1,0 +1,195 @@
+// Button Group Component - SCSS
+// Material Design 3 button groups
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Component-specific variables
+$button-group-gap-xs: $spacing-18px;
+$button-group-gap-sm: $spacing-12px;
+$button-group-gap-md: $spacing-8px;
+$connected-group-gap: $spacing-2px;
+
+$border-radius-rounded-xs: calc($button-height-xs / 2);
+$border-radius-rounded-sm: calc($button-height-sm / 2);
+$border-radius-rounded-md: calc($button-height-md / 2);
+
+// Mixins
+@mixin flex-group-base {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  background: inherit;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+@mixin button-colors($bg-color, $text-color) {
+  background-color: light-dark(
+    var(--color-light-#{$bg-color}),
+    var(--color-dark-#{$bg-color})
+  );
+  color: light-dark(
+    var(--color-light-#{$text-color}),
+    var(--color-dark-#{$text-color})
+  );
+}
+
+// Button Group - Spaced buttons
+.button-group {
+  @include flex-group-base;
+  gap: $button-group-gap-sm;
+
+  // Size-based gap adjustments
+  &:has(.xs) {
+    gap: $button-group-gap-xs;
+  }
+
+  &:has(.md) {
+    gap: $button-group-gap-md;
+  }
+
+  // Button spacing adjustments within group
+  .button {
+    &::before {
+      left: -$spacing-4px;
+      right: -$spacing-4px;
+    }
+
+    &.xs::before {
+      left: -$spacing-8px;
+      right: -$spacing-8px;
+    }
+
+    &.md::before {
+      left: 0;
+      right: 0;
+    }
+  }
+}
+
+// Connected Button Group - Segmented controls
+.connected-button-group {
+  @include flex-group-base;
+  gap: $connected-group-gap;
+
+  .button {
+    height: $button-height-sm;
+    border-radius: $spacing-4px;
+    min-width: 3rem;
+  }
+
+  // Size variants
+  &.xs .button {
+    height: $button-height-xs;
+    border-radius: $spacing-4px;
+  }
+
+  &.md .button {
+    height: $button-height-md;
+    border-radius: $spacing-16px;
+  }
+
+  .button {
+    // Checked state styling
+    &:has(:checked) {
+      border-radius: $border-radius-rounded-sm;
+    }
+  }
+
+  &.xs .button {
+    &:has(:checked) {
+      border-radius: $border-radius-rounded-xs;
+      z-index: 1;
+    }
+  }
+
+  &.md .button {
+    &:has(:checked) {
+      border-radius: $border-radius-rounded-md;
+      z-index: 1;
+    }
+  }
+
+  .button {
+    // Default state colors
+    &:has(:not([disabled])) {
+      @include button-colors(secondary-container, on-secondary-container);
+
+      // Checked state colors
+      &:has(:checked) {
+        @include button-colors(secondary, on-secondary);
+      }
+
+      // Hover state
+      &:hover {
+        @include button-state-overlay(on-surface-variant, $opacity-hovered);
+      }
+
+      // Focus and active states
+      &:focus,
+      &:active {
+        @include button-state-overlay(on-surface-variant, $opacity-focused);
+      }
+
+      &:has(:focus),
+      &:has(:active) {
+        z-index: 1;
+      }
+
+      // Checked hover state
+      &:has(:checked):hover {
+        @include button-state-overlay(on-secondary, $opacity-hovered);
+      }
+
+      // Checked focus and active states
+      &:has(:checked:focus),
+      &:has(:checked:active) {
+        @include button-state-overlay(on-secondary, $opacity-focused);
+      }
+    }
+  }
+
+  // Rounded corners for first/last buttons (not square variant)
+  &:not(.square) {
+    .button {
+      &:first-child {
+        border-top-left-radius: $border-radius-rounded-sm;
+        border-bottom-left-radius: $border-radius-rounded-sm;
+      }
+
+      &:last-child {
+        border-top-right-radius: $border-radius-rounded-sm;
+        border-bottom-right-radius: $border-radius-rounded-sm;
+      }
+    }
+
+    // Size-specific rounded corners
+    &.xs .button {
+      &:first-child {
+        border-top-left-radius: $border-radius-rounded-xs;
+        border-bottom-left-radius: $border-radius-rounded-xs;
+      }
+
+      &:last-child {
+        border-top-right-radius: $border-radius-rounded-xs;
+        border-bottom-right-radius: $border-radius-rounded-xs;
+      }
+    }
+
+    &.md .button {
+      &:first-child {
+        border-top-left-radius: $border-radius-rounded-md;
+        border-bottom-left-radius: $border-radius-rounded-md;
+      }
+
+      &:last-child {
+        border-top-right-radius: $border-radius-rounded-md;
+        border-bottom-right-radius: $border-radius-rounded-md;
+      }
+    }
+  }
+}

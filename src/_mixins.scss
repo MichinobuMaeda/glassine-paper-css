@@ -1,0 +1,40 @@
+// Common Mixins - SCSS
+// Shared variables across all Material Design 3 components
+
+@use 'variables' as *;
+
+@mixin reset-input-appearance {
+  appearance: none;
+  border: none;
+  box-shadow: none;
+  background: none;
+  padding: 0;
+}
+
+@mixin button-state-overlay($color, $opacity) {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background-color: light-dark(
+      var(--color-light-#{$color}),
+      var(--color-dark-#{$color})
+    );
+    opacity: $opacity;
+  }
+}
+
+@mixin focus-outline(
+  $offset: $focus-outline-offset,
+  $width: $focus-outline-width,
+  $color: secondary
+) {
+  outline: solid $width
+    light-dark(var(--color-light-#{$color}), var(--color-dark-#{$color}));
+  outline-offset: $offset;
+}

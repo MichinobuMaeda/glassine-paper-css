@@ -1,0 +1,107 @@
+// Nav Drawer Component - SCSS
+// Material Design 3 nav drawer
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+$nav-drawer-width: min(360px, 100%);
+$nav-drawer-x-padding: $spacing-12px;
+$nav-drawer-button-height: $spacing-56px;
+$nav-drawer-button-width: calc(
+  $nav-drawer-width - #{$nav-drawer-x-padding} * 2
+);
+
+.nav-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 10;
+
+  &:not(.modal) {
+    width: $nav-drawer-width;
+    background-color: light-dark(
+      var(--color-light-surface-container-low),
+      var(--color-dark-surface-container-low)
+    );
+    padding: $nav-drawer-x-padding;
+  }
+
+  &.modal {
+    width: 100%;
+  }
+
+  &.modal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: light-dark(
+      var(--color-light-shadow),
+      var(--color-dark-shadow)
+    );
+    opacity: 0.38;
+  }
+
+  &.modal::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $nav-drawer-width;
+    bottom: 0;
+    border-top-right-radius: $spacing-16px;
+    border-bottom-right-radius: $spacing-16px;
+    background-color: light-dark(
+      var(--color-light-surface-container-low),
+      var(--color-dark-surface-container-low)
+    );
+    opacity: 1;
+  }
+
+  .button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing-12px;
+    width: $nav-drawer-button-width;
+    height: $nav-drawer-button-height;
+    border-radius: $spacing-28px;
+    padding: $spacing-16px $spacing-24px $spacing-16px $spacing-16px;
+    color: light-dark(
+      var(--color-light-on-surface-variant),
+      var(--color-dark-on-surface-variant)
+    );
+
+    .img,
+    .svg {
+      width: $spacing-24px;
+      height: $spacing-24px;
+    }
+
+    &.active {
+      background-color: light-dark(
+        var(--color-light-secondary-container),
+        var(--color-dark-secondary-container)
+      );
+      color: light-dark(
+        var(--color-light-on-secondary-container),
+        var(--color-dark-on-secondary-container)
+      );
+    }
+
+    &:hover {
+      @include button-state-overlay(on-surface-variant, $opacity-hovered);
+    }
+
+    &:focus,
+    &:active {
+      @include button-state-overlay(on-surface-variant, $opacity-focused);
+    }
+    &:focus {
+      @include focus-outline;
+    }
+  }
+}
