@@ -1402,7 +1402,9 @@ input.radio:not([disabled]):active:hover::before {
 .app-bar svg {
   display: inline-block;
   height: 3rem;
-  margin-right: 0.125rem;
+  width: 3rem;
+  min-width: 3rem;
+  margin-right: 0.25rem;
 }
 .app-bar .title-area {
   display: flex;
@@ -1451,10 +1453,12 @@ input.radio:not([disabled]):active:hover::before {
   left: 0;
   height: 100%;
   padding: 0.75rem 0.75rem;
+  overflow-y: scroll;
 }
 .nav-drawer:not(.modal) {
   position: sticky;
   width: 360px;
+  min-width: 360px;
   background-color: light-dark(var(--color-light-surface-container-low), var(--color-dark-surface-container-low));
 }
 .nav-drawer.modal {
@@ -1468,7 +1472,7 @@ input.radio:not([disabled]):active:hover::before {
 }
 .nav-drawer.modal::before {
   content: "";
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 360px;
   right: calc(360px - 100vw);
@@ -1501,6 +1505,7 @@ input.radio:not([disabled]):active:hover::before {
   gap: 0.75rem;
   width: calc(360px - 0.75rem * 2);
   height: 3.5rem;
+  min-height: 3.5rem;
   border-radius: 1.75rem;
   padding: 1rem 1.5rem 1rem 3.25rem;
   color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
