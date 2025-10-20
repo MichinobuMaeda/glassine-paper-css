@@ -17,6 +17,28 @@ body {
   }
 }
 
+.nav-drawer-layout {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  height: 100vh;
+  width: 100vw;
+  /* overflow: hidden; */
+
+  .content-area {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-grow: 1;
+    height: 100vh;
+    overflow: auto;
+  }
+}
+
 main {
   display: flex;
   flex-direction: column;

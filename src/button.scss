@@ -91,6 +91,7 @@ $button-icon-clickable-area-sm-wide: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  justify-items: start;
   align-items: center;
   background: inherit;
   border: none;
@@ -100,6 +101,9 @@ $button-icon-clickable-area-sm-wide: 0;
   gap: $spacing-4px;
   user-select: none;
   text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   height: $button-height-sm;
   padding: $button-padding-sm;
@@ -250,9 +254,13 @@ $button-icon-clickable-area-sm-wide: 0;
   svg,
   img {
     height: 1.25rem;
+    width: 1.25rem;
+    min-width: 1.25rem;
 
     .sm.icon & {
       height: 1.5rem;
+      width: 1.5rem;
+      min-width: 1.5rem;
     }
   }
 
@@ -264,26 +272,26 @@ $button-icon-clickable-area-sm-wide: 0;
     &:has(input:not([disabled]):not(:checked)) {
       @include button-colors(surface-container, on-surface-variant);
 
-      &:hover {
+      &:hover::after {
         @include button-state-overlay(on-surface-variant, $opacity-hovered);
       }
 
-      &:focus,
-      &:active {
+      &:focus::after,
+      &:active::after {
         @include button-state-overlay(on-surface-variant, $opacity-focused);
       }
     }
 
     // Normal and checked states
-    &:not([disabled]):not(:has(input)):hover,
-    &:has(input:not([disabled]):checked):hover {
+    &:not([disabled]):not(:has(input)):hover::after,
+    &:has(input:not([disabled]):checked):hover::after {
       @include button-state-overlay(on-primary, $opacity-hovered);
     }
 
-    &:not([disabled]):not(:has(input)):focus,
-    &:not([disabled]):not(:has(input)):active,
-    &:has(input:not([disabled]):checked):focus,
-    &:has(input:not([disabled]):checked):active {
+    &:not([disabled]):not(:has(input)):focus::after,
+    &:not([disabled]):not(:has(input)):active::after,
+    &:has(input:not([disabled]):checked):focus::after,
+    &:has(input:not([disabled]):checked):active::after {
       @include button-state-overlay(on-primary, $opacity-focused);
     }
   }
@@ -296,26 +304,26 @@ $button-icon-clickable-area-sm-wide: 0;
     &:has(input:not([disabled]):checked) {
       @include button-colors(secondary, on-secondary);
 
-      &:hover {
+      &:hover::after {
         @include button-state-overlay(on-secondary, $opacity-hovered);
       }
 
-      &:focus,
-      &:active {
+      &:focus::after,
+      &:active::after {
         @include button-state-overlay(on-secondary, $opacity-focused);
       }
     }
 
     // Default and unchecked state interactions
-    &:not([disabled]):not(:has(input)):hover,
-    &:has(input:not([disabled]):not(:checked)):hover {
+    &:not([disabled]):not(:has(input)):hover::after,
+    &:has(input:not([disabled]):not(:checked)):hover::after {
       @include button-state-overlay(on-surface-variant, $opacity-hovered);
     }
 
-    &:not([disabled]):not(:has(input)):focus,
-    &:not([disabled]):not(:has(input)):active,
-    &:has(input:not([disabled]):not(:checked)):focus,
-    &:has(input:not([disabled]):not(:checked)):active {
+    &:not([disabled]):not(:has(input)):focus::after,
+    &:not([disabled]):not(:has(input)):active::after,
+    &:has(input:not([disabled]):not(:checked)):focus::after,
+    &:has(input:not([disabled]):not(:checked)):active::after {
       @include button-state-overlay(on-surface-variant, $opacity-focused);
     }
   }
@@ -329,26 +337,26 @@ $button-icon-clickable-area-sm-wide: 0;
     &:has(input:not([disabled]):not(:checked)) {
       @include button-colors(error-container, on-error-variant);
 
-      &:hover {
+      &:hover::after {
         @include button-state-overlay(on-surface-variant, $opacity-hovered);
       }
 
-      &:focus,
-      &:active {
+      &:focus::after,
+      &:active::after {
         @include button-state-overlay(on-surface-variant, $opacity-focused);
       }
     }
 
     // Normal and checked state interactions
-    &:not([disabled]):not(:has(input)):hover,
-    &:has(input:not([disabled]):checked):hover {
+    &:not([disabled]):not(:has(input)):hover::after,
+    &:has(input:not([disabled]):checked):hover::after {
       @include button-state-overlay(on-error, $opacity-hovered);
     }
 
-    &:not([disabled]):not(:has(input)):focus,
-    &:not([disabled]):not(:has(input)):active,
-    &:has(input:not([disabled]):checked):focus,
-    &:has(input:not([disabled]):checked):active {
+    &:not([disabled]):not(:has(input)):focus::after,
+    &:not([disabled]):not(:has(input)):active::after,
+    &:has(input:not([disabled]):checked):focus::after,
+    &:has(input:not([disabled]):checked):active::after {
       @include button-state-overlay(on-error, $opacity-focused);
     }
   }
@@ -365,26 +373,26 @@ $button-icon-clickable-area-sm-wide: 0;
     &:has(input:checked) {
       @include button-colors(inverse-surface, inverse-on-surface);
 
-      &:hover {
+      &:hover::after {
         @include button-state-overlay(on-secondary, $opacity-hovered);
       }
 
-      &:focus,
-      &:active {
+      &:focus::after,
+      &:active::after {
         @include button-state-overlay(on-secondary, $opacity-focused);
       }
     }
 
     // Default and unchecked states
-    &:not([disabled]):not(:has(input)):hover,
-    &:has(input:not([disabled]):not(:checked)):hover {
+    &:not([disabled]):not(:has(input)):hover::after,
+    &:has(input:not([disabled]):not(:checked)):hover::after {
       @include button-state-overlay(on-surface-variant, $opacity-hovered);
     }
 
-    &:not([disabled]):not(:has(input)):focus,
-    &:not([disabled]):not(:has(input)):active,
-    &:has(input:not([disabled]):not(:checked)):focus,
-    &:has(input:not([disabled]):not(:checked)):active {
+    &:not([disabled]):not(:has(input)):focus::after,
+    &:not([disabled]):not(:has(input)):active::after,
+    &:has(input:not([disabled]):not(:checked)):focus::after,
+    &:has(input:not([disabled]):not(:checked)):active::after {
       @include button-state-overlay(on-surface-variant, $opacity-focused);
     }
   }
@@ -401,26 +409,26 @@ $button-icon-clickable-area-sm-wide: 0;
     &:has(input:checked) {
       @include button-colors(primary, on-primary);
 
-      &:hover {
+      &:hover::after {
         @include button-state-overlay(on-primary, $opacity-hovered);
       }
 
-      &:focus,
-      &:active {
+      &:focus::after,
+      &:active::after {
         @include button-state-overlay(on-primary, $opacity-focused);
       }
     }
 
     // Default and unchecked states
-    &:not([disabled]):not(:has(input)):hover,
-    &:has(input:not([disabled]):not(:checked)):hover {
+    &:not([disabled]):not(:has(input)):hover::after,
+    &:has(input:not([disabled]):not(:checked)):hover::after {
       @include button-state-overlay(primary, $opacity-hovered);
     }
 
-    &:not([disabled]):not(:has(input)):focus,
-    &:not([disabled]):not(:has(input)):active,
-    &:has(input:not([disabled]):not(:checked)):focus,
-    &:has(input:not([disabled]):not(:checked)):active {
+    &:not([disabled]):not(:has(input)):focus::after,
+    &:not([disabled]):not(:has(input)):active::after,
+    &:has(input:not([disabled]):not(:checked)):focus::after,
+    &:has(input:not([disabled]):not(:checked)):active::after {
       @include button-state-overlay(primary, $opacity-focused);
     }
   }
@@ -430,12 +438,12 @@ $button-icon-clickable-area-sm-wide: 0;
     background-color: inherit;
     @include button-colors(transparent, primary);
 
-    &:not([disabled]):hover {
+    &:not([disabled]):hover::after {
       @include button-state-overlay(primary, $opacity-hovered);
     }
 
-    &:not([disabled]):focus,
-    &:not([disabled]):active {
+    &:not([disabled]):focus::after,
+    &:not([disabled]):active::after {
       @include button-state-overlay(primary, $opacity-focused);
     }
   }

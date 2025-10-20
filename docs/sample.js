@@ -1,3 +1,55 @@
+function navDrawerShow() {
+  const navDrawer = document.getElementsByClassName('nav-drawer').item(0);
+  if (navDrawer.classList.contains('hidden')) {
+    navDrawer.classList.remove('hidden');
+    navDrawerModal();
+  }
+
+  document.getElementById('nav-drawer-show-button').classList.add('hidden');
+  document.getElementById('nav-drawer-hide-button').classList.remove('hidden');
+}
+
+function navDrawerHide(event) {
+  if (event) {
+    console.log(event.target.classList);
+    if (!event.target.classList.contains('nav-drawer')) {
+      return;
+    } else {
+      if (event.clientX < event.target.getBoundingClientRect().right) {
+        return;
+      }
+    }
+  }
+
+  const navDrawer = document.getElementsByClassName('nav-drawer').item(0);
+  if (!navDrawer.classList.contains('hidden')) {
+    navDrawer.classList.add('hidden');
+  }
+
+  document.getElementById('nav-drawer-show-button').classList.remove('hidden');
+  document.getElementById('nav-drawer-hide-button').classList.add('hidden');
+}
+
+function navDrawerModal() {
+  const navDrawer = document.getElementsByClassName('nav-drawer').item(0);
+  if (!navDrawer.classList.contains('modal')) {
+    navDrawer.classList.add('modal');
+  }
+
+  document.getElementById('nav-drawer-modal-button').classList.add('hidden');
+  document.getElementById('nav-drawer-fix-button').classList.remove('hidden');
+}
+
+function navDrawerFix() {
+  const navDrawer = document.getElementsByClassName('nav-drawer').item(0);
+  if (navDrawer.classList.contains('modal')) {
+    navDrawer.classList.remove('modal');
+  }
+
+  document.getElementById('nav-drawer-modal-button').classList.remove('hidden');
+  document.getElementById('nav-drawer-fix-button').classList.add('hidden');
+}
+
 /**
  * @fileoverview Glassine Paper CSS - Material Design 3 Slider JavaScript
  *

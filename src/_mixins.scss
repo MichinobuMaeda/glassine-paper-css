@@ -12,21 +12,19 @@
 }
 
 @mixin button-state-overlay($color, $opacity) {
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    background-color: light-dark(
-      var(--color-light-#{$color}),
-      var(--color-dark-#{$color})
-    );
-    opacity: $opacity;
-  }
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(
+    var(--color-light-#{$color}),
+    var(--color-dark-#{$color})
+  );
+  opacity: $opacity;
 }
 
 @mixin focus-outline(

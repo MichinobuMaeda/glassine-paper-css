@@ -156,17 +156,17 @@ $fab-margin-closed-lg: calc(
     @include fab-shadow($spacing-3px);
   }
 
-  &.primary-container:hover,
-  &.secondary-container:hover,
-  &.tertiary-container:hover {
+  &.primary-container:hover::after,
+  &.secondary-container:hover::after,
+  &.tertiary-container:hover::after {
     @include button-state-overlay(on-surface-variant, $opacity-hovered);
   }
 
-  &.primary:hover {
+  &.primary:hover::after {
     @include button-state-overlay(on-primary, $opacity-hovered);
   }
 
-  &.secondary:hover {
+  &.secondary:hover::after {
     @include button-state-overlay(on-secondary, $opacity-hovered);
   }
 

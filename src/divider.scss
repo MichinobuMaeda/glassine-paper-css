@@ -1,0 +1,15 @@
+// Divider Component - SCSS
+// Material Design 3 divider
+
+@use 'variables' as *;
+
+hr {
+  width: 100%;
+  margin: $spacing-8px $spacing-16px;
+  background: none;
+  border: $spacing-1px solid
+    light-dark(
+      var(--color-light-outline-variant),
+      var(--color-dark-outline-variant)
+    );
+}

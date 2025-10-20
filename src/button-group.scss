@@ -125,13 +125,13 @@ $border-radius-rounded-md: calc($button-height-md / 2);
       }
 
       // Hover state
-      &:hover {
+      &:hover::after {
         @include button-state-overlay(on-surface-variant, $opacity-hovered);
       }
 
       // Focus and active states
-      &:focus,
-      &:active {
+      &:focus::after,
+      &:active::after {
         @include button-state-overlay(on-surface-variant, $opacity-focused);
       }
 
@@ -141,13 +141,13 @@ $border-radius-rounded-md: calc($button-height-md / 2);
       }
 
       // Checked hover state
-      &:has(:checked):hover {
+      &:has(:checked):hover::after {
         @include button-state-overlay(on-secondary, $opacity-hovered);
       }
 
       // Checked focus and active states
-      &:has(:checked:focus),
-      &:has(:checked:active) {
+      &:has(:checked:focus)::after,
+      &:has(:checked:active)::after {
         @include button-state-overlay(on-secondary, $opacity-focused);
       }
     }

@@ -2,1669 +2,1776 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <title>Glassine Paper CSS</title>
     <link rel="stylesheet" type="text/css" href="main.css" />
     <script src="sample.js"></script>
   </head>
   <body onload="bodyOnLoad()">
-    <header class="app-bar sticky">
-      <button>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 -960 960 960"
-          fill="currentColor"
+    <div class="nav-drawer-layout">
+      <div class="nav-drawer hidden" onclick="navDrawerHide(event)">
+        <button
+          id="nav-drawer-hide-button"
+          class="hidden"
+          onclick="navDrawerHide()"
         >
-          <!-- Material icons https://fonts.google.com/icons -->
-          <path
-            d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
-          />
-        </svg>
-      </button>
-      <img class="xs-hidden" src="./favicon.svg" alt="Glassine Paper CSS" />
-      <div class="title-area">
-        <h1 class="title">
-          <img class="sm-hidden" src="./favicon.svg" alt="Glassine Paper CSS" />
-          Glassine Paper CSS
-        </h1>
-        <div class="subtitle">CSS for Material Design 3</div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 -960 960 960"
+            fill="currentColor"
+          >
+            <!-- Material icons https://fonts.google.com/icons -->
+            >
+            <path
+              d="M120-240v-80h520v80H120Zm664-40L584-480l200-200 56 56-144 144 144 144-56 56ZM120-440v-80h400v80H120Zm0-200v-80h520v80H120Z"
+            />
+          </svg>
+          Close
+        </button>
+        <button
+          id="nav-drawer-modal-button"
+          class=""
+          onclick="navDrawerModal()"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 -960 960 960"
+            fill="currentColor"
+          >
+            <!-- Material icons https://fonts.google.com/icons -->
+            <path
+              d="M680-840v80h-40v327l-80-80v-247H400v87l-87-87-33-33v-47h400ZM480-40l-40-40v-240H240v-80l80-80v-46L56-792l56-56 736 736-58 56-264-264h-6v240l-40 40ZM354-400h92l-44-44-2-2-46 46Zm126-193Zm-78 149Z"
+            />
+          </svg>
+          Keep off
+        </button>
+        <button
+          id="nav-drawer-fix-button"
+          class="hidden"
+          onclick="navDrawerFix()"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 -960 960 960"
+            fill="currentColor"
+          >
+            <!-- Material icons https://fonts.google.com/icons -->
+            >
+            <path
+              d="m640-480 80 80v80H520v240l-40 40-40-40v-240H240v-80l80-80v-280h-40v-80h400v80h-40v280Zm-286 80h252l-46-46v-314H400v314l-46 46Zm126 0Z"
+            />
+          </svg>
+          Keep
+        </button>
+        <hr />
+        <button>Item 1</button>
+        <button class="active">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 -960 960 960"
+            fill="currentColor"
+          >
+            <path
+              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+            />
+          </svg>
+          Active Item 2
+        </button>
+        <button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 -960 960 960"
+            fill="currentColor"
+          >
+            <path
+              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+            />
+          </svg>
+          Item 3
+        </button>
       </div>
-      <a href="https://github.com/MichinobuMaeda/glassine-paper-css">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 640 640"
-          fill="currentColor"
-        >
-          <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-          <path
-            d="M237.9 461.4C237.9 463.4 235.6 465 232.7 465C229.4 465.3 227.1 463.7 227.1 461.4C227.1 459.4 229.4 457.8 232.3 457.8C235.3 457.5 237.9 459.1 237.9 461.4zM206.8 456.9C206.1 458.9 208.1 461.2 211.1 461.8C213.7 462.8 216.7 461.8 217.3 459.8C217.9 457.8 216 455.5 213 454.6C210.4 453.9 207.5 454.9 206.8 456.9zM251 455.2C248.1 455.9 246.1 457.8 246.4 460.1C246.7 462.1 249.3 463.4 252.3 462.7C255.2 462 257.2 460.1 256.9 458.1C256.6 456.2 253.9 454.9 251 455.2zM316.8 72C178.1 72 72 177.3 72 316C72 426.9 141.8 521.8 241.5 555.2C254.3 557.5 258.8 549.6 258.8 543.1C258.8 536.9 258.5 502.7 258.5 481.7C258.5 481.7 188.5 496.7 173.8 451.9C173.8 451.9 162.4 422.8 146 415.3C146 415.3 123.1 399.6 147.6 399.9C147.6 399.9 172.5 401.9 186.2 425.7C208.1 464.3 244.8 453.2 259.1 446.6C261.4 430.6 267.9 419.5 275.1 412.9C219.2 406.7 162.8 398.6 162.8 302.4C162.8 274.9 170.4 261.1 186.4 243.5C183.8 237 175.3 210.2 189 175.6C209.9 169.1 258 202.6 258 202.6C278 197 299.5 194.1 320.8 194.1C342.1 194.1 363.6 197 383.6 202.6C383.6 202.6 431.7 169 452.6 175.6C466.3 210.3 457.8 237 455.2 243.5C471.2 261.2 481 275 481 302.4C481 398.9 422.1 406.6 366.2 412.9C375.4 420.8 383.2 435.8 383.2 459.3C383.2 493 382.9 534.7 382.9 542.9C382.9 549.4 387.5 557.3 400.2 555C500.2 521.8 568 426.9 568 316C568 177.3 455.5 72 316.8 72zM169.2 416.9C167.9 417.9 168.2 420.2 169.9 422.1C171.5 423.7 173.8 424.4 175.1 423.1C176.4 422.1 176.1 419.8 174.4 417.9C172.8 416.3 170.5 415.6 169.2 416.9zM158.4 408.8C157.7 410.1 158.7 411.7 160.7 412.7C162.3 413.7 164.3 413.4 165 412C165.7 410.7 164.7 409.1 162.7 408.1C160.7 407.5 159.1 407.8 158.4 408.8zM190.8 444.4C189.2 445.7 189.8 448.7 192.1 450.6C194.4 452.9 197.3 453.2 198.6 451.6C199.9 450.3 199.3 447.3 197.3 445.4C195.1 443.1 192.1 442.8 190.8 444.4zM179.4 429.7C177.8 430.7 177.8 433.3 179.4 435.6C181 437.9 183.7 438.9 185 437.9C186.6 436.6 186.6 434 185 431.7C183.6 429.4 181 428.4 179.4 429.7z"
-          />
-        </svg>
-      </a>
-    </header>
-    <main>
-      <p>Usage</p>
-      <pre>
+      <div class="content-area">
+        <header class="app-bar sticky">
+          <button
+            id="nav-drawer-show-button"
+            class=""
+            onclick="navDrawerShow()"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 -960 960 960"
+              fill="currentColor"
+            >
+              <!-- Material icons https://fonts.google.com/icons -->
+              <path
+                d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+              />
+            </svg>
+          </button>
+          <img src="./favicon.svg" alt="Glassine Paper CSS" />
+          <div class="title-area">
+            <h1 class="title">Glassine Paper CSS</h1>
+            <div class="subtitle">CSS for Material Design 3</div>
+          </div>
+          <a href="https://github.com/MichinobuMaeda/glassine-paper-css">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 640"
+              fill="currentColor"
+            >
+              <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+              <path
+                d="M237.9 461.4C237.9 463.4 235.6 465 232.7 465C229.4 465.3 227.1 463.7 227.1 461.4C227.1 459.4 229.4 457.8 232.3 457.8C235.3 457.5 237.9 459.1 237.9 461.4zM206.8 456.9C206.1 458.9 208.1 461.2 211.1 461.8C213.7 462.8 216.7 461.8 217.3 459.8C217.9 457.8 216 455.5 213 454.6C210.4 453.9 207.5 454.9 206.8 456.9zM251 455.2C248.1 455.9 246.1 457.8 246.4 460.1C246.7 462.1 249.3 463.4 252.3 462.7C255.2 462 257.2 460.1 256.9 458.1C256.6 456.2 253.9 454.9 251 455.2zM316.8 72C178.1 72 72 177.3 72 316C72 426.9 141.8 521.8 241.5 555.2C254.3 557.5 258.8 549.6 258.8 543.1C258.8 536.9 258.5 502.7 258.5 481.7C258.5 481.7 188.5 496.7 173.8 451.9C173.8 451.9 162.4 422.8 146 415.3C146 415.3 123.1 399.6 147.6 399.9C147.6 399.9 172.5 401.9 186.2 425.7C208.1 464.3 244.8 453.2 259.1 446.6C261.4 430.6 267.9 419.5 275.1 412.9C219.2 406.7 162.8 398.6 162.8 302.4C162.8 274.9 170.4 261.1 186.4 243.5C183.8 237 175.3 210.2 189 175.6C209.9 169.1 258 202.6 258 202.6C278 197 299.5 194.1 320.8 194.1C342.1 194.1 363.6 197 383.6 202.6C383.6 202.6 431.7 169 452.6 175.6C466.3 210.3 457.8 237 455.2 243.5C471.2 261.2 481 275 481 302.4C481 398.9 422.1 406.6 366.2 412.9C375.4 420.8 383.2 435.8 383.2 459.3C383.2 493 382.9 534.7 382.9 542.9C382.9 549.4 387.5 557.3 400.2 555C500.2 521.8 568 426.9 568 316C568 177.3 455.5 72 316.8 72zM169.2 416.9C167.9 417.9 168.2 420.2 169.9 422.1C171.5 423.7 173.8 424.4 175.1 423.1C176.4 422.1 176.1 419.8 174.4 417.9C172.8 416.3 170.5 415.6 169.2 416.9zM158.4 408.8C157.7 410.1 158.7 411.7 160.7 412.7C162.3 413.7 164.3 413.4 165 412C165.7 410.7 164.7 409.1 162.7 408.1C160.7 407.5 159.1 407.8 158.4 408.8zM190.8 444.4C189.2 445.7 189.8 448.7 192.1 450.6C194.4 452.9 197.3 453.2 198.6 451.6C199.9 450.3 199.3 447.3 197.3 445.4C195.1 443.1 192.1 442.8 190.8 444.4zM179.4 429.7C177.8 430.7 177.8 433.3 179.4 435.6C181 437.9 183.7 438.9 185 437.9C186.6 436.6 186.6 434 185 431.7C183.6 429.4 181 428.4 179.4 429.7z"
+              />
+            </svg>
+          </a>
+        </header>
+        <main>
+          <p>Usage</p>
+          <pre>
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i');
 @import './theme.css';
 @import './glassine-paper.css';
-</pre>
+</pre
+          >
 
-      <p>Install via npm</p>
-      <pre>npm install glassine-paper-css</pre>
+          <p>Install via npm</p>
+          <pre>npm install glassine-paper-css</pre>
 
-      <p>Usage in JavaScript/Node.js projects</p>
-      <pre>import 'glassine-paper-css/glassine-paper.css';</pre>
+          <p>Usage in JavaScript/Node.js projects</p>
+          <pre>import 'glassine-paper-css/glassine-paper.css';</pre>
 
-      <p>Or with require</p>
-      <pre>require('glassine-paper-css/glassine-paper.css');</pre>
+          <p>Or with require</p>
+          <pre>require('glassine-paper-css/glassine-paper.css');</pre>
 
-      <p>In HTML (if using a bundler like webpack/vite)</p>
-      <pre>
+          <p>In HTML (if using a bundler like webpack/vite)</p>
+          <pre>
 &lt;link rel="stylesheet" href="node_modules/glassine-paper-css/glassine-paper.css"&gt;</pre
-      >
+          >
 
-      <p>For build tools, you can also import the source SCSS</p>
-      <pre>import 'glassine-paper-css/src/index.scss';</pre>
+          <p>For build tools, you can also import the source SCSS</p>
+          <pre>import 'glassine-paper-css/src/index.scss';</pre>
 
-      <h3>Buttons</h3>
+          <h3>Buttons</h3>
 
-      <div class="row">
-        <div class="row center">
-          <button class="button filled xs">Round XS</button>
-          <button class="button filled sm">Round SM</button>
-          <button class="button filled md">Round MD</button>
-        </div>
-        <div class="row center">
-          <button class="button filled xs square">Square XS</button>
-          <button class="button filled sm square">Square SM</button>
-          <button class="button filled md square">Square MD</button>
-        </div>
-      </div>
-      <div class="row">
-        <button class="button filled sm">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-          Filled
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-        </button>
-        <button class="button tonal sm">
-          Tonal
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-        </button>
-        <button class="button danger sm">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-          Danger
-        </button>
-        <button class="button outlined sm">Outlined</button>
-        <button class="button elevated sm">Elevated</button>
-        <button class="button text sm">Text</button>
-      </div>
-      <div class="row">
-        <button class="button filled sm" disabled>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-          Filled
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-        </button>
-        <button class="button tonal sm" disabled>
-          Tonal
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-        </button>
-        <button class="button danger sm" disabled>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-          Danger
-        </button>
-        <button class="button outlined sm" disabled>Outlined</button>
-        <button class="button elevated sm" disabled>Elevated</button>
-        <button class="button text sm" disabled>Text</button>
-      </div>
+          <div class="row">
+            <div class="row center">
+              <button class="button filled xs">Round XS</button>
+              <button class="button filled sm">Round SM</button>
+              <button class="button filled md">Round MD</button>
+            </div>
+            <div class="row center">
+              <button class="button filled xs square">Square XS</button>
+              <button class="button filled sm square">Square SM</button>
+              <button class="button filled md square">Square MD</button>
+            </div>
+          </div>
+          <div class="row">
+            <button class="button filled sm">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+              Filled
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+            </button>
+            <button class="button tonal sm">
+              Tonal
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+            </button>
+            <button class="button danger sm">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+              Danger
+            </button>
+            <button class="button outlined sm">Outlined</button>
+            <button class="button elevated sm">Elevated</button>
+            <button class="button text sm">Text</button>
+          </div>
+          <div class="row">
+            <button class="button filled sm" disabled>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+              Filled
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+            </button>
+            <button class="button tonal sm" disabled>
+              Tonal
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+            </button>
+            <button class="button danger sm" disabled>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+              Danger
+            </button>
+            <button class="button outlined sm" disabled>Outlined</button>
+            <button class="button elevated sm" disabled>Elevated</button>
+            <button class="button text sm" disabled>Text</button>
+          </div>
 
-      <p>
-        Variant: <code>filled tonal danger error outlined elevated text</code
-        ><br />
-        Size: <code>xs sm md </code>
-      </p>
-      <pre>
+          <p>
+            Variant:
+            <code>filled tonal danger error outlined elevated text</code><br />
+            Size: <code>xs sm md </code>
+          </p>
+          <pre>
 &lt;button class="button filled sm"&gt;
   ...
 &lt;/button&gt;</pre
-      >
+          >
 
-      <div class="row">
-        <a class="button filled sm" href="#">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-          Link
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-        </a>
-        <a class="button tonal sm" href="#">
-          Link
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-        </a>
-        <a class="button danger sm" href="#">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-          Link
-        </a>
-        <a class="button outlined sm" href="#"> Link </a>
-        <a class="button elevated sm" href="#"> Link </a>
-        <a class="button text sm" href="#"> Link </a>
-      </div>
+          <div class="row">
+            <a class="button filled sm" href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+              Link
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+            </a>
+            <a class="button tonal sm" href="#">
+              Link
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+            </a>
+            <a class="button danger sm" href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+              Link
+            </a>
+            <a class="button outlined sm" href="#"> Link </a>
+            <a class="button elevated sm" href="#"> Link </a>
+            <a class="button text sm" href="#"> Link </a>
+          </div>
 
-      <p>
-        Variant: <code>filled tonal danger error outlined elevated text</code
-        ><br />
-        Size: <code>xs sm md </code>
-      </p>
-      <pre>
+          <p>
+            Variant:
+            <code>filled tonal danger error outlined elevated text</code><br />
+            Size: <code>xs sm md </code>
+          </p>
+          <pre>
 &lt;a class="button filled xs" href="..."&gt;
   ...
 &lt;/a&gt;</pre
-      >
+          >
 
-      <div class="row">
-        <label class="button filled sm">
-          <input type="checkbox" checked />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-          Toggle
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-        </label>
-        <label class="button tonal sm">
-          <input type="checkbox" checked />
-          Toggle
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-        </label>
-        <label class="button danger sm">
-          <input type="checkbox" checked />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-          Toggle
-        </label>
-        <label class="button outlined sm">
-          <input type="checkbox" checked />
-          Toggle
-        </label>
-        <label class="button elevated sm">
-          <input type="checkbox" checked />
-          Toggle
-        </label>
-      </div>
-      <div class="row">
-        <label class="button filled sm">
-          <input type="checkbox" />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-          Toggle
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-        </label>
-        <label class="button tonal sm">
-          <input type="checkbox" />
-          Toggle
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-        </label>
-        <label class="button danger sm">
-          <input type="checkbox" />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-          Toggle
-        </label>
-        <label class="button outlined sm">
-          <input type="checkbox" />
-          Toggle
-        </label>
-        <label class="button elevated sm">
-          <input type="checkbox" />
-          Toggle
-        </label>
-      </div>
-      <div class="row">
-        <label class="button filled sm">
-          <input type="checkbox" checked disabled />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-          Toggle
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-        </label>
-        <label class="button tonal sm">
-          <input type="checkbox" checked disabled />
-          Toggle
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-        </label>
-        <label class="button danger sm">
-          <input type="checkbox" checked disabled />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-          >
-            <path
-              d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-            />
-          </svg>
-          Toggle
-        </label>
-        <label class="button outlined sm">
-          <input type="checkbox" checked disabled />
-          Toggle
-        </label>
-        <label class="button elevated sm">
-          <input type="checkbox" checked disabled />
-          Toggle
-        </label>
-      </div>
+          <div class="row">
+            <label class="button filled sm">
+              <input type="checkbox" checked />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+              Toggle
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+            </label>
+            <label class="button tonal sm">
+              <input type="checkbox" checked />
+              Toggle
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+            </label>
+            <label class="button danger sm">
+              <input type="checkbox" checked />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+              Toggle
+            </label>
+            <label class="button outlined sm">
+              <input type="checkbox" checked />
+              Toggle
+            </label>
+            <label class="button elevated sm">
+              <input type="checkbox" checked />
+              Toggle
+            </label>
+          </div>
+          <div class="row">
+            <label class="button filled sm">
+              <input type="checkbox" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+              Toggle
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+            </label>
+            <label class="button tonal sm">
+              <input type="checkbox" />
+              Toggle
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+            </label>
+            <label class="button danger sm">
+              <input type="checkbox" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+              Toggle
+            </label>
+            <label class="button outlined sm">
+              <input type="checkbox" />
+              Toggle
+            </label>
+            <label class="button elevated sm">
+              <input type="checkbox" />
+              Toggle
+            </label>
+          </div>
+          <div class="row">
+            <label class="button filled sm">
+              <input type="checkbox" checked disabled />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+              Toggle
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+            </label>
+            <label class="button tonal sm">
+              <input type="checkbox" checked disabled />
+              Toggle
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+            </label>
+            <label class="button danger sm">
+              <input type="checkbox" checked disabled />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                />
+              </svg>
+              Toggle
+            </label>
+            <label class="button outlined sm">
+              <input type="checkbox" checked disabled />
+              Toggle
+            </label>
+            <label class="button elevated sm">
+              <input type="checkbox" checked disabled />
+              Toggle
+            </label>
+          </div>
 
-      <p>
-        Variant: <code>filled tonal danger error outlined elevated</code><br />
-        Size: <code>xs sm md </code>
-      </p>
-      <pre>
+          <p>
+            Variant: <code>filled tonal danger error outlined elevated</code
+            ><br />
+            Size: <code>xs sm md </code>
+          </p>
+          <pre>
 &lt;label class="button filled sm"&gt;
   &lt;input type="checkbox" checked /&gt;
   ...
 &lt;/label&gt;</pre
-      >
+          >
 
-      <h3>Icon buttons</h3>
+          <h3>Icon buttons</h3>
 
-      <div class="row">
-        <div class="row center">
-          <button class="button icon filled xs narrow">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon filled sm narrow">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon filled md narrow">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-        </div>
-        <div class="row center">
-          <button class="button icon filled xs">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon filled sm">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon filled md">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-        </div>
-        <div class="row center">
-          <button class="button icon filled xs wide">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon filled sm wide">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon filled md wide">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="row center">
-          <button class="button icon filled xs square narrow">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon filled sm square narrow">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon filled md square narrow">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-        </div>
-        <div class="row center">
-          <button class="button icon filled xs square">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon filled sm square">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon filled md square">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-        </div>
-        <div class="row center">
-          <button class="button icon filled xs square wide">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon filled sm square wide">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon filled md square wide">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="row">
-          <button class="button icon filled sm">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon tonal sm">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon danger sm">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon outlined sm">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon text sm">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-        </div>
-        <div class="row">
-          <button class="button icon filled sm" disabled>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon tonal sm" disabled>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon danger sm" disabled>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon outlined sm" disabled>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="button icon text sm" disabled>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
+          <div class="row">
+            <div class="row center">
+              <button class="button icon filled xs narrow">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon filled sm narrow">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon filled md narrow">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="row center">
+              <button class="button icon filled xs">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon filled sm">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon filled md">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="row center">
+              <button class="button icon filled xs wide">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon filled sm wide">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon filled md wide">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="row center">
+              <button class="button icon filled xs square narrow">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon filled sm square narrow">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon filled md square narrow">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="row center">
+              <button class="button icon filled xs square">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon filled sm square">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon filled md square">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="row center">
+              <button class="button icon filled xs square wide">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon filled sm square wide">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon filled md square wide">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="row">
+              <button class="button icon filled sm">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon tonal sm">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon danger sm">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon outlined sm">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon text sm">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="row">
+              <button class="button icon filled sm" disabled>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon tonal sm" disabled>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon danger sm" disabled>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon outlined sm" disabled>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="button icon text sm" disabled>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
 
-      <p>
-        Variant: <code>filled tonal danger error outlined text</code><br />
-        Size: <code>xs sm md </code><br />
-        Width: <code>(default) narrow wide</code><br />
-        Radius: <code>(default) square</code>
-      </p>
-      <pre>
+          <p>
+            Variant: <code>filled tonal danger error outlined text</code><br />
+            Size: <code>xs sm md </code><br />
+            Width: <code>(default) narrow wide</code><br />
+            Radius: <code>(default) square</code>
+          </p>
+          <pre>
 &lt;button class="button icon filled sm narrow square"&gt;
   ...
 &lt;/button&gt;</pre
-      >
+          >
 
-      <div class="row">
-        <div class="row">
-          <label class="button icon filled sm">
-            <input type="checkbox" checked />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-          <label class="button icon tonal sm">
-            <input type="checkbox" checked />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-          <label class="button icon danger sm">
-            <input type="checkbox" checked />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-          <label class="button icon outlined sm">
-            <input type="checkbox" checked />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-        </div>
-        <div class="row">
-          <label class="button icon filled sm">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-          <label class="button icon tonal sm">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-          <label class="button icon danger sm">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-          <label class="button icon outlined sm">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-        </div>
-        <div class="row">
-          <label class="button icon filled sm">
-            <input type="checkbox" checked disabled />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-          <label class="button icon tonal sm">
-            <input type="checkbox" checked disabled />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-          <label class="button icon danger sm">
-            <input type="checkbox" checked disabled />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-          <label class="button icon outlined sm">
-            <input type="checkbox" checked disabled />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-        </div>
-      </div>
+          <div class="row">
+            <div class="row">
+              <label class="button icon filled sm">
+                <input type="checkbox" checked />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+              <label class="button icon tonal sm">
+                <input type="checkbox" checked />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+              <label class="button icon danger sm">
+                <input type="checkbox" checked />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+              <label class="button icon outlined sm">
+                <input type="checkbox" checked />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+            </div>
+            <div class="row">
+              <label class="button icon filled sm">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+              <label class="button icon tonal sm">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+              <label class="button icon danger sm">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+              <label class="button icon outlined sm">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+            </div>
+            <div class="row">
+              <label class="button icon filled sm">
+                <input type="checkbox" checked disabled />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+              <label class="button icon tonal sm">
+                <input type="checkbox" checked disabled />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+              <label class="button icon danger sm">
+                <input type="checkbox" checked disabled />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+              <label class="button icon outlined sm">
+                <input type="checkbox" checked disabled />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+            </div>
+          </div>
 
-      <p>
-        Variant: <code>filled tonal danger error outlined</code><br />
-        Size: <code>xs sm md </code><br />
-        Width: <code>(default) narrow wide</code><br />
-        Radius: <code>(default) square</code>
-      </p>
-      <pre>
+          <p>
+            Variant: <code>filled tonal danger error outlined</code><br />
+            Size: <code>xs sm md </code><br />
+            Width: <code>(default) narrow wide</code><br />
+            Radius: <code>(default) square</code>
+          </p>
+          <pre>
 &lt;label class="button icon filled sm narrow square"&gt;
   &lt;input type="checkbox" checked /&gt;
   ...
 &lt;/label&gt;</pre
-      >
+          >
 
-      <h3>Button groups</h3>
+          <h3>Button groups</h3>
 
-      <div class="row center">
-        <div class="button-group">
-          <label class="button icon filled xs">
-            <input type="checkbox" checked />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-          <label class="button icon filled xs">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-          <label class="button icon filled xs">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-        </div>
-        <div class="button-group">
-          <label class="button icon filled sm">
-            <input type="checkbox" checked />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-          <label class="button icon filled sm">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-          <label class="button icon filled sm">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-        </div>
-        <div class="button-group">
-          <label class="button icon filled md">
-            <input type="checkbox" checked />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-          <label class="button icon filled md">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-          <label class="button icon filled md">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </label>
-        </div>
-      </div>
+          <div class="row center">
+            <div class="button-group">
+              <label class="button icon filled xs">
+                <input type="checkbox" checked />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+              <label class="button icon filled xs">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+              <label class="button icon filled xs">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+            </div>
+            <div class="button-group">
+              <label class="button icon filled sm">
+                <input type="checkbox" checked />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+              <label class="button icon filled sm">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+              <label class="button icon filled sm">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+            </div>
+            <div class="button-group">
+              <label class="button icon filled md">
+                <input type="checkbox" checked />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+              <label class="button icon filled md">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+              <label class="button icon filled md">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </label>
+            </div>
+          </div>
 
-      <pre>
+          <pre>
 &lt;div class="button-group"&gt;
   &lt;button class="button ..." checked&gt;
   ...
 &lt;/div&gt;</pre
-      >
+          >
 
-      <div class="row center">
-        <div class="connected-button-group xs">
-          <label class="button icon filled">
-            <input type="checkbox" checked />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              /></svg
-            >1
-          </label>
-          <label class="button icon filled">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              /></svg
-            >2
-          </label>
-          <label class="button icon filled">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              /></svg
-            >3
-          </label>
-        </div>
-        <div class="connected-button-group sm">
-          <label class="button icon filled">
-            <input type="checkbox" checked />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              /></svg
-            >1
-          </label>
-          <label class="button icon filled">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              /></svg
-            >2
-          </label>
-          <label class="button icon filled">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              /></svg
-            >3
-          </label>
-        </div>
-        <div class="connected-button-group md">
-          <label class="button icon filled">
-            <input type="checkbox" checked />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              /></svg
-            >1
-          </label>
-          <label class="button icon filled">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              /></svg
-            >2
-          </label>
-          <label class="button icon filled">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              /></svg
-            >3
-          </label>
-        </div>
-      </div>
-      <div class="row center">
-        <div class="connected-button-group square xs">
-          <label class="button icon filled">
-            <input type="checkbox" checked />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              /></svg
-            >1
-          </label>
-          <label class="button icon filled">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              /></svg
-            >2
-          </label>
-          <label class="button icon filled">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              /></svg
-            >3
-          </label>
-        </div>
-        <div class="connected-button-group square">
-          <label class="button icon filled">
-            <input type="checkbox" checked />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              /></svg
-            >1
-          </label>
-          <label class="button icon filled">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              /></svg
-            >2
-          </label>
-          <label class="button icon filled">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              /></svg
-            >3
-          </label>
-        </div>
-        <div class="connected-button-group square md">
-          <label class="button icon filled">
-            <input type="checkbox" checked />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              /></svg
-            >1
-          </label>
-          <label class="button icon filled">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              /></svg
-            >2
-          </label>
-          <label class="button icon filled">
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              /></svg
-            >3
-          </label>
-        </div>
-      </div>
+          <div class="row center">
+            <div class="connected-button-group xs">
+              <label class="button icon filled">
+                <input type="checkbox" checked />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  /></svg
+                >1
+              </label>
+              <label class="button icon filled">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  /></svg
+                >2
+              </label>
+              <label class="button icon filled">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  /></svg
+                >3
+              </label>
+            </div>
+            <div class="connected-button-group sm">
+              <label class="button icon filled">
+                <input type="checkbox" checked />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  /></svg
+                >1
+              </label>
+              <label class="button icon filled">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  /></svg
+                >2
+              </label>
+              <label class="button icon filled">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  /></svg
+                >3
+              </label>
+            </div>
+            <div class="connected-button-group md">
+              <label class="button icon filled">
+                <input type="checkbox" checked />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  /></svg
+                >1
+              </label>
+              <label class="button icon filled">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  /></svg
+                >2
+              </label>
+              <label class="button icon filled">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  /></svg
+                >3
+              </label>
+            </div>
+          </div>
+          <div class="row center">
+            <div class="connected-button-group square xs">
+              <label class="button icon filled">
+                <input type="checkbox" checked />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  /></svg
+                >1
+              </label>
+              <label class="button icon filled">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  /></svg
+                >2
+              </label>
+              <label class="button icon filled">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  /></svg
+                >3
+              </label>
+            </div>
+            <div class="connected-button-group square">
+              <label class="button icon filled">
+                <input type="checkbox" checked />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  /></svg
+                >1
+              </label>
+              <label class="button icon filled">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  /></svg
+                >2
+              </label>
+              <label class="button icon filled">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  /></svg
+                >3
+              </label>
+            </div>
+            <div class="connected-button-group square md">
+              <label class="button icon filled">
+                <input type="checkbox" checked />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  /></svg
+                >1
+              </label>
+              <label class="button icon filled">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  /></svg
+                >2
+              </label>
+              <label class="button icon filled">
+                <input type="checkbox" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  /></svg
+                >3
+              </label>
+            </div>
+          </div>
 
-      <p>
-        Size: <code>xs sm md </code><br />
-        Radius: <code>(default) square</code>
-      </p>
-      <pre>
+          <p>
+            Size: <code>xs sm md </code><br />
+            Radius: <code>(default) square</code>
+          </p>
+          <pre>
 &lt;label class="connected-button-group square md"&gt;
   &lt;label class="button icon filled"&gt;
     &lt;input type="checkbox" checked /&gt;
   &lt;/label&gt;
   ...
 &lt;/label&gt;</pre
-      >
+          >
 
-      <h3>FAB</h3>
+          <h3>FAB</h3>
 
-      <div class="row">
-        <div class="row">
-          <button class="fab sm primary-container">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="fab sm secondary-container">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="fab sm tertiary-container">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-        </div>
-        <div class="row">
-          <button class="fab sm primary">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="fab sm secondary">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="fab sm tertiary">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
-      <div class="row bottom">
-        <div class="row bottom">
-          <button class="fab sm primary-container">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="fab sm primary-container closed">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
-              />
-            </svg>
-          </button>
-        </div>
-        <div class="row bottom">
-          <button class="fab md primary-container">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="fab md primary-container closed">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
-              />
-            </svg>
-          </button>
-        </div>
-        <div class="row bottom">
-          <button class="fab lg primary-container">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-          </button>
-          <button class="fab lg primary-container closed">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
+          <div class="row">
+            <div class="row">
+              <button class="fab sm primary-container">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="fab sm secondary-container">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="fab sm tertiary-container">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="row">
+              <button class="fab sm primary">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="fab sm secondary">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="fab sm tertiary">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="row bottom">
+            <div class="row bottom">
+              <button class="fab sm primary-container">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="fab sm primary-container closed">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="row bottom">
+              <button class="fab md primary-container">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="fab md primary-container closed">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="row bottom">
+              <button class="fab lg primary-container">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+              </button>
+              <button class="fab lg primary-container closed">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
 
-      <p>
-        Color:
-        <code
-          >primary-container secondary-container tertiary-container primary
-          secondary tertiary</code
-        ><br />
-        Size: <code>xs sm md</code><br />
-        Variant: <code>(default) closed</code>
-      </p>
-      <pre>
+          <p>
+            Color:
+            <code
+              >primary-container secondary-container tertiary-container primary
+              secondary tertiary</code
+            ><br />
+            Size: <code>xs sm md</code><br />
+            Variant: <code>(default) closed</code>
+          </p>
+          <pre>
 &lt;button class="fab primary sm"&gt;
   ...
 &lt;/button&gt;</pre
-      >
-
-      <h3>Checkbox</h3>
-
-      <div class="row">
-        <input class="checkbox" type="checkbox" checked />
-        <input class="checkbox" type="checkbox" />
-        <input class="checkbox" type="checkbox" checked disabled />
-        <input class="checkbox danger" type="checkbox" checked />
-        <input class="checkbox danger" type="checkbox" />
-      </div>
-
-      <p>Variant: <code>(default) danger error</code></p>
-      <pre>&lt;input class="checkbox danger" type="checkbox" /&gt;</pre>
-
-      <h3>Switch</h3>
-
-      <div class="row">
-        <input class="switch" type="checkbox" checked />
-        <input class="switch" type="checkbox" />
-        <input class="switch" type="checkbox" checked disabled />
-      </div>
-
-      <pre>&lt;input class="switch" type="checkbox" /&gt;</pre>
-
-      <h3>Radio button</h3>
-
-      <div class="row">
-        <input class="radio" type="radio" name="radio01" value="1" checked />
-        <input class="radio" type="radio" name="radio01" value="2" />
-        <input class="radio" type="radio" name="radio01" value="3" disabled />
-      </div>
-
-      <pre>&lt;input class="radio" type="radio" /&gt;</pre>
-
-      <h3>Text fields</h3>
-
-      <div class="row">
-        <div class="row">
-          <div class="textfield filled" style="margin-bottom: 2em; width: 12em">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-            <label>
-              <div class="placeholder">Filled</div>
-              <input type="text" value="" />
-            </label>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-            <div class="supporting-text">Supporting text</div>
-          </div>
-          <div
-            class="textfield outlined"
-            style="margin-bottom: 2em; width: 12em"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-            <label>
-              <div class="placeholder">Filled</div>
-              <input type="text" value="" />
-            </label>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-            <div class="supporting-text">Supporting text</div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="textfield filled" style="margin-bottom: 2em; width: 5em">
-            <label>
-              <div class="placeholder">Long label text</div>
-              <input type="number" value="0" />
-            </label>
-            <div class="supporting-text">Long supporting text</div>
-          </div>
-          <div
-            class="textfield outlined"
-            style="margin-bottom: 2em; width: 5em"
-          >
-            <label>
-              <div class="placeholder">Long label text</div>
-              <input type="number" value="0" />
-            </label>
-            <div class="supporting-text">Long supporting text</div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="row">
-          <div
-            class="textfield filled error"
-            style="margin-bottom: 2em; width: 12em"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-            <label>
-              <div class="placeholder">Filled</div>
-              <input type="email" value="foo@bar." />
-            </label>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-240h-80v240Zm40 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"
-              />
-            </svg>
-            <div class="supporting-text">Invalid email address</div>
-          </div>
-          <div
-            class="textfield outlined error"
-            style="margin-bottom: 2em; width: 12em"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
-              />
-            </svg>
-            <label>
-              <div class="placeholder">Filled</div>
-              <input type="email" value="foo@bar." />
-            </label>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-240h-80v240Zm40 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"
-              />
-            </svg>
-            <div class="supporting-text">Invalid email address</div>
-          </div>
-        </div>
-      </div>
 
-      <h3>App bar</h3>
+          <h3>Checkbox</h3>
 
-      <p>Position: <code>(default) sticky</code></p>
+          <div class="row">
+            <input class="checkbox" type="checkbox" checked />
+            <input class="checkbox" type="checkbox" />
+            <input class="checkbox" type="checkbox" checked disabled />
+            <input class="checkbox danger" type="checkbox" checked />
+            <input class="checkbox danger" type="checkbox" />
+          </div>
 
-      <pre>
+          <p>Variant: <code>(default) danger error</code></p>
+          <pre>&lt;input class="checkbox danger" type="checkbox" /&gt;</pre>
+
+          <h3>Switch</h3>
+
+          <div class="row">
+            <input class="switch" type="checkbox" checked />
+            <input class="switch" type="checkbox" />
+            <input class="switch" type="checkbox" checked disabled />
+          </div>
+
+          <pre>&lt;input class="switch" type="checkbox" /&gt;</pre>
+
+          <h3>Radio button</h3>
+
+          <div class="row">
+            <input
+              class="radio"
+              type="radio"
+              name="radio01"
+              value="1"
+              checked
+            />
+            <input class="radio" type="radio" name="radio01" value="2" />
+            <input
+              class="radio"
+              type="radio"
+              name="radio01"
+              value="3"
+              disabled
+            />
+          </div>
+
+          <pre>&lt;input class="radio" type="radio" /&gt;</pre>
+
+          <h3>Text fields</h3>
+
+          <div class="row">
+            <div class="row">
+              <div
+                class="textfield filled"
+                style="margin-bottom: 2em; width: 12em"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+                <label>
+                  <div class="placeholder">Filled</div>
+                  <input type="text" value="" />
+                </label>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+                <div class="supporting-text">Supporting text</div>
+              </div>
+              <div
+                class="textfield outlined"
+                style="margin-bottom: 2em; width: 12em"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+                <label>
+                  <div class="placeholder">Filled</div>
+                  <input type="text" value="" />
+                </label>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+                <div class="supporting-text">Supporting text</div>
+              </div>
+            </div>
+            <div class="row">
+              <div
+                class="textfield filled"
+                style="margin-bottom: 2em; width: 5em"
+              >
+                <label>
+                  <div class="placeholder">Long label text</div>
+                  <input type="number" value="0" />
+                </label>
+                <div class="supporting-text">Long supporting text</div>
+              </div>
+              <div
+                class="textfield outlined"
+                style="margin-bottom: 2em; width: 5em"
+              >
+                <label>
+                  <div class="placeholder">Long label text</div>
+                  <input type="number" value="0" />
+                </label>
+                <div class="supporting-text">Long supporting text</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="row">
+              <div
+                class="textfield filled error"
+                style="margin-bottom: 2em; width: 12em"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+                <label>
+                  <div class="placeholder">Filled</div>
+                  <input type="email" value="foo@bar." />
+                </label>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-240h-80v240Zm40 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"
+                  />
+                </svg>
+                <div class="supporting-text">Invalid email address</div>
+              </div>
+              <div
+                class="textfield outlined error"
+                style="margin-bottom: 2em; width: 12em"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+                <label>
+                  <div class="placeholder">Filled</div>
+                  <input type="email" value="foo@bar." />
+                </label>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-240h-80v240Zm40 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"
+                  />
+                </svg>
+                <div class="supporting-text">Invalid email address</div>
+              </div>
+            </div>
+          </div>
+
+          <h3>App bar</h3>
+
+          <p>Position: <code>(default) sticky</code></p>
+
+          <pre>
 &lt;div class="app-bar sticky"&gt;
   &lt;button&gt;...&lt;/button&gt;
   ...
@@ -1677,245 +1784,260 @@
   &lt;a href="..."&gt;...&lt;/a&gt;
   &lt;button&gt;...&lt;/button&gt;
 &lt;/div&gt;</pre
-      >
+          >
 
-      <h3>Slider (with JavaScript code)</h3>
+          <h3>Navigation drawer</h3>
 
-      <div class="row">
-        <div class="slider xs" style="width: 16em">
-          <input
-            id="slider01"
-            type="range"
-            min="0"
-            max="100"
-            step="10"
-            value="30"
-            list="slider01-list"
-          />
-          <div class="datalist" id="slider01-list">
-            <div class="option" key="0" value="0"></div>
-            <div class="option" key="10" value="10"></div>
-            <div class="option" key="20" value="20"></div>
-            <div class="option" key="30" value="30"></div>
-            <div class="option" key="40" value="40"></div>
-            <div class="option" key="50" value="50"></div>
-            <div class="option" key="60" value="60"></div>
-            <div class="option" key="70" value="70"></div>
-            <div class="option" key="80" value="80"></div>
-            <div class="option" key="90" value="90"></div>
-            <div class="option" key="1000" value="100"></div>
-          </div>
-        </div>
-        <div class="slider" style="width: 16em">
-          <input
-            id="slider02"
-            type="range"
-            min="0"
-            max="100"
-            step="10"
-            value="30"
-            list="slider02-list"
-          />
-          <div class="datalist" id="slider02-list">
-            <div class="option" key="0" value="0"></div>
-            <div class="option" key="10" value="10"></div>
-            <div class="option" key="20" value="20"></div>
-            <div class="option" key="30" value="30"></div>
-            <div class="option" key="40" value="40"></div>
-            <div class="option" key="50" value="50"></div>
-            <div class="option" key="60" value="60"></div>
-            <div class="option" key="70" value="70"></div>
-            <div class="option" key="80" value="80"></div>
-            <div class="option" key="90" value="90"></div>
-            <div class="option" key="1000" value="100"></div>
-          </div>
-        </div>
-        <div class="slider md" style="width: 16em">
-          <input
-            id="slider03"
-            type="range"
-            min="0"
-            max="100"
-            step="10"
-            value="30"
-            list="slider03-list"
-          />
-          <div class="datalist" id="slider03-list">
-            <div class="option" key="0" value="0"></div>
-            <div class="option" key="10" value="10"></div>
-            <div class="option" key="20" value="20"></div>
-            <div class="option" key="30" value="30"></div>
-            <div class="option" key="40" value="40"></div>
-            <div class="option" key="50" value="50"></div>
-            <div class="option" key="60" value="60"></div>
-            <div class="option" key="70" value="70"></div>
-            <div class="option" key="80" value="80"></div>
-            <div class="option" key="90" value="90"></div>
-            <div class="option" key="1000" value="100"></div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="slider xs" style="width: 16em">
-          <input type="range" min="0" max="100" step="10" value="30" />
-        </div>
-        <div class="slider" style="width: 16em">
-          <input type="range" min="0" max="100" step="10" value="30" />
-        </div>
-        <div class="slider md" style="width: 16em">
-          <input type="range" min="0" max="100" step="10" value="30" />
-        </div>
-      </div>
-      <div class="row">
-        <div class="row">
-          <div class="slider xs top-bottom" style="height: 16em">
-            <input
-              type="range"
-              min="0"
-              max="100"
-              step="10"
-              value="30"
-              list="slider11-list"
-            />
-            <div class="datalist" id="slider11-list">
-              <div class="option" key="0" value="0"></div>
-              <div class="option" key="10" value="10"></div>
-              <div class="option" key="20" value="20"></div>
-              <div class="option" key="30" value="30"></div>
-              <div class="option" key="40" value="40"></div>
-              <div class="option" key="50" value="50"></div>
-              <div class="option" key="60" value="60"></div>
-              <div class="option" key="70" value="70"></div>
-              <div class="option" key="80" value="80"></div>
-              <div class="option" key="90" value="90"></div>
-              <div class="option" key="1000" value="100"></div>
-            </div>
-          </div>
-          <div class="slider sm top-bottom" style="height: 16em">
-            <input
-              type="range"
-              min="0"
-              max="100"
-              step="10"
-              value="30"
-              list="slider12-list"
-            />
-            <div class="datalist" id="slider12-list">
-              <div class="option" key="0" value="0"></div>
-              <div class="option" key="10" value="10"></div>
-              <div class="option" key="20" value="20"></div>
-              <div class="option" key="30" value="30"></div>
-              <div class="option" key="40" value="40"></div>
-              <div class="option" key="50" value="50"></div>
-              <div class="option" key="60" value="60"></div>
-              <div class="option" key="70" value="70"></div>
-              <div class="option" key="80" value="80"></div>
-              <div class="option" key="90" value="90"></div>
-              <div class="option" key="1000" value="100"></div>
-            </div>
-          </div>
-          <div class="slider md top-bottom" style="height: 16em">
-            <input
-              type="range"
-              min="0"
-              max="100"
-              step="10"
-              value="30"
-              list="slider13-list"
-            />
-            <div class="datalist" id="slider13-list">
-              <div class="option" key="0" value="0"></div>
-              <div class="option" key="10" value="10"></div>
-              <div class="option" key="20" value="20"></div>
-              <div class="option" key="30" value="30"></div>
-              <div class="option" key="40" value="40"></div>
-              <div class="option" key="50" value="50"></div>
-              <div class="option" key="60" value="60"></div>
-              <div class="option" key="70" value="70"></div>
-              <div class="option" key="80" value="80"></div>
-              <div class="option" key="90" value="90"></div>
-              <div class="option" key="1000" value="100"></div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="slider xs bottom-top" style="height: 16em">
-            <input
-              type="range"
-              min="0"
-              max="100"
-              step="10"
-              value="30"
-              list="slider21-list"
-            />
-            <div class="datalist" id="slider21-list">
-              <div class="option" key="0" value="0"></div>
-              <div class="option" key="10" value="10"></div>
-              <div class="option" key="20" value="20"></div>
-              <div class="option" key="30" value="30"></div>
-              <div class="option" key="40" value="40"></div>
-              <div class="option" key="50" value="50"></div>
-              <div class="option" key="60" value="60"></div>
-              <div class="option" key="70" value="70"></div>
-              <div class="option" key="80" value="80"></div>
-              <div class="option" key="90" value="90"></div>
-              <div class="option" key="1000" value="100"></div>
-            </div>
-          </div>
-          <div class="slider sm bottom-top" style="height: 16em">
-            <input
-              type="range"
-              min="0"
-              max="100"
-              step="10"
-              value="30"
-              list="slider22-list"
-            />
-            <div class="datalist" id="slider22-list">
-              <div class="option" key="0" value="0"></div>
-              <div class="option" key="10" value="10"></div>
-              <div class="option" key="20" value="20"></div>
-              <div class="option" key="30" value="30"></div>
-              <div class="option" key="40" value="40"></div>
-              <div class="option" key="50" value="50"></div>
-              <div class="option" key="60" value="60"></div>
-              <div class="option" key="70" value="70"></div>
-              <div class="option" key="80" value="80"></div>
-              <div class="option" key="90" value="90"></div>
-              <div class="option" key="1000" value="100"></div>
-            </div>
-          </div>
-          <div class="slider md bottom-top" style="height: 16em">
-            <input
-              type="range"
-              min="0"
-              max="100"
-              step="10"
-              value="30"
-              list="slider23-list"
-            />
-            <div class="datalist" id="slider23-list">
-              <div class="option" key="0" value="0"></div>
-              <div class="option" key="10" value="10"></div>
-              <div class="option" key="20" value="20"></div>
-              <div class="option" key="30" value="30"></div>
-              <div class="option" key="40" value="40"></div>
-              <div class="option" key="50" value="50"></div>
-              <div class="option" key="60" value="60"></div>
-              <div class="option" key="70" value="70"></div>
-              <div class="option" key="80" value="80"></div>
-              <div class="option" key="90" value="90"></div>
-              <div class="option" key="1000" value="100"></div>
-            </div>
-          </div>
-        </div>
-      </div>
+          <p>Variant: <code>(default) modal hidden</code></p>
 
-      <p>
-        Size: <code>xs sm md</code><br />
-        Orientation: <code>(default) top-bottom bottom-top</code>
-      </p>
-      <pre>
+          <pre>
+&lt;div class="nav-drawer"&gt;
+  &lt;button&gt;...&lt;/button&gt;
+  ...
+  &lt;hr /&gt;
+  ...
+  &lt;a href="..."&gt;...&lt;/a&gt;
+  &lt;button class="active"&gt;...&lt;/button&gt;
+&lt;/div&gt;</pre
+          >
+
+          <h3>Slider (with JavaScript code)</h3>
+
+          <div class="row">
+            <div class="slider xs" style="width: 16em">
+              <input
+                id="slider01"
+                type="range"
+                min="0"
+                max="100"
+                step="10"
+                value="30"
+                list="slider01-list"
+              />
+              <div class="datalist" id="slider01-list">
+                <div class="option" key="0" value="0"></div>
+                <div class="option" key="10" value="10"></div>
+                <div class="option" key="20" value="20"></div>
+                <div class="option" key="30" value="30"></div>
+                <div class="option" key="40" value="40"></div>
+                <div class="option" key="50" value="50"></div>
+                <div class="option" key="60" value="60"></div>
+                <div class="option" key="70" value="70"></div>
+                <div class="option" key="80" value="80"></div>
+                <div class="option" key="90" value="90"></div>
+                <div class="option" key="1000" value="100"></div>
+              </div>
+            </div>
+            <div class="slider" style="width: 16em">
+              <input
+                id="slider02"
+                type="range"
+                min="0"
+                max="100"
+                step="10"
+                value="30"
+                list="slider02-list"
+              />
+              <div class="datalist" id="slider02-list">
+                <div class="option" key="0" value="0"></div>
+                <div class="option" key="10" value="10"></div>
+                <div class="option" key="20" value="20"></div>
+                <div class="option" key="30" value="30"></div>
+                <div class="option" key="40" value="40"></div>
+                <div class="option" key="50" value="50"></div>
+                <div class="option" key="60" value="60"></div>
+                <div class="option" key="70" value="70"></div>
+                <div class="option" key="80" value="80"></div>
+                <div class="option" key="90" value="90"></div>
+                <div class="option" key="1000" value="100"></div>
+              </div>
+            </div>
+            <div class="slider md" style="width: 16em">
+              <input
+                id="slider03"
+                type="range"
+                min="0"
+                max="100"
+                step="10"
+                value="30"
+                list="slider03-list"
+              />
+              <div class="datalist" id="slider03-list">
+                <div class="option" key="0" value="0"></div>
+                <div class="option" key="10" value="10"></div>
+                <div class="option" key="20" value="20"></div>
+                <div class="option" key="30" value="30"></div>
+                <div class="option" key="40" value="40"></div>
+                <div class="option" key="50" value="50"></div>
+                <div class="option" key="60" value="60"></div>
+                <div class="option" key="70" value="70"></div>
+                <div class="option" key="80" value="80"></div>
+                <div class="option" key="90" value="90"></div>
+                <div class="option" key="1000" value="100"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="slider xs" style="width: 16em">
+              <input type="range" min="0" max="100" step="10" value="30" />
+            </div>
+            <div class="slider" style="width: 16em">
+              <input type="range" min="0" max="100" step="10" value="30" />
+            </div>
+            <div class="slider md" style="width: 16em">
+              <input type="range" min="0" max="100" step="10" value="30" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="row">
+              <div class="slider xs top-bottom" style="height: 16em">
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="10"
+                  value="30"
+                  list="slider11-list"
+                />
+                <div class="datalist" id="slider11-list">
+                  <div class="option" key="0" value="0"></div>
+                  <div class="option" key="10" value="10"></div>
+                  <div class="option" key="20" value="20"></div>
+                  <div class="option" key="30" value="30"></div>
+                  <div class="option" key="40" value="40"></div>
+                  <div class="option" key="50" value="50"></div>
+                  <div class="option" key="60" value="60"></div>
+                  <div class="option" key="70" value="70"></div>
+                  <div class="option" key="80" value="80"></div>
+                  <div class="option" key="90" value="90"></div>
+                  <div class="option" key="1000" value="100"></div>
+                </div>
+              </div>
+              <div class="slider sm top-bottom" style="height: 16em">
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="10"
+                  value="30"
+                  list="slider12-list"
+                />
+                <div class="datalist" id="slider12-list">
+                  <div class="option" key="0" value="0"></div>
+                  <div class="option" key="10" value="10"></div>
+                  <div class="option" key="20" value="20"></div>
+                  <div class="option" key="30" value="30"></div>
+                  <div class="option" key="40" value="40"></div>
+                  <div class="option" key="50" value="50"></div>
+                  <div class="option" key="60" value="60"></div>
+                  <div class="option" key="70" value="70"></div>
+                  <div class="option" key="80" value="80"></div>
+                  <div class="option" key="90" value="90"></div>
+                  <div class="option" key="1000" value="100"></div>
+                </div>
+              </div>
+              <div class="slider md top-bottom" style="height: 16em">
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="10"
+                  value="30"
+                  list="slider13-list"
+                />
+                <div class="datalist" id="slider13-list">
+                  <div class="option" key="0" value="0"></div>
+                  <div class="option" key="10" value="10"></div>
+                  <div class="option" key="20" value="20"></div>
+                  <div class="option" key="30" value="30"></div>
+                  <div class="option" key="40" value="40"></div>
+                  <div class="option" key="50" value="50"></div>
+                  <div class="option" key="60" value="60"></div>
+                  <div class="option" key="70" value="70"></div>
+                  <div class="option" key="80" value="80"></div>
+                  <div class="option" key="90" value="90"></div>
+                  <div class="option" key="1000" value="100"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="slider xs bottom-top" style="height: 16em">
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="10"
+                  value="30"
+                  list="slider21-list"
+                />
+                <div class="datalist" id="slider21-list">
+                  <div class="option" key="0" value="0"></div>
+                  <div class="option" key="10" value="10"></div>
+                  <div class="option" key="20" value="20"></div>
+                  <div class="option" key="30" value="30"></div>
+                  <div class="option" key="40" value="40"></div>
+                  <div class="option" key="50" value="50"></div>
+                  <div class="option" key="60" value="60"></div>
+                  <div class="option" key="70" value="70"></div>
+                  <div class="option" key="80" value="80"></div>
+                  <div class="option" key="90" value="90"></div>
+                  <div class="option" key="1000" value="100"></div>
+                </div>
+              </div>
+              <div class="slider sm bottom-top" style="height: 16em">
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="10"
+                  value="30"
+                  list="slider22-list"
+                />
+                <div class="datalist" id="slider22-list">
+                  <div class="option" key="0" value="0"></div>
+                  <div class="option" key="10" value="10"></div>
+                  <div class="option" key="20" value="20"></div>
+                  <div class="option" key="30" value="30"></div>
+                  <div class="option" key="40" value="40"></div>
+                  <div class="option" key="50" value="50"></div>
+                  <div class="option" key="60" value="60"></div>
+                  <div class="option" key="70" value="70"></div>
+                  <div class="option" key="80" value="80"></div>
+                  <div class="option" key="90" value="90"></div>
+                  <div class="option" key="1000" value="100"></div>
+                </div>
+              </div>
+              <div class="slider md bottom-top" style="height: 16em">
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="10"
+                  value="30"
+                  list="slider23-list"
+                />
+                <div class="datalist" id="slider23-list">
+                  <div class="option" key="0" value="0"></div>
+                  <div class="option" key="10" value="10"></div>
+                  <div class="option" key="20" value="20"></div>
+                  <div class="option" key="30" value="30"></div>
+                  <div class="option" key="40" value="40"></div>
+                  <div class="option" key="50" value="50"></div>
+                  <div class="option" key="60" value="60"></div>
+                  <div class="option" key="70" value="70"></div>
+                  <div class="option" key="80" value="80"></div>
+                  <div class="option" key="90" value="90"></div>
+                  <div class="option" key="1000" value="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p>
+            Size: <code>xs sm md</code><br />
+            Orientation: <code>(default) top-bottom bottom-top</code>
+          </p>
+          <pre>
 &lt;div class="slider sm"&gt;
   &lt;input
     id="slider01"
@@ -1931,20 +2053,21 @@
     ...
   &lt;/div&gt;
 &lt;/div&gt;</pre
-      >
-    </main>
-    <footer>
-      <div>© 2025 Michinobu Maeda.</div>
-      <div>
-        Released under the
-        <a
-          href="https://github.com/MichinobuMaeda/glassine-paper-css/blob/main/LICENSE"
-          target="_blank"
-          >MIT License</a
-        >.
+          >
+        </main>
+        <footer>
+          <div>© 2025 Michinobu Maeda.</div>
+          <div>
+            Released under the
+            <a
+              href="https://github.com/MichinobuMaeda/glassine-paper-css/blob/main/LICENSE"
+              target="_blank"
+              >MIT License</a
+            >.
+          </div>
+          <div>Free to use for personal and commercial projects.</div>
+        </footer>
       </div>
-      <div>Free to use for personal and commercial projects.</div>
-    </footer>
-    <!-- <div class="nav-drawer modal"></div> -->
+    </div>
   </body>
 </html>

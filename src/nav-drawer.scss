@@ -4,39 +4,56 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 
-$nav-drawer-width: min(360px, 100%);
+$nav-drawer-width: 360px;
 $nav-drawer-x-padding: $spacing-12px;
+$nav-drawer-y-padding: $spacing-12px;
 $nav-drawer-button-height: $spacing-56px;
 $nav-drawer-button-width: calc(
   $nav-drawer-width - #{$nav-drawer-x-padding} * 2
 );
+$nav-button-icon-size: $spacing-24px;
+$nav-button-gap: $spacing-12px;
 
 .nav-drawer {
-  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 10;
+
   top: 0;
   left: 0;
   height: 100%;
-  z-index: 10;
+  padding: $nav-drawer-y-padding $nav-drawer-x-padding;
 
   &:not(.modal) {
+    position: sticky;
     width: $nav-drawer-width;
     background-color: light-dark(
       var(--color-light-surface-container-low),
       var(--color-dark-surface-container-low)
     );
-    padding: $nav-drawer-x-padding;
   }
 
   &.modal {
-    width: 100%;
+    position: fixed;
+    width: $nav-drawer-width;
+    opacity: 1;
+    background-color: light-dark(
+      var(--color-light-surface-container-low),
+      var(--color-dark-surface-container-low)
+    );
+  }
+
+  &.hidden {
+    display: none;
   }
 
   &.modal::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
+    left: $nav-drawer-width;
+    right: calc($nav-drawer-width - 100vw);
     bottom: 0;
     background-color: light-dark(
       var(--color-light-shadow),
@@ -45,40 +62,44 @@ $nav-drawer-button-width: calc(
     opacity: 0.38;
   }
 
-  &.modal::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: $nav-drawer-width;
-    bottom: 0;
-    border-top-right-radius: $spacing-16px;
-    border-bottom-right-radius: $spacing-16px;
-    background-color: light-dark(
-      var(--color-light-surface-container-low),
-      var(--color-dark-surface-container-low)
-    );
-    opacity: 1;
+  hr {
+    width: calc(100% - $spacing-32px);
+    margin: $spacing-1px $spacing-16px;
   }
 
-  .button {
+  button,
+  a {
     display: flex;
+    background: inherit;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    user-select: none;
+    text-decoration: none;
+    flex-wrap: nowrap;
+    justify-items: start;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    position: relative;
     flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
-    gap: $spacing-12px;
+    gap: $nav-button-gap;
     width: $nav-drawer-button-width;
     height: $nav-drawer-button-height;
-    border-radius: $spacing-28px;
-    padding: $spacing-16px $spacing-24px $spacing-16px $spacing-16px;
+    border-radius: calc($nav-drawer-button-height / 2);
+    padding: $spacing-16px $spacing-24px $spacing-16px
+      calc($spacing-16px + $nav-button-icon-size + $nav-button-gap);
     color: light-dark(
       var(--color-light-on-surface-variant),
       var(--color-dark-on-surface-variant)
     );
 
-    .img,
-    .svg {
-      width: $spacing-24px;
-      height: $spacing-24px;
+    &:has(img),
+    &:has(svg) {
+      padding: $spacing-16px $spacing-24px $spacing-16px $spacing-16px;
     }
 
     &.active {
@@ -92,15 +113,37 @@ $nav-drawer-button-width: calc(
       );
     }
 
-    &:hover {
+    &.hidden {
+      display: none;
+    }
+
+    img,
+    svg {
+      width: $nav-button-icon-size;
+      min-width: $nav-button-icon-size;
+      height: $nav-button-icon-size;
+    }
+
+    &.active {
+      background-color: light-dark(
+        var(--color-light-secondary-container),
+        var(--color-dark-secondary-container)
+      );
+      color: light-dark(
+        var(--color-light-on-secondary-container),
+        var(--color-dark-on-secondary-container)
+      );
+    }
+
+    &:hover::after {
       @include button-state-overlay(on-surface-variant, $opacity-hovered);
     }
 
-    &:focus,
-    &:active {
+    &:focus::after,
+    &:active::after {
       @include button-state-overlay(on-surface-variant, $opacity-focused);
     }
-    &:focus {
+    &:focus::after {
       @include focus-outline;
     }
   }

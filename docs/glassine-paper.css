@@ -104,6 +104,7 @@ textarea:not([rows]) {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  justify-items: start;
   align-items: center;
   background: inherit;
   border: none;
@@ -113,6 +114,9 @@ textarea:not([rows]) {
   gap: 0.25rem;
   user-select: none;
   text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   height: 2.5rem;
   padding: 0 1rem;
   border-radius: 1.25rem;
@@ -277,10 +281,14 @@ textarea:not([rows]) {
 .button svg,
 .button img {
   height: 1.25rem;
+  width: 1.25rem;
+  min-width: 1.25rem;
 }
 .sm.icon .button svg,
 .sm.icon .button img {
   height: 1.5rem;
+  width: 1.5rem;
+  min-width: 1.5rem;
 }
 .button.filled {
   background-color: light-dark(var(--color-light-primary), var(--color-dark-primary));
@@ -758,6 +766,13 @@ textarea:not([rows]) {
   border-bottom-right-radius: 1.75rem;
 }
 
+hr {
+  width: 100%;
+  margin: 0.5rem 1rem;
+  background: none;
+  border: 0.0625rem solid light-dark(var(--color-light-outline-variant), var(--color-dark-outline-variant));
+}
+
 .fab {
   position: relative;
   display: flex;
@@ -901,7 +916,7 @@ textarea:not([rows]) {
   background-color: light-dark(var(--color-light-on-secondary), var(--color-dark-on-secondary));
   opacity: 0.08;
 }
-.fab.tertiary:hover::after {
+.fab.tertiary:hover {
   content: "";
   position: absolute;
   top: 0;
@@ -1335,7 +1350,6 @@ input.radio:not([disabled]):active:hover::before {
   align-items: center;
   height: calc(4rem + max(0px, env(safe-area-inset-top) - 0.5rem));
   padding: 0.5rem 0.25rem max(0.5rem, env(safe-area-inset-bottom)) 0.25rem;
-  gap: 0.25rem;
   background-color: light-dark(var(--color-light-surface), var(--color-dark-surface));
 }
 .app-bar.sticky {
@@ -1361,6 +1375,10 @@ input.radio:not([disabled]):active:hover::before {
   text-decoration: none;
   cursor: pointer;
   color: light-dark(var(--color-light-on-surface), var(--color-dark-on-surface));
+}
+.app-bar button.hidden,
+.app-bar a.hidden {
+  display: none;
 }
 .app-bar button:hover::after,
 .app-bar a:hover::after {
@@ -1402,6 +1420,9 @@ input.radio:not([disabled]):active:hover::before {
   font-weight: normal;
   color: light-dark(var(--color-light-on-surface), var(--color-dark-on-surface));
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .app-bar .title-area .title img,
 .app-bar .title-area .title svg {
@@ -1416,66 +1437,103 @@ input.radio:not([disabled]):active:hover::before {
   font-size: 0.84375rem;
   font-weight: normal;
   color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .nav-drawer {
-  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 10;
   top: 0;
   left: 0;
   height: 100%;
-  z-index: 10;
+  padding: 0.75rem 0.75rem;
 }
 .nav-drawer:not(.modal) {
-  width: min(360px, 100%);
+  position: sticky;
+  width: 360px;
   background-color: light-dark(var(--color-light-surface-container-low), var(--color-dark-surface-container-low));
-  padding: 0.75rem;
 }
 .nav-drawer.modal {
-  width: 100%;
+  position: fixed;
+  width: 360px;
+  opacity: 1;
+  background-color: light-dark(var(--color-light-surface-container-low), var(--color-dark-surface-container-low));
+}
+.nav-drawer.hidden {
+  display: none;
 }
 .nav-drawer.modal::before {
   content: "";
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
+  left: 360px;
+  right: calc(360px - 100vw);
   bottom: 0;
   background-color: light-dark(var(--color-light-shadow), var(--color-dark-shadow));
   opacity: 0.38;
 }
-.nav-drawer.modal::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: min(360px, 100%);
-  bottom: 0;
-  border-top-right-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-  background-color: light-dark(var(--color-light-surface-container-low), var(--color-dark-surface-container-low));
-  opacity: 1;
+.nav-drawer hr {
+  width: calc(100% - 2rem);
+  margin: 0.0625rem 1rem;
 }
-.nav-drawer .button {
+.nav-drawer button,
+.nav-drawer a {
   display: flex;
+  background: inherit;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  user-select: none;
+  text-decoration: none;
+  flex-wrap: nowrap;
+  justify-items: start;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
   flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
   gap: 0.75rem;
-  width: calc(min(360px, 100%) - 0.75rem * 2);
+  width: calc(360px - 0.75rem * 2);
   height: 3.5rem;
   border-radius: 1.75rem;
-  padding: 1rem 1.5rem 1rem 1rem;
+  padding: 1rem 1.5rem 1rem 3.25rem;
   color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
 }
-.nav-drawer .button .img,
-.nav-drawer .button .svg {
-  width: 1.5rem;
-  height: 1.5rem;
+.nav-drawer button:has(img), .nav-drawer button:has(svg),
+.nav-drawer a:has(img),
+.nav-drawer a:has(svg) {
+  padding: 1rem 1.5rem 1rem 1rem;
 }
-.nav-drawer .button.active {
+.nav-drawer button.active,
+.nav-drawer a.active {
   background-color: light-dark(var(--color-light-secondary-container), var(--color-dark-secondary-container));
   color: light-dark(var(--color-light-on-secondary-container), var(--color-dark-on-secondary-container));
 }
-.nav-drawer .button:hover::after {
+.nav-drawer button.hidden,
+.nav-drawer a.hidden {
+  display: none;
+}
+.nav-drawer button img,
+.nav-drawer button svg,
+.nav-drawer a img,
+.nav-drawer a svg {
+  width: 1.5rem;
+  min-width: 1.5rem;
+  height: 1.5rem;
+}
+.nav-drawer button.active,
+.nav-drawer a.active {
+  background-color: light-dark(var(--color-light-secondary-container), var(--color-dark-secondary-container));
+  color: light-dark(var(--color-light-on-secondary-container), var(--color-dark-on-secondary-container));
+}
+.nav-drawer button:hover::after,
+.nav-drawer a:hover::after {
   content: "";
   position: absolute;
   top: 0;
@@ -1487,7 +1545,9 @@ input.radio:not([disabled]):active:hover::before {
   background-color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
   opacity: 0.08;
 }
-.nav-drawer .button:focus::after, .nav-drawer .button:active::after {
+.nav-drawer button:focus::after, .nav-drawer button:active::after,
+.nav-drawer a:focus::after,
+.nav-drawer a:active::after {
   content: "";
   position: absolute;
   top: 0;
@@ -1499,7 +1559,8 @@ input.radio:not([disabled]):active:hover::before {
   background-color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
   opacity: 0.1;
 }
-.nav-drawer .button:focus {
+.nav-drawer button:focus::after,
+.nav-drawer a:focus::after {
   outline: solid 0.125rem light-dark(var(--color-light-secondary), var(--color-dark-secondary));
   outline-offset: 0.0625rem;
 }

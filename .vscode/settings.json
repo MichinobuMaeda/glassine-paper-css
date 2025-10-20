@@ -10,7 +10,7 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "javascript.validate.enable": false,
   "typescript.validate.enable": false,
-  "eslint.enable": true,
+  "eslint.enable": false,
   "eslint.validate": ["javascript", "javascriptreact", "jsx"],
   "eslint.useFlatConfig": true,
   "eslint.lintTask.enable": true,
@@ -18,5 +18,8 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "eslint.debug": true
+  "eslint.debug": true,
+  "editor.linkedEditing": true,
+  "livePreview.portNumber": 3000,
+  "livePreview.defaultPreviewPath": "docs"
 }

@@ -17,7 +17,6 @@ $app-bar-padding-vertical: calc(($app-bar-height - $spacing-48px) / 2);
   );
   padding: $app-bar-padding-vertical $spacing-4px
     max($app-bar-padding-vertical, env(safe-area-inset-bottom)) $spacing-4px;
-  gap: $spacing-4px;
   background-color: light-dark(
     var(--color-light-surface),
     var(--color-dark-surface)
@@ -52,6 +51,10 @@ $app-bar-padding-vertical: calc(($app-bar-height - $spacing-48px) / 2);
       var(--color-light-on-surface),
       var(--color-dark-on-surface)
     );
+
+    &.hidden {
+      display: none;
+    }
 
     &:hover::after {
       content: '';
@@ -100,6 +103,9 @@ $app-bar-padding-vertical: calc(($app-bar-height - $spacing-48px) / 2);
         var(--color-dark-on-surface)
       );
       margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       img,
       svg {
@@ -119,6 +125,9 @@ $app-bar-padding-vertical: calc(($app-bar-height - $spacing-48px) / 2);
         var(--color-light-on-surface-variant),
         var(--color-dark-on-surface-variant)
       );
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }
