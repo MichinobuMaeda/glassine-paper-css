@@ -5,9 +5,9 @@
   "main": "glassine-paper.min.css",
   "scripts": {
     "build": "npm run build:sample && npm run build:compressed",
-    "watch": "sass --watch src/index.scss:docs/glassine-paper.css",
-    "build:sample": "sass src/index.scss docs/glassine-paper.css",
-    "build:compressed": "sass src/index.scss glassine-paper.min.css --style compressed",
+    "watch": "sass --watch src/scss/index.scss:docs/glassine-paper.css",
+    "build:sample": "sass src/scss/index.scss docs/glassine-paper.css",
+    "build:compressed": "sass src/scss/index.scss glassine-paper.min.css --style compressed",
     "start": "http-server docs -p 8000 -c1 -o index.html",
     "format": "prettier --write \"src/**/*.scss\"",
     "lint": "prettier --check \"src/**/*.scss\""
