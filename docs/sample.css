@@ -38,6 +38,13 @@ body {
   }
 }
 
+#main-menu {
+  position: fixed;
+  top: calc(env(safe-area-inset-top) + 64px + 0.5rem);
+  right: 0.5rem;
+  z-index: 3;
+}
+
 main {
   display: flex;
   flex-direction: column;

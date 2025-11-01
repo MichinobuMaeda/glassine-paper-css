@@ -1,0 +1,119 @@
+// Menu Component - SCSS
+// Material Design 3 menu
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.menu {
+  @include bg-color(surface-container);
+  @include fg-color(on-surface);
+  width: var(--menu-width);
+  box-shadow: $spacing-4px $spacing-4px $spacing-4px $spacing-4px
+    color(
+      from light-dark(var(--color-light-shadow), var(--color-dark-shadow)) srgb
+        r g b / #{$opacity-shadow}
+    );
+  border-radius: $spacing-4px;
+  padding: $spacing-8px 0;
+
+  &.hidden {
+    display: none;
+  }
+
+  a,
+  button {
+    @include reset-control-appearance;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: $spacing-48px;
+    padding: 0 $spacing-48px;
+
+    width: 100%;
+    position: relative;
+
+    .prefix,
+    .suffix {
+      @include square-size($spacing-24px);
+    }
+
+    .prefix {
+      position: absolute;
+      left: $spacing-12px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .suffix {
+      position: absolute;
+      right: $spacing-12px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  a:not(.disabled),
+  button:enabled:not(.disabled) {
+    cursor: pointer;
+
+    .prefix,
+    .suffix {
+      @include fg-color(on-surface-variant);
+    }
+
+    .prefix {
+      position: absolute;
+      left: $spacing-12px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .suffix {
+      position: absolute;
+      right: $spacing-12px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &.active {
+      @include bg-color(secondary-container);
+      @include fg-color(on-secondary-container);
+    }
+
+    &.active .prefix,
+    &.active .suffix {
+      @include fg-color(on-secondary-container);
+    }
+
+    &:hover::after {
+      @include state-overlay(on-surface-variant, $opacity-hovered);
+    }
+
+    &:focus::after,
+    &:active::after {
+      @include state-overlay(on-surface-variant, $opacity-focused);
+    }
+  }
+
+  a.disabled,
+  button.disabled,
+  button:disabled {
+    background-color: color(
+      from
+        light-dark(var(--color-light-on-surface), var(--color-dark-on-surface))
+        srgb r g b / #{$opacity-disabled-bg}
+    );
+    color: color(
+      from
+        light-dark(var(--color-light-on-surface), var(--color-dark-on-surface))
+        srgb r g b / #{$opacity-disabled-content}
+    );
+    cursor: default;
+  }
+
+  hr {
+    width: 100%;
+    margin: $spacing-8px 0;
+    border-width: 0 0 $spacing-1px 0;
+  }
+}

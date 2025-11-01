@@ -56,4 +56,8 @@ $nav-horizontal-item-height: $spacing-56px;
     margin: 0;
     box-shadow: none;
   }
+
+  &.wide button.fab {
+    margin: $spacing-16px 0;
+  }
 }

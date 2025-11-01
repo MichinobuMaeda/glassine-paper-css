@@ -1607,8 +1607,9 @@ input.radio:not([disabled]):active:hover::before {
   opacity: 0.38;
 }
 .nav-drawer hr {
-  width: calc(100% - 2rem);
+  width: calc(100% - 0.0625rem);
   margin: 0.0625rem 1rem;
+  border-width: 0 0 0.0625rem 0;
 }
 .nav-drawer button,
 .nav-drawer a {
@@ -1959,6 +1960,139 @@ input.radio:not([disabled]):active:hover::before {
 .nav-rail button.fab {
   margin: 0;
   box-shadow: none;
+}
+.nav-rail.wide button.fab {
+  margin: 1rem 0;
+}
+
+.menu {
+  background-color: light-dark(var(--color-light-surface-container), var(--color-dark-surface-container));
+  color: light-dark(var(--color-light-on-surface), var(--color-dark-on-surface));
+  width: var(--menu-width);
+  box-shadow: 0.25rem 0.25rem 0.25rem 0.25rem color(from light-dark(var(--color-light-shadow), var(--color-dark-shadow)) srgb r g b/0.15);
+  border-radius: 0.25rem;
+  padding: 0.5rem 0;
+}
+.menu.hidden {
+  display: none;
+}
+.menu a,
+.menu button {
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 3rem;
+  padding: 0 3rem;
+  width: 100%;
+  position: relative;
+}
+.menu a .prefix,
+.menu a .suffix,
+.menu button .prefix,
+.menu button .suffix {
+  width: 1.5rem;
+  min-width: 1.5rem;
+  max-width: 1.5rem;
+  height: 1.5rem;
+  min-height: 1.5rem;
+  min-height: 1.5rem;
+  max-height: 1.5rem;
+}
+.menu a .prefix,
+.menu button .prefix {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.menu a .suffix,
+.menu button .suffix {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.menu a:not(.disabled),
+.menu button:enabled:not(.disabled) {
+  cursor: pointer;
+}
+.menu a:not(.disabled) .prefix,
+.menu a:not(.disabled) .suffix,
+.menu button:enabled:not(.disabled) .prefix,
+.menu button:enabled:not(.disabled) .suffix {
+  color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+}
+.menu a:not(.disabled) .prefix,
+.menu button:enabled:not(.disabled) .prefix {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.menu a:not(.disabled) .suffix,
+.menu button:enabled:not(.disabled) .suffix {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.menu a:not(.disabled).active,
+.menu button:enabled:not(.disabled).active {
+  background-color: light-dark(var(--color-light-secondary-container), var(--color-dark-secondary-container));
+  color: light-dark(var(--color-light-on-secondary-container), var(--color-dark-on-secondary-container));
+}
+.menu a:not(.disabled).active .prefix, .menu a:not(.disabled).active .suffix,
+.menu button:enabled:not(.disabled).active .prefix,
+.menu button:enabled:not(.disabled).active .suffix {
+  color: light-dark(var(--color-light-on-secondary-container), var(--color-dark-on-secondary-container));
+}
+.menu a:not(.disabled):hover::after,
+.menu button:enabled:not(.disabled):hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  opacity: 0.08;
+}
+.menu a:not(.disabled):focus::after, .menu a:not(.disabled):active::after,
+.menu button:enabled:not(.disabled):focus::after,
+.menu button:enabled:not(.disabled):active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: light-dark(var(--color-light-on-surface-variant), var(--color-dark-on-surface-variant));
+  opacity: 0.1;
+}
+.menu a.disabled,
+.menu button.disabled,
+.menu button:disabled {
+  background-color: color(from light-dark(var(--color-light-on-surface), var(--color-dark-on-surface)) srgb r g b/0.1);
+  color: color(from light-dark(var(--color-light-on-surface), var(--color-dark-on-surface)) srgb r g b/0.38);
+  cursor: default;
+}
+.menu hr {
+  width: 100%;
+  margin: 0.5rem 0;
+  border-width: 0 0 0.0625rem 0;
 }
 
 .slider {

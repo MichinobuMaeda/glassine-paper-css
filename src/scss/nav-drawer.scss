@@ -51,8 +51,9 @@ $nav-button-gap: $spacing-12px;
   }
 
   hr {
-    width: calc(100% - $spacing-32px);
+    width: calc(100% - $spacing-1px);
     margin: $spacing-1px $spacing-16px;
+    border-width: 0 0 $spacing-1px 0;
   }
 
   button,

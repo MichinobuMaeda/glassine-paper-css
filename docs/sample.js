@@ -1,3 +1,12 @@
+function toggleMainMenu() {
+  const mainMenu = document.getElementById('main-menu');
+  if (mainMenu.classList.contains('hidden')) {
+    mainMenu.classList.remove('hidden');
+  } else {
+    mainMenu.classList.add('hidden');
+  }
+}
+
 /**
  * Toggles the width of the navigation bar between normal and wide modes.
  * Adds or removes the 'wide' CSS class from the nav-bar element.
@@ -43,7 +52,8 @@ function toggleNavRailWidth(event) {
     navRail.classList.add('wide');
     svgPath.setAttribute(
       'd',
-      'M120-240v-80h520v80H120Zm664-40L584-480l200-200 56 56-144 144 144 144-56 56ZM120-440v-80h400v80H120Zm0-200v-80h520v80H120Z'
+      'M120-240v-80h520v80H120Zm664-40L584-480l200-200 56 56-144 144 144 144-56' +
+        ' 56ZM120-440v-80h400v80H120Zm0-200v-80h520v80H120Z'
     );
   }
 }
