@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
-    <title>Glassine Paper CSS</title>
+    <title>Glassine Paper</title>
     <link rel="stylesheet" type="text/css" href="main.css" />
     <script src="sample.js"></script>
   </head>
@@ -190,9 +190,9 @@
               />
             </svg>
           </button>
-          <img src="./favicon.svg" alt="Glassine Paper CSS" />
+          <img src="./favicon.svg" alt="Glassine Paper" />
           <div class="title-area">
-            <h1 class="title">Glassine Paper CSS</h1>
+            <h1 class="title">Glassine Paper</h1>
             <div class="subtitle">CSS for Material Design 3</div>
           </div>
           <button onclick="toggleMainMenu()">
@@ -209,6 +209,25 @@
             </svg>
           </button>
         </header>
+
+        <div class="tabs">
+          <a class="active" href="#" onclick="tabItemOnClick(event)">Sample</a>
+          <button onclick="tabItemOnClick(event)">Item</button>
+          <a href="#" onclick="tabItemOnClick(event)">
+            <!-- Material Icons https://fonts.google.com/icons -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 -960 960 960"
+              fill="currentColor"
+              class="prefix"
+            >
+              <path
+                d="M120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z"
+              />
+            </svg>
+            Link</a
+          >
+        </div>
 
         <div id="main-menu" class="menu hidden" onclick="toggleMainMenu()">
           <a href="https://github.com/MichinobuMaeda/glassine-paper-css">
@@ -2197,6 +2216,20 @@
     &lt;/span&gt;
     Disabled link
   &lt;/a&gt;
+&lt;/div&gt;</pre
+          >
+
+          <h3>Tabs</h3>
+
+          <p>Variant: <code>primary -- not implemented (default)</code></p>
+          <pre>
+&lt;div class="tabs"&gt;
+  &lt;a class="active" href="..."&gt;
+    &lt;svg ...&gt;...&lt;/svg&gt;
+    Tab 1
+  &lt;/a&gt;
+  &lt;a href="..."&gt;Tab 2&lt;/a&gt;
+  &lt;button&gt;Tab 3&lt;/button&gt;
 &lt;/div&gt;</pre
           >
 

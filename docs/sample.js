@@ -170,6 +170,24 @@ function navDrawerFix() {
 }
 
 /**
+ * Handles click events on tab items to manage active state.
+ * Removes the 'active' class from all tab items in the parent container
+ * and adds it to the clicked tab item.
+ *
+ * @param {Event} event - The click event from the tab item
+ * @param {HTMLElement} event.currentTarget - The tab item element that was clicked
+ * @returns {void}
+ */
+function tabItemOnClick(event) {
+  const tabItem = event.currentTarget;
+  const tabs = tabItem.parentElement;
+  for (const item of tabs.children) {
+    item.classList.remove('active');
+  }
+  tabItem.classList.add('active');
+}
+
+/**
  * @fileoverview Glassine Paper CSS - Material Design 3 Slider JavaScript
  *
  * This script is specifically designed to work with the Glassine Paper CSS framework.
@@ -327,5 +345,20 @@ function bodyOnLoad() {
     const input = slider.getElementsByTagName('input')[0];
     input.addEventListener('input', (event) => onSliderInput(event));
     onSliderInput({ target: input });
+  }
+
+  // Detect scroll on content area to update app-bar style
+  const contentArea = document.getElementsByClassName('content-area').item(0);
+  if (contentArea) {
+    contentArea.addEventListener('scroll', () => {
+      const appBar = document.getElementsByClassName('app-bar').item(0);
+      if (appBar) {
+        if (contentArea.scrollTop > 0) {
+          appBar.classList.add('on-scroll');
+        } else {
+          appBar.classList.remove('on-scroll');
+        }
+      }
+    });
   }
 }

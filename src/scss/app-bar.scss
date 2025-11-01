@@ -26,6 +26,10 @@ $app-bar-padding-vertical: calc(($app-bar-height - $spacing-48px) / 2);
   &.sticky {
     position: sticky;
     top: 0;
+
+    &.on-scroll {
+      @include bg-color(surface-container);
+    }
   }
 
   button,
@@ -75,6 +79,7 @@ $app-bar-padding-vertical: calc(($app-bar-height - $spacing-48px) / 2);
     flex-direction: column;
     flex-grow: 1;
     justify-content: start;
+    padding: 0 $spacing-2px;
     gap: $spacing-2px;
 
     .title {
