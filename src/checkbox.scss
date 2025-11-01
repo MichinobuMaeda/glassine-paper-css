@@ -29,11 +29,10 @@ $checkbox-focus-outline-offset: -$spacing-2px;
 
 // Checkbox Component
 input.checkbox {
-  @include reset-input-appearance;
+  @include reset-control-appearance;
 
   margin: $checkbox-touch-offset;
-  height: $checkbox-size;
-  width: $checkbox-size;
+  @include square-size($checkbox-size);
   position: relative;
   border-radius: $spacing-2px;
   pointer-events: default;
@@ -68,17 +67,11 @@ input.checkbox {
 
   // Checked state
   &:checked {
-    background-color: light-dark(
-      var(--color-light-primary),
-      var(--color-dark-primary)
-    );
+    @include bg-color(primary);
 
     &::after {
       content: '✓';
-      color: light-dark(
-        var(--color-light-on-primary),
-        var(--color-dark-on-primary)
-      );
+      @include fg-color(on-primary);
     }
   }
 
@@ -88,10 +81,7 @@ input.checkbox {
     @include checkbox-outline(error);
 
     &:checked {
-      background-color: light-dark(
-        var(--color-light-error),
-        var(--color-dark-error)
-      );
+      @include bg-color(error);
     }
   }
 

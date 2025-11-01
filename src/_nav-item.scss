@@ -1,0 +1,102 @@
+// Navigation item Component - SCSS
+// Material Design 3 navigation item for navigation bar and navigation rail
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+$nav-item-icon-size: $spacing-24px;
+$nav-item-font-size: $spacing-12px;
+$nav-item-line-height: $spacing-16px;
+$nav-item-gap: $spacing-4px;
+$nav-item-accent-height: $spacing-32px;
+$nav-item-accent-height-wide: $spacing-40px;
+
+@mixin nav-item-style($base-z-index) {
+  @include reset-control-appearance;
+  @include one-line-truncate;
+
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  font-size: $nav-item-font-size;
+  line-height: $nav-item-line-height;
+  @include fg-color(on-surface-variant);
+
+  svg,
+  img {
+    @include square-size($nav-item-icon-size);
+    z-index: calc($base-z-index + 1);
+  }
+}
+
+@mixin nav-item-style-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: $spacing-56px;
+  height: $spacing-52px;
+
+  padding: 0 $spacing-16px;
+  gap: $nav-item-gap;
+
+  position: relative;
+
+  svg,
+  img {
+    margin: $spacing-4px 0;
+  }
+
+  &:hover::after {
+    @include state-overlay(
+      on-surface,
+      $opacity-hovered,
+      0,
+      0,
+      $spacing-20px,
+      0
+    );
+    border-radius: calc($nav-item-accent-height / 2);
+  }
+
+  &.active {
+    @include fg-color(on-secondary-container);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: $spacing-20px;
+      border-radius: calc($nav-item-accent-height / 2);
+      @include bg-color(secondary-container);
+    }
+  }
+}
+
+@mixin nav-item-style-horizontal($height) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: $height;
+
+  padding: 0 $spacing-16px;
+  border-radius: calc($height / 2);
+  gap: $nav-item-gap;
+
+  position: relative;
+
+  svg,
+  img {
+    margin: $spacing-8px 0;
+  }
+
+  &:hover::after {
+    @include state-overlay(on-surface, $opacity-hovered);
+  }
+
+  &.active {
+    @include bg-color(secondary-container);
+    @include fg-color(on-secondary-container);
+  }
+}

@@ -1,3 +1,80 @@
+/**
+ * Toggles the width of the navigation bar between normal and wide modes.
+ * Adds or removes the 'wide' CSS class from the nav-bar element.
+ *
+ * @param {Event} event - The event that triggered the toggle
+ * @returns {void}
+ *
+ * @example
+ * // Typical usage with button click
+ * <button onclick="toggleNavBarWidth(event)">Toggle Nav Width</button>
+ */
+function toggleNavBarWidth(event) {
+  const navBar = document.getElementsByClassName('nav-bar').item(0);
+  if (navBar.classList.contains('wide')) {
+    navBar.classList.remove('wide');
+  } else {
+    navBar.classList.add('wide');
+  }
+}
+
+/**
+ * Toggles the width of the navigation rail between normal and wide modes.
+ * Adds or removes the 'wide' CSS class from the nav-rail element.
+ *
+ * @param {Event} event - The event that triggered the toggle
+ * @returns {void}
+ *
+ * @example
+ * // Typical usage with button click
+ * <button onclick="toggleNavRailWidth(event)">Toggle Nav Width</button>
+ */
+function toggleNavRailWidth(event) {
+  const navRail = document.getElementsByClassName('nav-rail').item(0);
+  const svg = event.currentTarget.getElementsByTagName('svg').item(0);
+  const svgPath = svg.getElementsByTagName('path').item(0);
+  if (navRail.classList.contains('wide')) {
+    navRail.classList.remove('wide');
+    svgPath.setAttribute(
+      'd',
+      'M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z'
+    );
+  } else {
+    navRail.classList.add('wide');
+    svgPath.setAttribute(
+      'd',
+      'M120-240v-80h520v80H120Zm664-40L584-480l200-200 56 56-144 144 144 144-56 56ZM120-440v-80h400v80H120Zm0-200v-80h520v80H120Z'
+    );
+  }
+}
+
+function toggleNavBarNavRail() {
+  const navBar = document.getElementsByClassName('nav-bar').item(0);
+  const navRail = document.getElementsByClassName('nav-rail').item(0);
+  if (navBar && navRail) {
+    if (navBar.classList.contains('hidden')) {
+      navBar.classList.remove('hidden');
+      navRail.classList.add('hidden');
+    } else {
+      navBar.classList.add('hidden');
+      navRail.classList.remove('hidden');
+    }
+  }
+}
+
+/**
+ * Shows the navigation drawer by removing the 'hidden' class.
+ * Also sets the drawer to modal mode and updates the visibility of show/hide buttons.
+ *
+ * @returns {void}
+ *
+ * @example
+ * // Typical usage with button click
+ * <button id="nav-drawer-show-button" onclick="navDrawerShow()">Show Drawer</button>
+ *
+ * @see {@link navDrawerHide} - Hides the navigation drawer
+ * @see {@link navDrawerModal} - Sets the drawer to modal mode
+ */
 function navDrawerShow() {
   const navDrawer = document.getElementsByClassName('nav-drawer').item(0);
   if (navDrawer.classList.contains('hidden')) {
@@ -9,6 +86,26 @@ function navDrawerShow() {
   document.getElementById('nav-drawer-hide-button').classList.remove('hidden');
 }
 
+/**
+ * Hides the navigation drawer by adding the 'hidden' class.
+ * When called with an event, validates the click is outside the drawer area before hiding.
+ * Updates the visibility of show/hide buttons.
+ *
+ * @param {Event} [event] - Optional click event for validation
+ * @param {HTMLElement} [event.target] - The element that was clicked
+ * @param {number} [event.clientX] - The X coordinate of the click
+ * @returns {void}
+ *
+ * @example
+ * // Manual hide without event validation
+ * navDrawerHide();
+ *
+ * @example
+ * // Hide with click validation (typical usage)
+ * <div class="nav-drawer" onclick="navDrawerHide(event)">
+ *
+ * @see {@link navDrawerShow} - Shows the navigation drawer
+ */
 function navDrawerHide(event) {
   if (event) {
     console.log(event.target.classList);
@@ -30,6 +127,20 @@ function navDrawerHide(event) {
   document.getElementById('nav-drawer-hide-button').classList.add('hidden');
 }
 
+/**
+ * Sets the navigation drawer to modal mode by adding the 'modal' class.
+ * Modal mode typically makes the drawer overlay content and dismissible.
+ * Updates the visibility of modal/fix toggle buttons.
+ *
+ * @returns {void}
+ *
+ * @example
+ * // Typical usage with button click
+ * <button id="nav-drawer-modal-button" onclick="navDrawerModal()">Modal Mode</button>
+ *
+ * @see {@link navDrawerFix} - Sets the drawer to fixed mode
+ * @see {@link navDrawerShow} - Automatically calls this when showing the drawer
+ */
 function navDrawerModal() {
   const navDrawer = document.getElementsByClassName('nav-drawer').item(0);
   if (!navDrawer.classList.contains('modal')) {
@@ -40,6 +151,19 @@ function navDrawerModal() {
   document.getElementById('nav-drawer-fix-button').classList.remove('hidden');
 }
 
+/**
+ * Sets the navigation drawer to fixed mode by removing the 'modal' class.
+ * Fixed mode typically makes the drawer permanently visible alongside content.
+ * Updates the visibility of modal/fix toggle buttons.
+ *
+ * @returns {void}
+ *
+ * @example
+ * // Typical usage with button click
+ * <button id="nav-drawer-fix-button" onclick="navDrawerFix()">Fix Drawer</button>
+ *
+ * @see {@link navDrawerModal} - Sets the drawer to modal mode
+ */
 function navDrawerFix() {
   const navDrawer = document.getElementsByClassName('nav-drawer').item(0);
   if (navDrawer.classList.contains('modal')) {

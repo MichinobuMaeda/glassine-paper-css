@@ -2,6 +2,9 @@
 // Material Design 3 app bar
 
 @use 'variables' as *;
+@use 'mixins' as *;
+
+$app-bar-z-index: var(--app-bar-z-index, 4);
 
 $app-bar-height: $spacing-64px;
 $app-bar-padding-vertical: calc(($app-bar-height - $spacing-48px) / 2);
@@ -17,15 +20,12 @@ $app-bar-padding-vertical: calc(($app-bar-height - $spacing-48px) / 2);
   );
   padding: $app-bar-padding-vertical $spacing-4px
     max($app-bar-padding-vertical, env(safe-area-inset-bottom)) $spacing-4px;
-  background-color: light-dark(
-    var(--color-light-surface),
-    var(--color-dark-surface)
-  );
+  @include bg-color(surface);
+  z-index: $app-bar-z-index;
 
   &.sticky {
     position: sticky;
     top: 0;
-    z-index: 2;
   }
 
   button,
@@ -34,8 +34,7 @@ $app-bar-padding-vertical: calc(($app-bar-height - $spacing-48px) / 2);
     display: flex;
     align-items: center;
     justify-content: center;
-    height: $spacing-48px;
-    width: $spacing-48px;
+    @include square-size($spacing-48px);
 
     background: inherit;
     border: none;
@@ -47,43 +46,28 @@ $app-bar-padding-vertical: calc(($app-bar-height - $spacing-48px) / 2);
     text-decoration: none;
 
     cursor: pointer;
-    color: light-dark(
-      var(--color-light-on-surface),
-      var(--color-dark-on-surface)
-    );
+    border-radius: $spacing-4px;
+    @include fg-color(on-surface);
 
     &.hidden {
       display: none;
     }
 
     &:hover::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      background-color: light-dark(
-        var(--color-light-on-surface),
-        var(--color-dark-on-surface)
-      );
-      opacity: 0.08;
+      @include state-overlay(on-surface, $opacity-hovered);
     }
 
     svg,
     img {
-      height: $spacing-24px;
-      width: $spacing-24px;
+      @include square-size($spacing-24px);
     }
   }
 
-  img,
-  svg {
+  & > img,
+  & > svg {
     display: inline-block;
-    height: $spacing-48px;
-    width: $spacing-48px;
-    min-width: $spacing-48px;
-    margin-right: $spacing-4px;
+    @include square-size($spacing-48px);
+    margin: 0 $spacing-4px;
   }
 
   .title-area {
@@ -99,15 +83,10 @@ $app-bar-padding-vertical: calc(($app-bar-height - $spacing-48px) / 2);
       height: $spacing-28px;
       font-size: $spacing-24px;
       line-height: $spacing-28px;
-      font-weight: normal;
-      color: light-dark(
-        var(--color-light-on-surface),
-        var(--color-dark-on-surface)
-      );
+      @include fg-color(on-surface);
       margin: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+
+      @include one-line-truncate;
 
       img,
       svg {
@@ -119,17 +98,11 @@ $app-bar-padding-vertical: calc(($app-bar-height - $spacing-48px) / 2);
 
     .subtitle {
       display: inline-block;
-      height: calc($spacing-48px - $spacing-28px - $spacing-2px);
-      line-height: calc($spacing-48px - $spacing-28px - $spacing-2px);
-      font-size: calc(($spacing-48px - $spacing-28px - $spacing-2px) * 0.75);
-      font-weight: normal;
-      color: light-dark(
-        var(--color-light-on-surface-variant),
-        var(--color-dark-on-surface-variant)
-      );
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-size: $spacing-12px;
+      line-height: $spacing-16px;
+      height: $spacing-16px;
+      @include fg-color(on-surface-variant);
+      @include one-line-truncate;
     }
   }
 }

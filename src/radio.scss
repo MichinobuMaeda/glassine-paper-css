@@ -16,13 +16,6 @@ $radio-touch-offset: calc(($radio-touch-target-size - $radio-size) / 2);
   outline-offset: -$spacing-2px;
 }
 
-@mixin radio-background($color) {
-  background-color: light-dark(
-    var(--color-light-#{$color}),
-    var(--color-dark-#{$color})
-  );
-}
-
 @mixin state-overlay($color, $opacity) {
   background-color: color(
     from light-dark(var(--color-light-#{$color}), var(--color-dark-#{$color}))
@@ -49,11 +42,10 @@ $radio-touch-offset: calc(($radio-touch-target-size - $radio-size) / 2);
 
 // Radio Button Component
 input.radio {
-  @include reset-input-appearance;
+  @include reset-control-appearance;
 
   margin: $radio-touch-offset;
-  height: $radio-size;
-  width: $radio-size;
+  @include square-size($radio-size);
   position: relative;
   border-radius: 50%;
   pointer-events: default;
@@ -84,7 +76,7 @@ input.radio {
 
     &::after {
       display: block;
-      @include radio-background(primary);
+      @include bg-color(primary);
     }
   }
 

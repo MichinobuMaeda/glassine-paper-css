@@ -4,7 +4,9 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 
-$nav-drawer-width: 360px;
+$nav-drawer-width: var(--nav-drawer-width, 360px);
+$nav-drawer-z-index: var(--nav-drawer-z-index, 10);
+
 $nav-drawer-x-padding: $spacing-12px;
 $nav-drawer-y-padding: $spacing-12px;
 $nav-drawer-button-height: $spacing-56px;
@@ -15,37 +17,23 @@ $nav-button-icon-size: $spacing-24px;
 $nav-button-gap: $spacing-12px;
 
 .nav-drawer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  z-index: 10;
-
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
-  padding: $nav-drawer-y-padding $nav-drawer-x-padding;
-
+  width: $nav-drawer-width;
+  min-width: $nav-drawer-width;
+  z-index: $nav-drawer-z-index;
   overflow-y: scroll;
 
-  &:not(.modal) {
-    position: sticky;
-    width: $nav-drawer-width;
-    min-width: $nav-drawer-width;
-    background-color: light-dark(
-      var(--color-light-surface-container-low),
-      var(--color-dark-surface-container-low)
-    );
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
-  &.modal {
-    position: fixed;
-    width: $nav-drawer-width;
-    opacity: 1;
-    background-color: light-dark(
-      var(--color-light-surface-container-low),
-      var(--color-dark-surface-container-low)
-    );
-  }
+  @include bg-color(surface-container-low);
+  opacity: 1;
+
+  padding: $nav-drawer-y-padding $nav-drawer-x-padding;
 
   &.hidden {
     display: none;
@@ -58,10 +46,7 @@ $nav-button-gap: $spacing-12px;
     left: $nav-drawer-width;
     right: calc($nav-drawer-width - 100vw);
     bottom: 0;
-    background-color: light-dark(
-      var(--color-light-shadow),
-      var(--color-dark-shadow)
-    );
+    @include bg-color(shadow);
     opacity: 0.38;
   }
 
@@ -72,20 +57,12 @@ $nav-button-gap: $spacing-12px;
 
   button,
   a {
-    display: flex;
-    background: inherit;
-    border: none;
-    outline: none;
-    box-shadow: none;
-    user-select: none;
-    text-decoration: none;
-    flex-wrap: nowrap;
-    justify-items: start;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    @include reset-control-appearance;
+    @include one-line-truncate;
 
     position: relative;
+    display: flex;
+    flex-wrap: nowrap;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
@@ -96,10 +73,7 @@ $nav-button-gap: $spacing-12px;
     border-radius: calc($nav-drawer-button-height / 2);
     padding: $spacing-16px $spacing-24px $spacing-16px
       calc($spacing-16px + $nav-button-icon-size + $nav-button-gap);
-    color: light-dark(
-      var(--color-light-on-surface-variant),
-      var(--color-dark-on-surface-variant)
-    );
+    @include fg-color(on-surface-variant);
 
     &:has(img),
     &:has(svg) {
@@ -107,14 +81,8 @@ $nav-button-gap: $spacing-12px;
     }
 
     &.active {
-      background-color: light-dark(
-        var(--color-light-secondary-container),
-        var(--color-dark-secondary-container)
-      );
-      color: light-dark(
-        var(--color-light-on-secondary-container),
-        var(--color-dark-on-secondary-container)
-      );
+      @include bg-color(secondary-container);
+      @include fg-color(on-secondary-container);
     }
 
     &.hidden {
@@ -123,29 +91,21 @@ $nav-button-gap: $spacing-12px;
 
     img,
     svg {
-      width: $nav-button-icon-size;
-      min-width: $nav-button-icon-size;
-      height: $nav-button-icon-size;
+      @include square-size($nav-button-icon-size);
     }
 
     &.active {
-      background-color: light-dark(
-        var(--color-light-secondary-container),
-        var(--color-dark-secondary-container)
-      );
-      color: light-dark(
-        var(--color-light-on-secondary-container),
-        var(--color-dark-on-secondary-container)
-      );
+      @include bg-color(secondary-container);
+      @include fg-color(on-secondary-container);
     }
 
     &:hover::after {
-      @include button-state-overlay(on-surface-variant, $opacity-hovered);
+      @include state-overlay(on-surface-variant, $opacity-hovered);
     }
 
     &:focus::after,
     &:active::after {
-      @include button-state-overlay(on-surface-variant, $opacity-focused);
+      @include state-overlay(on-surface-variant, $opacity-focused);
     }
     &:focus::after {
       @include focus-outline;

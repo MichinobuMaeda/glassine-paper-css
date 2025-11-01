@@ -1,0 +1,59 @@
+// Navigation Rail Component - SCSS
+// Material Design 3 navigation rail
+
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'nav-item' as *;
+
+$nav-rail-z-index: var(--nav-rail-z-index, 5);
+$nav-rail-width: var(--nav-rail-width, calc($spacing-80px * 3));
+$nav-rail-width-narrow: $spacing-80px;
+$nav-horizontal-item-height: $spacing-56px;
+
+.nav-rail {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  top: 0;
+  left: 0;
+  height: 100%;
+  position: sticky;
+  @include bg-color(surface-container);
+  @include fg-color(on-surface);
+  z-index: $nav-rail-z-index;
+  padding: $spacing-16px;
+
+  &.hidden {
+    display: none;
+  }
+
+  &:not(.wide) {
+    width: $nav-rail-width-narrow;
+    align-items: center;
+    gap: $spacing-16px;
+  }
+
+  &.wide {
+    width: $nav-rail-width;
+    align-items: start;
+  }
+
+  button:not(.fab) {
+    @include nav-item-style($nav-rail-z-index);
+  }
+
+  &:not(.wide) button:not(.fab):not(.icon) {
+    @include nav-item-style-vertical;
+  }
+
+  &:not(.wide) button:not(.fab).icon,
+  &.wide button:not(.fab) {
+    @include nav-item-style-horizontal($nav-horizontal-item-height);
+  }
+
+  button.fab {
+    margin: 0;
+    box-shadow: none;
+  }
+}

@@ -27,22 +27,6 @@ $fab-margin-closed-lg: calc(
 );
 
 // Mixins
-@mixin fab-base {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  background: inherit;
-  border: none;
-  outline: none;
-  margin: $fab-margin-closed-sm;
-  padding: 0;
-  gap: $spacing-4px;
-  user-select: none;
-}
-
 @mixin fab-shadow($size) {
   box-shadow: $size $size $size $size
     color(
@@ -52,29 +36,34 @@ $fab-margin-closed-lg: calc(
 }
 
 @mixin fab-size($size, $border-radius, $icon-size) {
-  height: $size;
-  width: $size;
+  @include square-size($size);
   border-radius: $border-radius;
+
   svg,
   img {
-    height: $icon-size;
+    @include square-size($icon-size);
   }
 }
 
 @mixin fab-colors($bg-color, $text-color) {
-  background-color: light-dark(
-    var(--color-light-#{$bg-color}),
-    var(--color-dark-#{$bg-color})
-  );
-  color: light-dark(
-    var(--color-light-#{$text-color}),
-    var(--color-dark-#{$text-color})
-  );
+  @include bg-color($bg-color);
+  @include fg-color($text-color);
 }
 
 // FAB Component
 .fab {
-  @include fab-base;
+  @include reset-control-appearance;
+  @include one-line-truncate;
+
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  margin: $fab-margin-closed-sm;
+  gap: $spacing-4px;
+
   @include fab-shadow($spacing-2px);
   @include fab-size($fab-size-sm, $fab-border-radius-sm, $fab-icon-size-sm);
 
@@ -159,19 +148,19 @@ $fab-margin-closed-lg: calc(
   &.primary-container:hover::after,
   &.secondary-container:hover::after,
   &.tertiary-container:hover::after {
-    @include button-state-overlay(on-surface-variant, $opacity-hovered);
+    @include state-overlay(on-surface-variant, $opacity-hovered);
   }
 
   &.primary:hover::after {
-    @include button-state-overlay(on-primary, $opacity-hovered);
+    @include state-overlay(on-primary, $opacity-hovered);
   }
 
   &.secondary:hover::after {
-    @include button-state-overlay(on-secondary, $opacity-hovered);
+    @include state-overlay(on-secondary, $opacity-hovered);
   }
 
   &.tertiary:hover {
-    @include button-state-overlay(on-tertiary, $opacity-hovered);
+    @include state-overlay(on-tertiary, $opacity-hovered);
   }
 
   &:focus {

@@ -3,6 +3,7 @@
 
 @use 'sass:math';
 @use 'variables' as *;
+@use 'mixins' as *;
 
 // Component-specific variables
 $switch-width: $spacing-52px;
@@ -23,36 +24,12 @@ $switch-focus-radius: $spacing-20px; // 1.25rem
 $switch-focus-border: $spacing-3px; // 0.1875rem
 
 // Mixins
-@mixin switch-base {
-  appearance: none;
-  border: none;
-  box-shadow: none;
-  margin: $spacing-4px;
-  padding: 0;
-  height: $switch-height;
-  width: $switch-width;
-  position: relative;
-  pointer-events: default;
-  border-radius: calc($switch-height / 2);
-  outline: $spacing-2px solid
-    light-dark(var(--color-light-outline), var(--color-dark-outline));
-  outline-offset: -$spacing-2px;
-}
-
-@mixin switch-background($color-light, $color-dark) {
-  background-color: light-dark(
-    var(--color-light-#{$color-light}),
-    var(--color-dark-#{$color-dark})
-  );
-}
-
 @mixin switch-thumb($size, $top, $left) {
   content: '';
   position: absolute;
   top: $top;
   left: $left;
-  height: $size;
-  width: $size;
+  @include square-size($size);
   border-radius: 50%;
 }
 
@@ -64,40 +41,32 @@ $switch-focus-border: $spacing-3px; // 0.1875rem
   content: '✓';
 }
 
-@mixin hover-overlay($size, $top, $left, $color-light, $color-dark) {
+@mixin hover-overlay($size, $top, $left, $color) {
   content: '';
   position: absolute;
   top: $top;
   left: $left;
-  height: $size;
-  width: $size;
+  @include square-size($size);
   border-radius: 50%;
-  background-color: light-dark(
-    var(--color-light-#{$color-light}),
-    var(--color-dark-#{$color-dark})
-  );
+  @include bg-color($color);
   opacity: $opacity-hovered;
-}
-
-@mixin focus-ring {
-  content: '';
-  position: absolute;
-  top: -$spacing-4px;
-  left: -$spacing-4px;
-  height: $switch-focus-height;
-  width: $switch-focus-width;
-  border-radius: $switch-focus-radius;
-  border: $switch-focus-border solid
-    light-dark(var(--color-light-secondary), var(--color-dark-secondary));
 }
 
 // Switch Component
 input[type='checkbox'].switch {
-  @include switch-base;
-  @include switch-background(
-    surface-container-highest,
-    surface-container-highest
-  );
+  @include reset-control-appearance;
+
+  margin: $spacing-4px;
+  height: $switch-height;
+  width: $switch-width;
+  position: relative;
+  pointer-events: default;
+  border-radius: calc($switch-height / 2);
+  outline: $spacing-2px solid
+    light-dark(var(--color-light-outline), var(--color-dark-outline));
+  outline-offset: -$spacing-2px;
+
+  @include bg-color(surface-container-highest);
 
   // Thumb (unchecked state)
   &::after {
@@ -106,15 +75,12 @@ input[type='checkbox'].switch {
       $switch-thumb-inset,
       $switch-thumb-inset
     );
-    background-color: light-dark(
-      var(--color-light-outline),
-      var(--color-dark-outline)
-    );
+    @include bg-color(outline);
   }
 
   // Checked state
   &:checked {
-    @include switch-background(primary, primary);
+    @include bg-color(primary);
 
     &::after {
       @include switch-thumb-checked(
@@ -122,14 +88,8 @@ input[type='checkbox'].switch {
         $spacing-4px,
         $switch-thumb-checked
       );
-      background-color: light-dark(
-        var(--color-light-on-primary),
-        var(--color-dark-on-primary)
-      );
-      color: light-dark(
-        var(--color-light-on-primary-container),
-        var(--color-dark-on-primary-container)
-      );
+      @include bg-color(on-primary);
+      @include fg-color(on-primary-container);
     }
   }
 
@@ -172,10 +132,7 @@ input[type='checkbox'].switch {
       outline: none;
 
       &::after {
-        background-color: light-dark(
-          var(--color-light-surface),
-          var(--color-dark-surface)
-        );
+        @include bg-color(surface);
         color: color(
           from
             light-dark(
@@ -195,7 +152,6 @@ input[type='checkbox'].switch {
         $switch-hover-size,
         -$spacing-4px,
         -$spacing-4px,
-        on-surface,
         on-surface
       );
     }
@@ -205,13 +161,20 @@ input[type='checkbox'].switch {
         $switch-hover-size,
         -$spacing-4px,
         $spacing-18px,
-        primary,
         primary
       );
     }
   }
   &:focus::before {
-    @include focus-ring;
+    content: '';
+    position: absolute;
+    top: -$spacing-4px;
+    left: -$spacing-4px;
+    height: $switch-focus-height;
+    width: $switch-focus-width;
+    border-radius: $switch-focus-radius;
+    border: $switch-focus-border solid
+      light-dark(var(--color-light-secondary), var(--color-dark-secondary));
   }
 
   &:active {
@@ -221,10 +184,7 @@ input[type='checkbox'].switch {
         $switch-thumb-inset-active,
         $switch-thumb-inset-active
       );
-      background-color: light-dark(
-        var(--color-light-outline),
-        var(--color-dark-outline)
-      );
+      @include bg-color(outline);
     }
 
     &:checked::after {
@@ -233,14 +193,8 @@ input[type='checkbox'].switch {
         $switch-thumb-inset-active,
         $switch-thumb-left-checked-active
       );
-      background-color: light-dark(
-        var(--color-light-on-primary),
-        var(--color-dark-on-primary)
-      );
-      color: light-dark(
-        var(--color-light-on-primary-container),
-        var(--color-dark-on-primary-container)
-      );
+      @include bg-color(on-primary);
+      @include fg-color(on-primary-container);
     }
   }
 }

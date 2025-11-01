@@ -1,6 +1,6 @@
 {
   "name": "glassine-paper-css",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "CSS for Material Design 3",
   "main": "glassine-paper.min.css",
   "scripts": {

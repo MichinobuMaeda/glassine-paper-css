@@ -3,27 +3,62 @@
 
 @use 'variables' as *;
 
-@mixin reset-input-appearance {
+@mixin reset-control-appearance {
   appearance: none;
-  border: none;
-  box-shadow: none;
   background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  margin: 0;
   padding: 0;
+  user-select: none;
+  text-decoration: none;
 }
 
-@mixin button-state-overlay($color, $opacity) {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: inherit;
-  pointer-events: none;
+@mixin one-line-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin square-size($size) {
+  width: $size;
+  min-width: $size;
+  max-width: $size;
+  height: $size;
+  min-height: $size;
+  min-height: $size;
+  max-height: $size;
+}
+
+@mixin bg-color($color) {
   background-color: light-dark(
     var(--color-light-#{$color}),
     var(--color-dark-#{$color})
   );
+}
+
+@mixin fg-color($color) {
+  color: light-dark(var(--color-light-#{$color}), var(--color-dark-#{$color}));
+}
+
+@mixin state-overlay(
+  $color,
+  $opacity,
+  $top: 0,
+  $right: 0,
+  $bottom: 0,
+  $left: 0
+) {
+  content: '';
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  border-radius: inherit;
+  pointer-events: none;
+  @include bg-color($color);
   opacity: $opacity;
 }
 

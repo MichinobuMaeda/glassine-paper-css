@@ -3,6 +3,7 @@
 
 @use 'sass:math';
 @use 'variables' as *;
+@use 'mixins' as *;
 
 // Mixins
 @mixin textfield-base {
@@ -31,15 +32,8 @@
   width: 100%;
 }
 
-@mixin icon-sizing {
-  height: $spacing-24px;
-  width: $spacing-24px;
-  min-height: $spacing-24px;
-  min-width: $spacing-24px;
-}
-
 @mixin placeholder-base {
-  color: light-dark(var(--color-light-primary), var(--color-dark-primary));
+  @include fg-color(primary);
   position: absolute;
   top: $spacing-4px;
   left: 0;
@@ -48,16 +42,12 @@
 
 @mixin placeholder-small {
   font-size: 0.75rem;
-  color: light-dark(
-    var(--color-light-on-surface-variant),
-    var(--color-dark-on-surface-variant)
-  );
+  @include fg-color(on-surface-variant);
   display: block;
   line-height: calc(4 / 3);
   max-height: calc(4 / 3);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+
+  @include one-line-truncate;
 }
 
 @mixin supporting-text-base {
@@ -69,13 +59,12 @@
   line-height: calc(4 / 3);
   max-height: calc(4 / 3);
   max-width: calc(100% - 2rem);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+
+  @include one-line-truncate;
 }
 
 @mixin error-color {
-  color: light-dark(var(--color-light-error), var(--color-dark-error));
+  @include fg-color(error);
 }
 
 @mixin error-border {
@@ -104,17 +93,14 @@
 
   svg,
   img {
-    @include icon-sizing;
+    @include square-size($spacing-24px);
   }
 
   // Filled variant
   &.filled {
     border-top-left-radius: $spacing-4px;
     border-top-right-radius: $spacing-4px;
-    background-color: light-dark(
-      var(--color-light-surface-container-highest),
-      var(--color-dark-surface-container-highest)
-    );
+    @include bg-color(surface-container-highest);
     border-bottom: $spacing-1px solid
       light-dark(
         var(--color-light-on-surface-variant),
@@ -176,10 +162,7 @@
         position: absolute;
         top: -$spacing-8px;
         left: $spacing-12px;
-        background-color: light-dark(
-          var(--color-light-surface-container-lowest),
-          var(--color-dark-surface-container-lowest)
-        );
+        @include bg-color(surface-container-lowest);
         padding: 0 $spacing-4px;
         max-width: calc(100% - 1rem);
       }

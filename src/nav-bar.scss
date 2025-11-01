@@ -1,0 +1,50 @@
+// Navigation Bar Component - SCSS
+// Material Design 3 navigation bar
+
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'nav-item' as *;
+
+$nav-bar-z-index: var(--nav-bar-z-index, 5);
+$nav-bar-height: var(--nav-bar-height, $spacing-64px);
+$nav-horizontal-item-height: $spacing-40px;
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: start;
+  justify-content: space-around;
+  bottom: 0;
+  left: 0;
+  height: $nav-bar-height;
+  width: 100%;
+  position: fixed;
+  @include bg-color(surface-container);
+  z-index: $nav-bar-z-index;
+
+  &.hidden {
+    display: none;
+  }
+
+  &:not(.wide) {
+    padding: $spacing-6px 0;
+  }
+
+  &.wide {
+    padding: $spacing-12px 0;
+  }
+
+  button {
+    @include nav-item-style($nav-bar-z-index);
+  }
+
+  &:not(.wide) button:not(.icon) {
+    @include nav-item-style-vertical;
+  }
+
+  &:not(.wide) button.icon,
+  &.wide button {
+    @include nav-item-style-horizontal($nav-horizontal-item-height);
+  }
+}

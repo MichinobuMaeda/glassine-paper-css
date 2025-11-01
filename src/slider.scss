@@ -3,6 +3,7 @@
 
 @use 'sass:math';
 @use 'variables' as *;
+@use 'mixins' as *;
 
 // Variables
 $slider-height-sm: $spacing-44px;
@@ -26,10 +27,7 @@ $slider-margin: $spacing-4px;
 
 @mixin slider-thumb {
   appearance: none;
-  background-color: light-dark(
-    var(--color-light-primary),
-    var(--color-dark-primary)
-  );
+  @include bg-color(primary);
   border-radius: $slider-thumb-radius;
   border: none;
   outline: $slider-thumb-outline solid
@@ -142,13 +140,9 @@ $slider-margin: $spacing-4px;
 
   // Range input
   input {
+    @include reset-control-appearance;
+
     position: relative;
-    appearance: none;
-    border: none;
-    outline: none;
-    box-shadow: none;
-    background: none;
-    padding: 0;
     pointer-events: default;
 
     // WebKit thumb (Chrome, Safari, Edge)
@@ -315,10 +309,7 @@ $slider-margin: $spacing-4px;
         left: 0;
         height: $slider-dot-size;
         width: $slider-dot-size;
-        background-color: light-dark(
-          var(--color-light-on-secondary-container),
-          var(--color-dark-on-secondary-container)
-        );
+        @include bg-color(on-secondary-container);
         border-radius: 50%;
         pointer-events: none;
       }
@@ -329,10 +320,7 @@ $slider-margin: $spacing-4px;
         left: 0;
         height: $slider-dot-size;
         width: $slider-dot-size;
-        background-color: light-dark(
-          var(--color-light-on-primary),
-          var(--color-dark-on-primary)
-        );
+        @include bg-color(on-primary);
         border-radius: 50%;
         pointer-events: none;
       }

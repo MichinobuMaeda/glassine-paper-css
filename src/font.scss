@@ -1,5 +1,6 @@
 :root {
-  font-family:
+  font-family: var(
+    --root-font-family,
     Roboto,
     system-ui,
     -apple-system,
@@ -10,7 +11,8 @@
     Cantarell,
     'Open Sans',
     'Helvetica Neue',
-    sans-serif;
-  font-size: 16px;
-  font-weight: 400;
+    sans-serif
+  );
+  font-size: var(--root-font-size, 16px);
+  font-weight: var(--root-font-weight, 400);
 }

@@ -28,14 +28,8 @@ $border-radius-rounded-md: calc($button-height-md / 2);
 }
 
 @mixin button-colors($bg-color, $text-color) {
-  background-color: light-dark(
-    var(--color-light-#{$bg-color}),
-    var(--color-dark-#{$bg-color})
-  );
-  color: light-dark(
-    var(--color-light-#{$text-color}),
-    var(--color-dark-#{$text-color})
-  );
+  @include bg-color($bg-color);
+  @include fg-color($text-color);
 }
 
 // Button Group - Spaced buttons
@@ -126,13 +120,13 @@ $border-radius-rounded-md: calc($button-height-md / 2);
 
       // Hover state
       &:hover::after {
-        @include button-state-overlay(on-surface-variant, $opacity-hovered);
+        @include state-overlay(on-surface-variant, $opacity-hovered);
       }
 
       // Focus and active states
       &:focus::after,
       &:active::after {
-        @include button-state-overlay(on-surface-variant, $opacity-focused);
+        @include state-overlay(on-surface-variant, $opacity-focused);
       }
 
       &:has(:focus),
@@ -142,13 +136,13 @@ $border-radius-rounded-md: calc($button-height-md / 2);
 
       // Checked hover state
       &:has(:checked):hover::after {
-        @include button-state-overlay(on-secondary, $opacity-hovered);
+        @include state-overlay(on-secondary, $opacity-hovered);
       }
 
       // Checked focus and active states
       &:has(:checked:focus)::after,
       &:has(:checked:active)::after {
-        @include button-state-overlay(on-secondary, $opacity-focused);
+        @include state-overlay(on-secondary, $opacity-focused);
       }
     }
   }
