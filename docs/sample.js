@@ -1,3 +1,9 @@
+/**
+ * Toggles the visibility of the main menu.
+ * Shows the menu if it's hidden, or hides it if it's visible.
+ *
+ * @returns {void}
+ */
 function toggleMainMenu() {
   const mainMenu = document.getElementById('main-menu');
   if (mainMenu.classList.contains('hidden')) {
@@ -13,10 +19,6 @@ function toggleMainMenu() {
  *
  * @param {Event} event - The event that triggered the toggle
  * @returns {void}
- *
- * @example
- * // Typical usage with button click
- * <button onclick="toggleNavBarWidth(event)">Toggle Nav Width</button>
  */
 function toggleNavBarWidth(event) {
   const navBar = document.getElementsByClassName('nav-bar').item(0);
@@ -33,10 +35,6 @@ function toggleNavBarWidth(event) {
  *
  * @param {Event} event - The event that triggered the toggle
  * @returns {void}
- *
- * @example
- * // Typical usage with button click
- * <button onclick="toggleNavRailWidth(event)">Toggle Nav Width</button>
  */
 function toggleNavRailWidth(event) {
   const navRail = document.getElementsByClassName('nav-rail').item(0);
@@ -58,6 +56,13 @@ function toggleNavRailWidth(event) {
   }
 }
 
+/**
+ * Toggles between navigation bar and navigation rail display modes.
+ * When nav-bar is visible, it hides the bar and shows the rail.
+ * When nav-bar is hidden, it shows the bar and hides the rail.
+ *
+ * @returns {void}
+ */
 function toggleNavBarNavRail() {
   const navBar = document.getElementsByClassName('nav-bar').item(0);
   const navRail = document.getElementsByClassName('nav-rail').item(0);
@@ -77,10 +82,6 @@ function toggleNavBarNavRail() {
  * Also sets the drawer to modal mode and updates the visibility of show/hide buttons.
  *
  * @returns {void}
- *
- * @example
- * // Typical usage with button click
- * <button id="nav-drawer-show-button" onclick="navDrawerShow()">Show Drawer</button>
  *
  * @see {@link navDrawerHide} - Hides the navigation drawer
  * @see {@link navDrawerModal} - Sets the drawer to modal mode
@@ -105,14 +106,6 @@ function navDrawerShow() {
  * @param {HTMLElement} [event.target] - The element that was clicked
  * @param {number} [event.clientX] - The X coordinate of the click
  * @returns {void}
- *
- * @example
- * // Manual hide without event validation
- * navDrawerHide();
- *
- * @example
- * // Hide with click validation (typical usage)
- * <div class="nav-drawer" onclick="navDrawerHide(event)">
  *
  * @see {@link navDrawerShow} - Shows the navigation drawer
  */
@@ -144,10 +137,6 @@ function navDrawerHide(event) {
  *
  * @returns {void}
  *
- * @example
- * // Typical usage with button click
- * <button id="nav-drawer-modal-button" onclick="navDrawerModal()">Modal Mode</button>
- *
  * @see {@link navDrawerFix} - Sets the drawer to fixed mode
  * @see {@link navDrawerShow} - Automatically calls this when showing the drawer
  */
@@ -167,10 +156,6 @@ function navDrawerModal() {
  * Updates the visibility of modal/fix toggle buttons.
  *
  * @returns {void}
- *
- * @example
- * // Typical usage with button click
- * <button id="nav-drawer-fix-button" onclick="navDrawerFix()">Fix Drawer</button>
  *
  * @see {@link navDrawerModal} - Sets the drawer to modal mode
  */
